@@ -37,14 +37,27 @@ Seluruh peserta pelatihan dapat langsung menginstal dan menjalankan aplikasi di 
 
 ### 🚀 Cara Menginstal & Membuka Aplikasi di RStudio
 
-1. Buka aplikasi **R** atau **RStudio**.
-2. Salin dan tempelkan perintah di bawah ini ke dalam jendela **Console**, lalu tekan **Enter**:
+Buka aplikasi **R** atau **RStudio**, lalu jalankan salah satu opsi perintah berikut di jendela **Console**:
 
+#### ⚡ Opsi 1: Menggunakan `pak` (Sangat Cepat & Direkomendasikan untuk Windows/Mac)
+```r
+# 1. Pasang paket 'pak' jika belum terpasang
+if (!requireNamespace("pak", quietly = TRUE)) install.packages("pak")
+
+# 2. Pasang paket BBKA Analytics Studio dari GitHub
+pak::pkg_install("anom90/bbka-analytics")
+
+# 3. Panggil dan jalankan aplikasi
+library(bbka.analytics)
+run_app()
+```
+
+#### 📦 Opsi 2: Menggunakan `remotes`
 ```r
 # 1. Pasang paket 'remotes' jika belum terpasang
 if (!requireNamespace("remotes", quietly = TRUE)) install.packages("remotes")
 
-# 2. Pasang paket BBKA Analytics Studio dari GitHub (Bekerja lancar di Windows & Mac)
+# 2. Pasang paket BBKA Analytics Studio (Jika muncul dialog Build Tools, pilih "No")
 remotes::install_github("anom90/bbka-analytics", build = FALSE)
 
 # 3. Panggil dan jalankan aplikasi
