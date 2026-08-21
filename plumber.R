@@ -1,13 +1,18 @@
 # ==============================================================================
-# plumber.R - Plumber API for StatsAN Web (R Backend Engine)
+# plumber.R - Plumber API for BBKA Analytics Studio (R Backend Engine)
 # Menangani komputasi statistik presisi 1:1 langsung di sesi R
 # Memenuhi Standar Publikasi Jurnal Internasional (Springer Large-Scale Assessments in Education)
 # ==============================================================================
 
-library(plumber)
-library(jsonlite)
-library(lme4)
-library(car)
+options(rgl.useNULL = TRUE)
+Sys.setenv(RGL_USE_NULL = "TRUE")
+
+suppressWarnings(suppressPackageStartupMessages({
+  library(plumber)
+  library(jsonlite)
+  library(lme4)
+  library(car)
+}))
 
 # Helper: Compute Skewness and Kurtosis
 calc_skewness <- function(x) {

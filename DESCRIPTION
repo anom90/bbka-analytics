@@ -6,7 +6,6 @@ Authors@R: person("Kartianom", "Kartianom", email = "kartianom@gmail.com", role 
 Description: BBKA Analytics Studio is an integrated statistical analysis and research reporting suite tailored for large-scale educational assessments (PISA, TIMSS, Asesmen Nasional) and social science research. It features an ultra-modern reactive Next.js web application powered by an R native plumber computational engine, supporting t-Test, ANOVA, ANCOVA, MANOVA, Hierarchical Regression, Structural Equation Modeling / Path Analysis (lavaan), Multilevel Modeling (lme4), and Two-Stage IPD Meta-Analysis (metafor).
 License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
 RoxygenNote: 7.3.1
 Depends:
     R (>= 4.0.0)

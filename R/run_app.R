@@ -50,6 +50,10 @@ get_content_type <- function(file_path) {
 #'   run_app()
 #' }
 run_app <- function(port = 8000, open_browser = TRUE) {
+  # 0. Set headless device & matikan inisialisasi X11/RGL display di macOS / server
+  options(rgl.useNULL = TRUE)
+  Sys.setenv(RGL_USE_NULL = "TRUE")
+
   # 1. Hentikan server sebelumnya jika masih aktif di sesi R
   try(httpuv::stopAllServers(), silent = TRUE)
 
