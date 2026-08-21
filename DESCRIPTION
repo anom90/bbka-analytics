@@ -7,6 +7,7 @@ Description: BBKA Analytics Studio is an integrated statistical analysis and res
 License: MIT + file LICENSE
 Encoding: UTF-8
 RoxygenNote: 7.3.1
+NeedsCompilation: no
 Depends:
     R (>= 4.0.0)
 Imports:

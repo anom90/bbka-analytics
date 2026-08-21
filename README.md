@@ -44,8 +44,8 @@ Seluruh peserta pelatihan dapat langsung menginstal dan menjalankan aplikasi di 
 # 1. Pasang paket 'remotes' jika belum terpasang
 if (!requireNamespace("remotes", quietly = TRUE)) install.packages("remotes")
 
-# 2. Pasang paket BBKA Analytics Studio dari GitHub
-remotes::install_github("anom90/bbka-analytics")
+# 2. Pasang paket BBKA Analytics Studio dari GitHub (Bekerja lancar di Windows & Mac)
+remotes::install_github("anom90/bbka-analytics", build = FALSE)
 
 # 3. Panggil dan jalankan aplikasi
 library(bbka.analytics)
