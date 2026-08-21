@@ -8,7 +8,6 @@ options(rgl.useNULL = TRUE)
 Sys.setenv(RGL_USE_NULL = "TRUE")
 
 suppressWarnings(suppressPackageStartupMessages({
-  library(plumber)
   library(jsonlite)
   library(lme4)
   library(car)

@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="public/icon.png" width="130" height="130" alt="BBKA Analytics Studio Logo" style="border-radius: 28px; box-shadow: 0 10px 25px rgba(0, 128, 128, 0.25);" />
+<img src="man/figures/icon.png" width="130" height="130" alt="BBKA Analytics Studio Logo" style="border-radius: 28px; box-shadow: 0 10px 25px rgba(0, 128, 128, 0.25);" />
 
 # 🌟 BBKA Analytics Studio
 ### *Advanced Educational & Social Science Statistical Suite with Native R Engine*

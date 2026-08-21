@@ -65,18 +65,24 @@ run_app <- function(port = 8000, open_browser = TRUE) {
     }
   }
 
-  # Resolusi file API & Frontend Web
-  api_path <- file.path(getwd(), "plumber.R")
-  www_path <- file.path(getwd(), "out")
+  # Resolusi file API & Frontend Web (Prioritaskan file resmi dari paket terpasang)
+  api_path <- system.file("plumber.R", package = "bbka.analytics")
+  www_path <- system.file("out", package = "bbka.analytics")
 
-  if (!file.exists(api_path)) {
-    pkg_api <- system.file("plumber.R", package = "bbka.analytics")
-    if (file.exists(pkg_api)) api_path <- pkg_api
+  # Fallback jika dijalankan langsung dari direktori source pengembangan lokal
+  if (!file.exists(api_path) || api_path == "") {
+    if (file.exists(file.path(getwd(), "inst", "plumber.R"))) {
+      api_path <- file.path(getwd(), "inst", "plumber.R")
+    } else if (file.exists(file.path(getwd(), "plumber.R"))) {
+      api_path <- file.path(getwd(), "plumber.R")
+    }
   }
-  if (!dir.exists(www_path)) {
-    pkg_www <- system.file("out", package = "bbka.analytics")
-    if (dir.exists(pkg_www)) {
-      www_path <- pkg_www
+
+  if (!dir.exists(www_path) || www_path == "") {
+    if (dir.exists(file.path(getwd(), "inst", "out"))) {
+      www_path <- file.path(getwd(), "inst", "out")
+    } else if (dir.exists(file.path(getwd(), "out"))) {
+      www_path <- file.path(getwd(), "out")
     } else {
       pkg_www2 <- system.file("www", package = "bbka.analytics")
       if (dir.exists(pkg_www2)) www_path <- pkg_www2
