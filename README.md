@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="public/icon.png" width="130" height="130" alt="BBKA Analytics Studio Logo" style="border-radius: 28px; box-shadow: 0 10px 25px rgba(0, 128, 128, 0.25);" />
+
 # 🌟 BBKA Analytics Studio
 ### *Advanced Educational & Social Science Statistical Suite with Native R Engine*
 
@@ -7,14 +9,15 @@
 [![Next.js](https://img.shields.io/badge/Next.js-16.3-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-008080?style=for-the-badge)](https://opensource.org/licenses/MIT)
 [![APA 7th](https://img.shields.io/badge/Standard-APA_7th_IMRaD-10B981?style=for-the-badge)](https://apastyle.apa.org/)
+[![BBKA Course](https://img.shields.io/badge/BBKA_Course-Training_Ready-008080?style=for-the-badge)](https://github.com/anom90/bbka-analytics)
 [![Status](https://img.shields.io/badge/Status-Production_Ready-success?style=for-the-badge)]()
 
 <p align="center">
-  <b>Suite Analisis Statistik & Studio Publikasi Ilmiah Terpadu</b><br>
-  Dirancang khusus untuk riset berskala besar (<b>Asesmen Nasional, PISA, TIMSS, WVS</b>) dan penelitian ilmu sosial komparatif berstandar jurnal bereputasi tinggi (Q1 / Scopus).
+  <b>Platform Analisis Statistik Inferensial & Studio Penulisan Artikel Jurnal Ilmiah Terpadu</b><br>
+  Dirancang khusus untuk peserta <b>BBKA Course</b> dan riset pendidikan berskala besar (<b>Asesmen Nasional, PISA, TIMSS, WVS</b>) berstandar publikasi jurnal internasional bereputasi (Q1 / Scopus).
 </p>
 
-[Fitur Utama](#-fitur-utama) • [Instalasi di R](#-instalasi--penggunaan-di-r) • [Modul Analisis](#-modul-analisis-statistik) • [Cara Kerja Sistem](#-arsitektur-sistem) • [Lisensi](#-lisensi)
+[⚡ Panduan Cepat Peserta](#-panduan-cepat-peserta-pelatihan-bbka-course) • [📊 Modul Analisis](#-daftar-modul-analisis-statistik) • [📑 Alur Kerja Praktik](#-alur-kerja-praktik-analisis-di-kelas) • [❓ Solusi Kendala (FAQ)](#-tanya-jawab--solusi-kendala-troubleshooting) • [📄 Lisensi](#-lisensi)
 
 ---
 
@@ -22,66 +25,71 @@
 
 ## 📌 Ringkasan Eksekutif
 
-**BBKA Analytics Studio** adalah platform analisis data mutakhir yang menggabungkan kecepatan dan fleksibilitas antarmuka modern **Next.js & Tailwind CSS** dengan keakuratan komputasi mesin murni **R (Plumber, lavaan, lme4, metafor, car, effectsize)**. 
+**BBKA Analytics Studio** adalah platform analisis statistik canggih yang memadukan keindahan antarmuka web modern (**Next.js, Tailwind CSS, Shadcn UI**) dengan ketepatan komputasi statistik murni dari mesin **R (Plumber, lavaan, lme4, metafor, car, effectsize, mice)**. 
 
-Aplikasi ini dapat dijalankan langsung di dalam **R / RStudio**, melalui instalasi paket GitHub, maupun sebagai aplikasi web mandiri (*standalone web server*).
-
----
-
-## 🚀 Fitur Utama
-
-- ⚡ **R Native Computational Engine**: Seluruh kalkulasi inferensial dijalankan oleh paket statistik resmi R (`stats::lm`, `lavaan::sem`, `lme4::lmer`, `metafor::rma`, `stats::aov`, `car::Anova`, `mice`).
-- 🔄 **Reactivity & Real-Time R Code Generation**: Setiap konfigurasi variabel secara otomatis memproduksi sintaks R (*copy-paste ready*) yang dapat diuji coba langsung di RStudio.
-- 📑 **Penyusun Draft Laporan Multi-Tahap (IMRaD & APA 7th)**: Generator otomatis naskah artikel ilmiah terintegrasi yang menyatukan hasil regresi berganda, uji mediasi (*path analysis* dengan *bootstrap*), multilevel HLM, dan formulasi matematis LaTeX formal ($Y_i = \beta_0 + \sum \beta_k X_{ki} + \dots$).
-- 🗄️ **Manajemen & Penggabungan Data Multi-Level (Merge Siswa Level 1 & Guru Level 2)**: Dilengkapi dengan *drag-and-drop dropzone*, deteksi multi-sheet Excel, agregasi data satuan pendidikan otomatis, dan diagnostik kecocokan kunci relasi.
-- 🧹 **Diagnosis Data Hilang & Imputasi Machine Learning**: Integrasi penuh *Random Forest (ranger)*, *Classification & Regression Trees (CART)*, dan *Predictive Mean Matching (PMM)* via paket `mice`.
-- 💾 **Sesi Lokal & Manajemen Memori**: Bekerja optimal secara *offline* menggunakan browser storage (IndexedDB) dengan dukungan ekspor dataset ke format `.csv`, `.xlsx`, dan `.json`.
+Aplikasi ini dapat dijalankan langsung di dalam **RStudio** hanya dengan 1 baris perintah, tanpa perlu instalasi server web yang rumit.
 
 ---
 
-## 💻 Instalasi & Penggunaan di R
+## ⚡ Panduan Cepat Peserta Pelatihan (BBKA Course)
 
-### Opsi 1: Instalasi sebagai Paket R dari GitHub (Direkomendasikan)
+Seluruh peserta pelatihan dapat langsung menginstal dan menjalankan aplikasi di komputer masing-masing (Windows, macOS, maupun Linux).
 
-Buka konsol **R** atau **RStudio**, lalu jalankan perintah berikut:
+### 🚀 Cara Menginstal & Membuka Aplikasi di RStudio
+
+1. Buka aplikasi **R** atau **RStudio**.
+2. Salin dan tempelkan perintah di bawah ini ke dalam jendela **Console**, lalu tekan **Enter**:
 
 ```r
-# 1. Pasang paket 'remotes' atau 'devtools' jika belum tersedia
+# 1. Pasang paket 'remotes' jika belum terpasang
 if (!requireNamespace("remotes", quietly = TRUE)) install.packages("remotes")
 
-# 2. Pasang BBKA Analytics Studio langsung dari GitHub
+# 2. Pasang paket BBKA Analytics Studio dari GitHub
 remotes::install_github("anom90/bbka-analytics")
 
-# 3. Muat paket dan jalankan aplikasi
+# 3. Panggil dan jalankan aplikasi
 library(bbka.analytics)
 run_app()
 ```
 
-> **Catatan**: Perintah `run_app()` akan otomatis menghentikan sesi server lama yang menggantung, menyiapkan seluruh dependensi R yang dibutuhkan, dan membuka antarmuka web interaktif di browser default Anda pada `http://localhost:8000/data`.
+3. Browser default Anda (Chrome, Edge, Safari) akan **otomatis terbuka** dan menampilkan halaman utama:
+   $$\text{\textbf{http://localhost:8000/data}}$$
+
+> 💡 **Tips Peserta:** Jika browser tidak terbuka otomatis, cukup klik atau ketik link `http://localhost:8000/data` di browser pilihan Anda.
 
 ---
 
-### Opsi 2: Menjalankan Langsung via Clone / Download Script
+## 📑 Alur Kerja Praktik Analisis di Kelas
 
-Jika Anda mengunduh atau meng-clone repository ini secara lokal:
+Aplikasi ini telah dirancang terstruktur mengikuti kaidah metodologi penelitian kuantitatif:
 
-```bash
-git clone https://github.com/anom90/bbka-analytics.git
-cd bbka-analytics
+```mermaid
+flowchart LR
+    A["📂 1. Muat Dataset"] --> B["🧹 2. Imputasi & Missing"]
+    B --> C["🔗 3. Merge Multi-Level"]
+    C --> D["📊 4. Uji Inferensial (SEM/HLM/Regresi)"]
+    D --> E["📑 5. Generator Draft Laporan IMRaD"]
+    D --> F["💻 6. Copy Script R Realtime"]
 ```
 
-Buka file `run_app.R` di RStudio dan jalankan:
-
-```r
-source("run_app.R")
-run_app()
-```
+1. **Langkah 1: Muat Data Latihan Bawaan**
+   - Di tab *Manajemen Dataset*, peserta dapat langsung menekan tombol **`Muat Data Asesmen Nasional Bawaan`** (berisi 37.247 data siswa dan 15 variabel AN lengkap) untuk langsung mulai praktik tanpa perlu mencari file.
+2. **Langkah 2: Diagnosis & Imputasi Data Hilang (Missing Data)**
+   - Periksa persentase data hilang dan lakukan imputasi otomatis menggunakan metode *Random Forest (ranger)*, *CART*, atau *Predictive Mean Matching (PMM)* via paket `mice`.
+3. **Langkah 3: Penggabungan Data Multi-Level (Merge Siswa & Guru)**
+   - Unggah file data guru/Sulingjar, pilih kolom kunci (`kd_sekolah`), dan sistem akan mengagregasi rata-rata sekolah secara otomatis ke data siswa.
+4. **Langkah 4: Jalankan Analisis Inferensial**
+   - Pilih modul analisis pada sidebar (Uji-t, ANOVA, ANCOVA, MANOVA, Regresi Hirarki, SEM/Path Analysis, Multilevel HLM, atau Meta-Analisis IPD).
+5. **Langkah 5: Penyusunan Naskah Publikasi (Draft Laporan)**
+   - Masuk ke menu **`Draft Laporan`** untuk menyusun artikel ilmiah instan (Abstrak, Formulasi Matematis LaTeX, Tabel APA 7th, dan Pembahasan) lalu unduh naskah dalam format `.doc`.
+6. **Langkah 6: Verifikasi Script R Mandiri**
+   - Setiap modul menyediakan blok **Sintaks R Realtime** yang dapat dicopy-paste ke RStudio untuk verifikasi keaslian kalkulasi.
 
 ---
 
-## 📊 Modul Analisis Statistik
+## 📊 Daftar Modul Analisis Statistik
 
-| No | Modul Analisis | Engine Paket R | Parameter Kunci & Output yang Dihasilkan |
+| No | Modul Analisis | Engine Paket R | Parameter Utama & Hasil Output |
 |:---:|:---|:---:|:---|
 | 1 | **Manajemen Dataset & Imputasi** | `mice`, `readxl`, `dplyr` | Diagnosis *missing rate*, imputasi Random Forest/CART/Median, filtering bertingkat, dan penggabungan data multi-level (*merge* siswa-guru). |
 | 2 | **Uji-t (t-Test) Komparatif** | `stats::t.test`, `rstatix`, `car` | Uji Independent, Paired, & One-Sample, Levene Homogeneity Test, Welch's t-test koreksi, dan ukuran efek *Cohen's d*. |
@@ -93,6 +101,28 @@ run_app()
 | 8 | **Multilevel Modeling (HLM)** | `lme4`, `lmerTest`, `performance` | Dekomposisi varians hierarkis (siswa di dalam sekolah), *Intraclass Correlation Coefficient* (ICC / $\rho$), dan *Fixed Effects* Level 1 & Level 2. |
 | 9 | **Two-Stage IPD Meta-Analysis** | `metafor`, `ggplot2` | Meta-analisis mikro per wilayah klaster (Brunner et al., 2022), sintesis koefisien $\beta$, *Forest Plot*, serta diagnostik heterogenitas ($I^2$, $\tau^2$, Cochran's $Q$). |
 | 10 | **Studio Draft Laporan IMRaD** | *Native Synthesis Engine* | Penyusunan draf naskah publikasi utuh (Abstrak, Operasionalisasi Variabel, Strategi Formula Matematis LaTeX, Tabel APA 7th, Pembahasan) dan ekspor ke Word (`.doc`). |
+
+---
+
+## ❓ Tanya Jawab & Solusi Kendala (Troubleshooting)
+
+#### 1. Bagaimana cara memperbarui aplikasi ke versi terbaru?
+Jalankan perintah berikut di konsol RStudio:
+```r
+remotes::install_github("anom90/bbka-analytics", force = TRUE)
+```
+
+#### 2. Muncul pesan "Port 8000 is already in use"?
+Anda dapat menjalankan aplikasi di port lain yang tersedia (misal port 8080):
+```r
+run_app(port = 8080)
+```
+
+#### 3. Bagaimana cara menghentikan server aplikasi di RStudio?
+Klik jendela **Console** di RStudio, lalu tekan tombol **Esc** (pada keyboard) atau klik ikon **Stop (tanda merah)** di pojok kanan atas konsol RStudio.
+
+#### 4. Apakah data saya aman dan diunggah ke internet?
+**100% Aman & Lokal**. Seluruh proses komputasi statistik dan data mentah tersimpan di dalam memori lokal komputer Anda (IndexedDB browser & sesi R lokal). Tidak ada data riset Anda yang dikirim ke server luar.
 
 ---
 
@@ -130,19 +160,7 @@ graph TD
 
 ---
 
-## 🐳 Opsi Penggunaan via Docker
-
-Jika ingin menjalankan server berbasis kontainer tanpa instalasi R lokal:
-
-```bash
-# Build dan jalankan dengan Docker Compose
-docker-compose up -d --build
-```
-Buka browser pada `http://localhost:8000/data`.
-
----
-
-## 📖 Referensi & Standar Metodologi
+## 📖 Referensi Metodologi & Standar Sitasi
 
 - **American Psychological Association (2020)**. *Publication Manual of the American Psychological Association* (7th ed.).
 - **Rosseel, Y. (2012)**. lavaan: An R Package for Structural Equation Modeling. *Journal of Statistical Software*, 48(2), 1-36.
@@ -155,11 +173,11 @@ Buka browser pada `http://localhost:8000/data`.
 
 ## 📄 Lisensi
 
-Didistribusikan di bawah Lisensi **MIT**. Lihat berkas [LICENSE](LICENSE) untuk rincian lengkap.
+Didistribusikan di bawah Lisensi **MIT**. Hak Cipta © 2026 **Kartianom** • **BBKA Analytics Studio**.
 
 ---
 
 <div align="center">
-  <b>Dikembangkan untuk Bimbingan Riset & Analisis Data Pendidikan Berkualitas Tinggi</b><br>
-  © 2026 Kartianom • <b>BBKA Analytics Studio</b>
+  <b>Bimbingan Belajar & Konsultasi Akademik (BBKA Course)</b><br>
+  <i>Empowering Researchers with High-Performance Open-Source Statistical Computing</i>
 </div>

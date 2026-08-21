@@ -123,19 +123,29 @@ run_app <- function(port = 8000, open_browser = TRUE) {
         if (file.exists(target_file) && !dir.exists(target_file)) {
           # File ready
         }
-        # B. HTML route match (e.g. /data -> out/data.html, /regression -> out/regression.html)
+        # B. Icon / Favicon requests (Safari Apple Touch Icon, Favicon, etc.)
+        else if (grepl("(apple-touch-icon|apple-icon|favicon|icon)", rel_path, ignore.case = TRUE)) {
+          for (alt in c("apple-touch-icon.png", "apple-icon.png", "icon.png", "favicon.ico", "icon.svg", "favicon.svg")) {
+            alt_file <- file.path(www_path, alt)
+            if (file.exists(alt_file)) {
+              target_file <- alt_file
+              break
+            }
+          }
+        }
+        # C. HTML route match (e.g. /data -> out/data.html, /regression -> out/regression.html)
         else if (file.exists(paste0(target_file, ".html"))) {
           target_file <- paste0(target_file, ".html")
         }
-        # C. RSC TXT route match (e.g. /data.txt -> out/data.txt)
+        # D. RSC TXT route match (e.g. /data.txt -> out/data.txt)
         else if (file.exists(paste0(target_file, ".txt"))) {
           target_file <- paste0(target_file, ".txt")
         }
-        # D. Directory index.html match (e.g. /data/ -> out/data/index.html)
+        # E. Directory index.html match (e.g. /data/ -> out/data/index.html)
         else if (dir.exists(target_file) && file.exists(file.path(target_file, "index.html"))) {
           target_file <- file.path(target_file, "index.html")
         }
-        # E. Fallback to /data.html
+        # F. Fallback to /data.html
         else if (file.exists(file.path(www_path, "data.html"))) {
           target_file <- file.path(www_path, "data.html")
         }

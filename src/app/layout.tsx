@@ -15,8 +15,21 @@ export const metadata: Metadata = {
       { url: '/icon.png', type: 'image/png', sizes: '512x512' },
       { url: '/favicon.ico' },
     ],
+    shortcut: ['/favicon.ico'],
     apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
       { url: '/apple-icon.png', sizes: '512x512', type: 'image/png' },
+    ],
+    other: [
+      {
+        rel: 'apple-touch-icon-precomposed',
+        url: '/apple-touch-icon-precomposed.png',
+      },
+      {
+        rel: 'mask-icon',
+        url: '/icon.svg',
+        color: '#008080',
+      },
     ],
   },
 };
