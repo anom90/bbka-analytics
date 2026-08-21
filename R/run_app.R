@@ -183,7 +183,9 @@ run_app <- function(port = 8000, open_browser = TRUE) {
           headers = list(
             "Content-Type" = c_type,
             "Content-Length" = as.character(file_size),
-            "Cache-Control" = if (grepl("/_next/static/", path)) "public, max-age=31536000, immutable" else "no-cache"
+            "Cache-Control" = "no-cache, no-store, must-revalidate, max-age=0",
+            "Pragma" = "no-cache",
+            "Expires" = "0"
           ),
           body = body_content
         ))
