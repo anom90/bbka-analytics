@@ -1,0 +1,776 @@
+{
+  "kd_individu": {
+    "code": "kd_individu",
+    "label": "kode pendidik",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "NULL",
+    "operationalDefinition": "kode pendidik",
+    "scale": "kode unik",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "kd_sekolah": {
+    "code": "kd_sekolah",
+    "label": "kode sekolah/satuan pendidikan",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "NULL",
+    "operationalDefinition": "kode sekolah/satuan pendidikan",
+    "scale": "kode unik",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "pendidikan_sederajat": {
+    "code": "pendidikan_sederajat",
+    "label": "jenjang pendidikan sederajat suatu sekolah",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "NULL",
+    "operationalDefinition": "jenjang pendidikan sederajat suatu sekolah",
+    "scale": "PAUD/RA = PAUD/RA/sederajat",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "instansi_kewenangan": {
+    "code": "instansi_kewenangan",
+    "label": "instansi berwenang yang menaungi satuan PAUD",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "NULL",
+    "operationalDefinition": "instansi berwenang yang menaungi satuan PAUD",
+    "scale": "Kemendikdasmen; Kemenag",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "sts_sek": {
+    "code": "sts_sek",
+    "label": "status pendidikan sekolah",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "NULL",
+    "operationalDefinition": "status pendidikan sekolah",
+    "scale": "N = Negeri\r\nS =  Swasta",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "kd_kokab": {
+    "code": "kd_kokab",
+    "label": "kode kabupaten/kota",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "NULL",
+    "operationalDefinition": "kode kabupaten/kota",
+    "scale": "kode unik",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "wilayah_region": {
+    "code": "wilayah_region",
+    "label": "wilayah region berdasarkan sebaran wilayah Indoensia",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "NULL",
+    "operationalDefinition": "wilayah region berdasarkan sebaran wilayah Indoensia",
+    "scale": "Sumatera Bagian Utara; Sumatera Bagian Selatan; Jawa Bagian Barat; Jawa Bagian Timur; Kalimantan; Bali dan Nusa Tenggara; Sulawesi; Maluku dan Papua",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "jenis_wilayah": {
+    "code": "jenis_wilayah",
+    "label": "bentuk suatu wilayah",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "NULL",
+    "operationalDefinition": "bentuk suatu wilayah",
+    "scale": "Kabupaten atau Kota",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GD.1.1": {
+    "code": "GD.1.1",
+    "label": "Pemahaman mengenai komponen perencanaan",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Pemahaman satuan PAUD bahwa perencanaan perlu ada di tingkat satuan dan di tingkat kelas. Komponen perencanaan yang ada di tingkat kelas terdiri dari tujuan, kegiatan, dan asesmen.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait pemahaman mengenai komponen perencanaan.",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GD.1.2": {
+    "code": "GD.1.2",
+    "label": "Kualitas perencanaan",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Rencana pembelajaran yang menunjukkan keterkaitan antara kegiatan pembelajaran dengan kemampuan yang ingin dibangun pada peserta didik.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait kualitas perencanaan.",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GD.1.3": {
+    "code": "GD.1.3",
+    "label": "Pengaturan Lingkungan Belajar",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Penataan lingkungan belajar adalah bagian dari perencanaan pembelajaran yang dilakukan dengan tujuan untuk membangun kemampuan fondasi peserta didik melalui kesempatan peserta didik untuk melakukan eksplorasi.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait pengaturan lingkungan belajar.",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GD.2.1": {
+    "code": "GD.2.1",
+    "label": "Keteraturan suasana kelas",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Dalam konteks PAUD, suasana belajar yang teratur bukanlah ruangan kelas dengan meja teratur atau sunyi dari suara dan peserta duduk diam, melainkan suasana tanpa gangguan yang dapat mengalihkan perhatian peserta didik dari proses pembelajaran.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait keteraturan suasana kelas.",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GD.2.2": {
+    "code": "GD.2.2",
+    "label": "Penerapan disiplin positif",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Pengelolaan kelas dengan tetap menghargai hak anak. Pengelolaan kelas dilakukan dengan mengenalkan konsekuensi dari suatu tindakan dan tidak melakukan tindakan yang agresif secara fisik ataupun verbal pada anak.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait penerapan disiplin positif.",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GD.2.3": {
+    "code": "GD.2.3",
+    "label": "Ekspektasi pendidik",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Keyakinan pendidik bahwa setiap anak memiliki potensi untuk bertumbuh dan berkembang. Keyakinan diwujudkan dalam pemberian umpan balik konstruktif seperti memberikan penghargaan atas usahanya serta tidak terpaku pada hasil, kepintaran, atau bakat alami anak.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait ekspektasi pendidik.",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GD.2.4": {
+    "code": "GD.2.4",
+    "label": "Perhatian dan dukungan pendidik",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Pendampingan yang diberikan kepada anak agar dapat mengikuti kegiatan pembelajaran serta memberi perhatian dan dukungan lebih kepada anak yang membutuhkan.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait perhatian dan dukungan pendidik.",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GD.2.5": {
+    "code": "GD.2.5",
+    "label": "Pembelajaran terdiferensiasi",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Usaha untuk menyesuaikan proses pembelajaran di kelas dalam rangka memenuhi kebutuhan belajar individu setiap peserta didik.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait pembelajaran terdiferensiasi.",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GD.2.6": {
+    "code": "GD.2.6",
+    "label": "Panduan pendidik",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Pemberian dukungan belajar secara bertahap untuk menguatkan pemahaman dan keterampilan anak. Strategi ini dapat berbentuk penjelasan yang terstruktur, pemberian contoh-contoh untuk kemudahan anak dalam memahami suatu konsep, ataupun pertanyaan pemantik.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait panduan pendidik.",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GD.2.7": {
+    "code": "GD.2.7",
+    "label": "Pendekatan bermain",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Pembelajaran yang dirancang untuk membangun kemampuan fondasi anak dengan tetap menjaga agar proses tersebut memberikan pengalaman yang menyenangkan bagi anak usia dini.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait pendekatan bermain-belajar.",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GD.2.8": {
+    "code": "GD.2.8",
+    "label": "Berpikir aktif",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Strategi pembelajaran yang memberikan kesempatan pada anak untuk membuat keputusan dalam proses pembelajaran dan mendorong anak melakukan eksplorasi, mengutarakan gagasan dan pertanyaan, serta berinteraksi dengan individu lain.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait berpikir aktif.",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GD.2.9": {
+    "code": "GD.2.9",
+    "label": "Pembelajaran kontekstual",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Strategi pembelajaran yang mengaitkan antara materi yang diajarkan dengan situasi dunia nyata anak dan mendorong anak membuat hubungan antara pengetahuan yang dimilikinya dengan penerapannya dalam kehidupan.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait pembelajaran kontekstual.",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GD.3.1": {
+    "code": "GD.3.1",
+    "label": "Nilai agama dan budi pekerti",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Pembelajaran yang membangun nilai-nilai baik pada anak melalui pengenalan terhadap Tuhan, agama/kepercayaan, serta praktik ibadah yang sesuai. Nilai-nilai baik terwujud dalam perilaku anak yang menyayangi dirinya, sesama manusia, dan alam sebagai ciptaan Tuhan.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait muatan agama dan budi pekerti.",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GD.3.2": {
+    "code": "GD.3.2",
+    "label": "Identitas Diri",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Pembelajaran yang membangun pemahaman peserta didik mengenai identitas dirinya yang terbentuk oleh ragam minat, kebutuhan, dan karakteristik, serta peran yang dapat anak ambil di dalam kegiatannya sehari-hari.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait muatan identitas diri.",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GD.3.3": {
+    "code": "GD.3.3",
+    "label": "Perilaku mandiri dan prososial",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Pembelajaran yang membangun kemampuan sosial emosional, perilaku prososial dan kemandirian pada anak. Kemampuan ini tidak hanya dibangun melalui pembelajaran di kelas, tetapi juga melalui iklim satuan PAUD yang turut membangun kemampuan tersebut.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait muatan perilaku mandiri dan prososial.",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GD.3.4": {
+    "code": "GD.3.4",
+    "label": "PHBS dan penguatan motorik kasar dan halus",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Pembelajaran yang membangun perilaku hidup bersih dan sehat serta kemampuan motorik kasar dan halus. Kemampuan ini dibangun tidak hanya melalui pembelajaran, namun juga melalui pembiasaan serta iklim lingkungan belajar.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait muatan PHBS dan penguatan motorik kasar dan halus.",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GD.3.5": {
+    "code": "GD.3.5",
+    "label": "Literasi dasar",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Pembelajaran yang bertujuan mengembangkan kemampuan literasi dasar secara utuh, meliputi kemampuan bertutur, pengetahuan latar, pembedaharaan kosakata, kesadaran terhadap simbol dan teks, kesadaran fonemik serta keaksaraan.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait muatan literasi dasar.",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GD.3.6": {
+    "code": "GD.3.6",
+    "label": "Kemampuan kognitif",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Pembelajaran yang membangun kemampuan anak berpikir logis dan simbolis, antara lain meliputi kemampuan memahami hubungan sebab-akibat, kepemilikan konsep numerasi dasar, serta pemahaman sederhana tentang cara dunia bekerja yang dapat ditunjukkan secara lisan, perilaku ataupun hasil karya.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait muatan kognitif.",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GD.4.1": {
+    "code": "GD.4.1",
+    "label": "Penerapan asesmen dalam pembelajaran",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Upaya memperoleh serangkaian informasi tentang hasil belajar melalui cara yang sesuai dengan kebutuhan belajar anak usia dini, serta menggunakan hasilnya sebagai rujukan dalam peningkatan kualitas pembelajaran selanjutnya.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait penerapan asesmen dalam pembelajaran",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GD.4.2": {
+    "code": "GD.4.2",
+    "label": "Umpan balik yang konstruktif",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Penyampaian hasil penilaian dari pendidik kepada anak yang bermanfaat untuk menguatkan proses anak untuk menjadi lebih baik melalui proses belajar. Umpan balik konstruktif juga merujuk pada kemampuan pendidik menyusun informasi tentang capaian anak yang bermakna untuk diketahui oleh orang tua/wali murid.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait umpan balik konstruktif.",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GE.2.1": {
+    "code": "GE.2.1",
+    "label": "Keamanan lingkungan satuan",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Lingkungan belajar yang mampu memberikan rasa aman bagi anak dan warga lainnya di satuan PAUD dalam berkegiatan.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait keamanan lingkungan satuan",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GE.2.2": {
+    "code": "GE.2.2",
+    "label": "Ketersediaan P3K",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Ketersediaan P3K di satuan sebagai fasilitas untuk menghadapi kondisi darurat.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait ketersediaan P3K",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GE.2.3": {
+    "code": "GE.2.3",
+    "label": "Pemahaman mengenai hukuman fisik",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Pengelolaan di tingkat satuan PAUD yang mampu mencegah penerapan hukuman fisik dengan tujuan untuk mendisiplinkan, mengendalikan, atau memperbaiki perilaku anak.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait pemahaman mengenai hukuman fisik",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GE.2.4": {
+    "code": "GE.2.4",
+    "label": "Pencegahan dan mitigasi perundungan",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Pengelolaan di tingkat satuan PAUD yang mampu mencegah dan mengatasi kasus perundungan. Perundungan adalah kekerasan yang terjadi secara berulang pada anak dengan maksud mengintimidasi dan membuat anak (korban) merasa lemah.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait pencegahan dan mitigasi perundungan",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GE.2.5": {
+    "code": "GE.2.5",
+    "label": "Pencegahan kasus kekerasan seksual",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Pengelolaan di tingkat satuan PAUD yang mampu mencegah adanya tindakan kekerasan seksual pada anak.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait pencegahan kasus kekerasan seksual",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GE.2.6": {
+    "code": "GE.2.6",
+    "label": "Sikap antikekerasan",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Pemahaman dan kemampuan kepala satuan pendidikan dan pendidik mengenai tindakan yang dikategorikan sebagai tindakan kekerasan.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait sikap antikekerasan kepala satdik dan pendidik",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GE.3.1": {
+    "code": "GE.3.1",
+    "label": "Sikap terhadap toleransi",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Toleransi pendidik dan kepala satuan dalam merespon keberagaman agama dan budaya sebagai upaya dalam membangun lingkungan belajar inklusif.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait sikap terhadap toleransi",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GE.3.2": {
+    "code": "GE.3.2",
+    "label": "Komitmen kebangsaan",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Pemahaman pendidik dan kepala satuan tentang wawasan kebangsaan dan nilai-nilai Pancasila, serta upayanya dalam membangun nilai-nilai tersebut melalui lingkungan belajar.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait komitmen kebangsaan",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GE.3.3": {
+    "code": "GE.3.3",
+    "label": "Sikap terhadap keragaman",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Sikap pendidik dan kepala satuan terhadap keberagaman, serta upayanya dalam membangun nilai-nilai tersebut melalui sikap saling menghargai di lingkungan belajar.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait sikap terhadap keragaman.",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GE.3.4": {
+    "code": "GE.3.4",
+    "label": "Konsepsi/pengetahuan/sikap pendidik terhadap anak berkebutuhan khusus",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Pendidik dan tenaga kependidikan memiliki pengetahuan dan keterampilan untuk memperlakukan anak berkebutuhan khusus sesuai kebutuhannya, serta mendesain program pembelajaran dan fasilitas yang dapat diikuti oleh anak berkebutuhan khusus.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait konsepsi/pengetahuan/sikap pendidik terhadap anak berkebutuhan khusus",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GE.4.1": {
+    "code": "GE.4.1",
+    "label": "Belajar dari dan bersama orang lain",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Proses belajar yang diperoleh melalui pengalaman dan pengamatan orang lain baik dari rekan sebaya di satuan, di gugus, ataupun wadah belajar lain yang mengarah pada pengembangan kapasitas individu.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait belajar dari dan bersama orang lain",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GE.4.2": {
+    "code": "GE.4.2",
+    "label": "Evaluasi praktik saat ini",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Adanya budaya untuk melakukan evaluasi kinerja melalui ragam upaya identifikasi kekuatan dan kelemahan dalam praktik pembelajaran serta mengakomodasi umpan balik secara konstruktif.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait evaluasi praktik saat ini",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GE.4.3": {
+    "code": "GE.4.3",
+    "label": "Penerapan praktik baru",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Adanya budaya untuk menerapkan inovasi dan mencoba praktik baru yang berbeda dari yang biasa dilakukan dengan tujuan untuk peningkatan kualitas layanan.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait penerapan praktik baru",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GE.5.1": {
+    "code": "GE.5.1",
+    "label": "Visi-misi satuan pendidikan",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Kemampuan kepala satuan pendidikan dalam penyampaian dan penerapan visi-misi sekolah yang berpusat pada perbaikan pembelajaran.",
+    "operationalDefinition": "Nilai komposit kepala satuan dan pendidik PAUD terkait penyampaian dan penerapan visi-misi sekolah",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GE.5.2": {
+    "code": "GE.5.2",
+    "label": "Pengelolaan kurikulum satuan pendidikan",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Kemampuan kepala satuan pendidikan untuk mengembangkan dan mengelola kurikulum dengan melibatkan warga sekolah yang bertujuan meningkatkan kualitas proses serta hasil belajar peserta didik.",
+    "operationalDefinition": "Nilai komposit kepala satuan dan pendidik PAUD terkait pengelolaan kurikulum",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GE.5.3": {
+    "code": "GE.5.3",
+    "label": "Dukungan untuk refleksi guru",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Kemampuan kepala satuan dalam menyusun kebijakan yang mendukung refleksi guru dan perbaikan pembelajaran.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik PAUD terkait dukungan untuk refleksi guru",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GE.6.1": {
+    "code": "GE.6.1",
+    "label": "Kemitraan dengan Orang Tua/Wali",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Kemampuan satuan PAUD untuk menempatkan orang tua/wali sebagai mitra sehingga terbentuk kesinambungan antara stimulasi yang diberikan di satuan PAUD dengan stimulasi yang diberikan di rumah.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait kemitraan dengan orangtua/wali",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GE.8.1": {
+    "code": "GE.8.1",
+    "label": "Kapasitas Perencanaan",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Kapasitas dalam menyusun perencanaan yang berbasis kebutuhan dan efektif dalam meningkatkan kualitas layanan.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait kapasitas perencanaan",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "GE.9.1": {
+    "code": "GE.9.1",
+    "label": "Penganggaran yang efektif dan akuntabel",
+    "domain": "PAUD - Guru / Pendidik",
+    "conceptualDef": "Kapasitas dalam mengalokasikan sumber daya sesuai dengan kebutuhan serta melaporkan pemanfaatan anggaran secara akuntabel.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait penganggaran yang efektif dan akuntabel",
+    "scale": "0-100",
+    "level": "Level 2 (Guru/Satuan PAUD)"
+  },
+  "KD.1.1": {
+    "code": "KD.1.1",
+    "label": "Pemahaman mengenai komponen perencanaan",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Pemahaman satuan PAUD bahwa perencanaan perlu ada di tingkat satuan dan di tingkat kelas. Komponen perencanaan yang ada di tingkat kelas terdiri dari tujuan, kegiatan, dan asesmen.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait pemahaman mengenai komponen perencanaan.",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KD.1.2": {
+    "code": "KD.1.2",
+    "label": "Kualitas perencanaan",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Rencana pembelajaran yang menunjukkan keterkaitan antara kegiatan pembelajaran dengan kemampuan yang ingin dibangun pada peserta didik.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait kualitas perencanaan.",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KD.1.3": {
+    "code": "KD.1.3",
+    "label": "Pengaturan Lingkungan Belajar",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Penataan lingkungan belajar adalah bagian dari perencanaan pembelajaran yang dilakukan dengan tujuan untuk membangun kemampuan fondasi peserta didik melalui kesempatan peserta didik untuk melakukan eksplorasi.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait pengaturan lingkungan belajar.",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KD.2.1": {
+    "code": "KD.2.1",
+    "label": "Keteraturan suasana kelas",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Dalam konteks PAUD, suasana belajar yang teratur bukanlah ruangan kelas dengan meja teratur atau sunyi dari suara dan peserta duduk diam, melainkan suasana tanpa gangguan yang dapat mengalihkan perhatian peserta didik dari proses pembelajaran.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait keteraturan suasana kelas.",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KD.2.2": {
+    "code": "KD.2.2",
+    "label": "Penerapan disiplin positif",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Pengelolaan kelas dengan tetap menghargai hak anak. Pengelolaan kelas dilakukan dengan mengenalkan konsekuensi dari suatu tindakan dan tidak melakukan tindakan yang agresif secara fisik ataupun verbal pada anak.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait penerapan disiplin positif.",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KD.2.3": {
+    "code": "KD.2.3",
+    "label": "Ekspektasi pendidik",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Keyakinan pendidik bahwa setiap anak memiliki potensi untuk bertumbuh dan berkembang. Keyakinan diwujudkan dalam pemberian umpan balik konstruktif seperti memberikan penghargaan atas usahanya serta tidak terpaku pada hasil, kepintaran, atau bakat alami anak.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait ekspektasi pendidik.",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KD.2.4": {
+    "code": "KD.2.4",
+    "label": "Perhatian dan dukungan pendidik",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Pendampingan yang diberikan kepada anak agar dapat mengikuti kegiatan pembelajaran serta memberi perhatian dan dukungan lebih kepada anak yang membutuhkan.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait perhatian dan dukungan pendidik.",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KD.2.5": {
+    "code": "KD.2.5",
+    "label": "Pembelajaran terdiferensiasi",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Usaha untuk menyesuaikan proses pembelajaran di kelas dalam rangka memenuhi kebutuhan belajar individu setiap peserta didik.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait pembelajaran terdiferensiasi.",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KD.2.6": {
+    "code": "KD.2.6",
+    "label": "Panduan pendidik",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Pemberian dukungan belajar secara bertahap untuk menguatkan pemahaman dan keterampilan anak. Strategi ini dapat berbentuk penjelasan yang terstruktur, pemberian contoh-contoh untuk kemudahan anak dalam memahami suatu konsep, ataupun pertanyaan pemantik.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait panduan pendidik.",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KD.2.7": {
+    "code": "KD.2.7",
+    "label": "Pendekatan bermain",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Pembelajaran yang dirancang untuk membangun kemampuan fondasi anak dengan tetap menjaga agar proses tersebut memberikan pengalaman yang menyenangkan bagi anak usia dini.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait pendekatan bermain-belajar.",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KD.2.8": {
+    "code": "KD.2.8",
+    "label": "Berpikir aktif",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Strategi pembelajaran yang memberikan kesempatan pada anak untuk membuat keputusan dalam proses pembelajaran dan mendorong anak melakukan eksplorasi, mengutarakan gagasan dan pertanyaan, serta berinteraksi dengan individu lain.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait berpikir aktif.",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KD.2.9": {
+    "code": "KD.2.9",
+    "label": "Pembelajaran kontekstual",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Strategi pembelajaran yang mengaitkan antara materi yang diajarkan dengan situasi dunia nyata anak dan mendorong anak membuat hubungan antara pengetahuan yang dimilikinya dengan penerapannya dalam kehidupan.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait pembelajaran kontekstual.",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KD.3.1": {
+    "code": "KD.3.1",
+    "label": "Nilai agama dan budi pekerti",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Pembelajaran yang membangun nilai-nilai baik pada anak melalui pengenalan terhadap Tuhan, agama/kepercayaan, serta praktik ibadah yang sesuai. Nilai-nilai baik terwujud dalam perilaku anak yang menyayangi dirinya, sesama manusia, dan alam sebagai ciptaan Tuhan.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait muatan agama dan budi pekerti.",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KD.3.2": {
+    "code": "KD.3.2",
+    "label": "Identitas Diri",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Pembelajaran yang membangun pemahaman peserta didik mengenai identitas dirinya yang terbentuk oleh ragam minat, kebutuhan, dan karakteristik, serta peran yang dapat anak ambil di dalam kegiatannya sehari-hari.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait muatan identitas diri.",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KD.3.3": {
+    "code": "KD.3.3",
+    "label": "Perilaku mandiri dan prososial",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Pembelajaran yang membangun kemampuan sosial emosional, perilaku prososial dan kemandirian pada anak. Kemampuan ini tidak hanya dibangun melalui pembelajaran di kelas, tetapi juga melalui iklim satuan PAUD yang turut membangun kemampuan tersebut.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait muatan perilaku mandiri dan prososial.",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KD.3.4": {
+    "code": "KD.3.4",
+    "label": "PHBS dan penguatan motorik kasar dan halus",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Pembelajaran yang membangun perilaku hidup bersih dan sehat serta kemampuan motorik kasar dan halus. Kemampuan ini dibangun tidak hanya melalui pembelajaran, namun juga melalui pembiasaan serta iklim lingkungan belajar.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait muatan PHBS dan penguatan motorik kasar dan halus.",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KD.3.5": {
+    "code": "KD.3.5",
+    "label": "Literasi dasar",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Pembelajaran yang bertujuan mengembangkan kemampuan literasi dasar secara utuh, meliputi kemampuan bertutur, pengetahuan latar, pembedaharaan kosakata, kesadaran terhadap simbol dan teks, kesadaran fonemik serta keaksaraan.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait muatan literasi dasar.",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KD.3.6": {
+    "code": "KD.3.6",
+    "label": "Kemampuan kognitif",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Pembelajaran yang membangun kemampuan anak berpikir logis dan simbolis, antara lain meliputi kemampuan memahami hubungan sebab-akibat, kepemilikan konsep numerasi dasar, serta pemahaman sederhana tentang cara dunia bekerja yang dapat ditunjukkan secara lisan, perilaku ataupun hasil karya.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait muatan kognitif.",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KD.4.1": {
+    "code": "KD.4.1",
+    "label": "Penerapan asesmen dalam pembelajaran",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Upaya memperoleh serangkaian informasi tentang hasil belajar melalui cara yang sesuai dengan kebutuhan belajar anak usia dini, serta menggunakan hasilnya sebagai rujukan dalam peningkatan kualitas pembelajaran selanjutnya.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait penerapan asesmen dalam pembelajaran",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KD.4.2": {
+    "code": "KD.4.2",
+    "label": "Umpan balik yang konstruktif",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Penyampaian hasil penilaian dari pendidik kepada anak yang bermanfaat untuk menguatkan proses anak untuk menjadi lebih baik melalui proses belajar. Umpan balik konstruktif juga merujuk pada kemampuan pendidik menyusun informasi tentang capaian anak yang bermakna untuk diketahui oleh orang tua/wali murid.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait umpan balik konstruktif.",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KE.2.1": {
+    "code": "KE.2.1",
+    "label": "Keamanan lingkungan satuan",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Lingkungan belajar yang mampu memberikan rasa aman bagi anak dan warga lainnya di satuan PAUD dalam berkegiatan.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait keamanan lingkungan satuan",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KE.2.2": {
+    "code": "KE.2.2",
+    "label": "Ketersediaan P3K",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Ketersediaan P3K di satuan sebagai fasilitas untuk menghadapi kondisi darurat.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait ketersediaan P3K",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KE.2.3": {
+    "code": "KE.2.3",
+    "label": "Pemahaman mengenai hukuman fisik",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Pengelolaan di tingkat satuan PAUD yang mampu mencegah penerapan hukuman fisik dengan tujuan untuk mendisiplinkan, mengendalikan, atau memperbaiki perilaku anak.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait pemahaman mengenai hukuman fisik",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KE.2.4": {
+    "code": "KE.2.4",
+    "label": "Pencegahan dan mitigasi perundungan",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Pengelolaan di tingkat satuan PAUD yang mampu mencegah dan mengatasi kasus perundungan. Perundungan adalah kekerasan yang terjadi secara berulang pada anak dengan maksud mengintimidasi dan membuat anak (korban) merasa lemah.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait pencegahan dan mitigasi perundungan",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KE.2.5": {
+    "code": "KE.2.5",
+    "label": "Pencegahan kasus kekerasan seksual",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Pengelolaan di tingkat satuan PAUD yang mampu mencegah adanya tindakan kekerasan seksual pada anak.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait pencegahan kasus kekerasan seksual",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KE.2.6": {
+    "code": "KE.2.6",
+    "label": "Sikap antikekerasan",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Pemahaman dan kemampuan kepala satuan pendidikan dan pendidik mengenai tindakan yang dikategorikan sebagai tindakan kekerasan.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait sikap antikekerasan kepala satdik dan pendidik",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KE.3.1": {
+    "code": "KE.3.1",
+    "label": "Sikap terhadap toleransi",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Toleransi pendidik dan kepala satuan dalam merespon keberagaman agama dan budaya sebagai upaya dalam membangun lingkungan belajar inklusif.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait sikap terhadap toleransi",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KE.3.2": {
+    "code": "KE.3.2",
+    "label": "Komitmen kebangsaan",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Pemahaman pendidik dan kepala satuan tentang wawasan kebangsaan dan nilai-nilai Pancasila, serta upayanya dalam membangun nilai-nilai tersebut melalui lingkungan belajar.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait komitmen kebangsaan",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KE.3.3": {
+    "code": "KE.3.3",
+    "label": "Sikap terhadap keragaman",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Sikap pendidik dan kepala satuan terhadap keberagaman, serta upayanya dalam membangun nilai-nilai tersebut melalui sikap saling menghargai di lingkungan belajar.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait sikap terhadap keragaman.",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KE.3.4": {
+    "code": "KE.3.4",
+    "label": "Konsepsi/pengetahuan/sikap pendidik terhadap anak berkebutuhan khusus",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Pendidik dan tenaga kependidikan memiliki pengetahuan dan keterampilan untuk memperlakukan anak berkebutuhan khusus sesuai kebutuhannya, serta mendesain program pembelajaran dan fasilitas yang dapat diikuti oleh anak berkebutuhan khusus.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait konsepsi/pengetahuan/sikap pendidik terhadap anak berkebutuhan khusus",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KE.4.1": {
+    "code": "KE.4.1",
+    "label": "Belajar dari dan bersama orang lain",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Proses belajar yang diperoleh melalui pengalaman dan pengamatan orang lain baik dari rekan sebaya di satuan, di gugus, ataupun wadah belajar lain yang mengarah pada pengembangan kapasitas individu.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait belajar dari dan bersama orang lain",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KE.4.2": {
+    "code": "KE.4.2",
+    "label": "Evaluasi praktik saat ini",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Adanya budaya untuk melakukan evaluasi kinerja melalui ragam upaya identifikasi kekuatan dan kelemahan dalam praktik pembelajaran serta mengakomodasi umpan balik secara konstruktif.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait evaluasi praktik saat ini",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KE.4.3": {
+    "code": "KE.4.3",
+    "label": "Penerapan praktik baru",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Adanya budaya untuk menerapkan inovasi dan mencoba praktik baru yang berbeda dari yang biasa dilakukan dengan tujuan untuk peningkatan kualitas layanan.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait penerapan praktik baru",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KE.5.1": {
+    "code": "KE.5.1",
+    "label": "Visi-misi satuan pendidikan",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Kemampuan kepala satuan pendidikan dalam penyampaian dan penerapan visi-misi sekolah yang berpusat pada perbaikan pembelajaran.",
+    "operationalDefinition": "Nilai komposit kepala satuan dan pendidik PAUD terkait penyampaian dan penerapan visi-misi sekolah",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KE.5.2": {
+    "code": "KE.5.2",
+    "label": "Pengelolaan kurikulum satuan pendidikan",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Kemampuan kepala satuan pendidikan untuk mengembangkan dan mengelola kurikulum dengan melibatkan warga sekolah yang bertujuan meningkatkan kualitas proses serta hasil belajar peserta didik.",
+    "operationalDefinition": "Nilai komposit kepala satuan dan pendidik PAUD terkait pengelolaan kurikulum",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KE.5.3": {
+    "code": "KE.5.3",
+    "label": "Dukungan untuk refleksi guru",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Kemampuan kepala satuan dalam menyusun kebijakan yang mendukung refleksi guru dan perbaikan pembelajaran.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik PAUD terkait dukungan untuk refleksi guru",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KE.6.1": {
+    "code": "KE.6.1",
+    "label": "Kemitraan dengan Orang Tua/Wali",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Kemampuan satuan PAUD untuk menempatkan orang tua/wali sebagai mitra sehingga terbentuk kesinambungan antara stimulasi yang diberikan di satuan PAUD dengan stimulasi yang diberikan di rumah.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait kemitraan dengan orangtua/wali",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KE.8.1": {
+    "code": "KE.8.1",
+    "label": "Kapasitas Perencanaan",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Kapasitas dalam menyusun perencanaan yang berbasis kebutuhan dan efektif dalam meningkatkan kualitas layanan.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait kapasitas perencanaan",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  },
+  "KE.9.1": {
+    "code": "KE.9.1",
+    "label": "Penganggaran yang efektif dan akuntabel",
+    "domain": "PAUD - Kepala Satuan",
+    "conceptualDef": "Kapasitas dalam mengalokasikan sumber daya sesuai dengan kebutuhan serta melaporkan pemanfaatan anggaran secara akuntabel.",
+    "operationalDefinition": "Nilai komposit kepala satuan pendidikan dan pendidik terkait penganggaran yang efektif dan akuntabel",
+    "scale": "0-100",
+    "level": "Level 2 (Kepala Satuan PAUD)"
+  }
+}

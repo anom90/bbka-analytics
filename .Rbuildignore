@@ -1,0 +1,17 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^node_modules$
+^\.next$
+^src$
+^\.agents$
+^package\.json$
+^package-lock\.json$
+^tsconfig\.json$
+^next\.config\.ts$
+^next-env\.d\.ts$
+^postcss\.config\.mjs$
+^eslint\.config\.mjs$
+^Dockerfile$
+^docker-compose\.yml$
+^CLAUDE\.md$
+^AGENTS\.md$

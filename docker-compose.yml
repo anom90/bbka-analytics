@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  stats-an-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: stats-an-web-app
+    restart: always
+    ports:
+      - "3005:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL:-}
+      - NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY:-}
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
