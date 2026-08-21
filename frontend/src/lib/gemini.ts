@@ -8,72 +8,54 @@ import {
 import { formatNumber, formatPValue } from '@/lib/utils';
 import { DEFAULT_STATS_REFERENCE } from '@/constants/default-reference';
 
-// Candidate models to support active Google AI Studio endpoints
-const CANDIDATE_MODELS = [
-  'gemini-2.5-flash',
-  'gemini-2.5-flash-lite',
-  'gemini-2.5-pro',
-  'gemini-2.0-flash',
-  'gemini-1.5-flash',
-  'gemini-1.5-pro'
-];
+const GEMINI_URL = (key: string) =>
+  `https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent?key=${key}`;
 
-type GeminiPart = { role: 'user' | 'model'; parts: [{ text: string }] };
+type GeminiPart = { role: "user" | "model"; parts: [{ text: string }] };
 
 export async function callGemini(
   apiKey: string,
   prompt: string,
-  history: Array<{ role: 'user' | 'model'; content: string }> = []
+  history: Array<{ role: "user" | "model"; content: string }> = []
 ): Promise<string> {
-  // If apiKey is empty, check localStorage as fallback
   let key = apiKey?.trim();
-  if (!key && typeof window !== 'undefined') {
-    key = localStorage.getItem('stats_an_gemini_key') || '';
+  if (!key && typeof window !== "undefined") {
+    key = localStorage.getItem("stats_an_gemini_key") || "";
   }
 
-  if (!key || key.trim() === '') {
-    throw new Error('API Key belum disetel. Silakan isi di menu Pengaturan & API.');
+  if (!key || key.trim() === "") {
+    throw new Error("API Key belum disetel. Silakan isi di menu Pengaturan & API.");
   }
 
   const contents: GeminiPart[] = [
-    ...history.map(h => ({ role: h.role, parts: [{ text: h.content }] as [{ text: string }] })),
-    { role: 'user', parts: [{ text: prompt }] },
+    ...history.map((h) => ({ role: h.role, parts: [{ text: h.content }] as [{ text: string }] })),
+    { role: "user", parts: [{ text: prompt }] },
   ];
 
-  let lastErrorMsg = '';
+  const res = await fetch(GEMINI_URL(key), {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ contents }),
+  });
 
-  for (const modelName of CANDIDATE_MODELS) {
+  if (!res.ok) {
+    let msg = `HTTP ${res.status}`;
     try {
-      const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${key}`;
-      const res = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ contents }),
-      });
-
-      if (res.ok) {
-        const data = await res.json();
-        const parts: Array<{ text?: string }> = data?.candidates?.[0]?.content?.parts ?? [];
-        const text = parts.map(p => p.text ?? '').join('\n\n').trim();
-        if (text) return text;
-      } else {
-        const errJson = await res.json().catch(() => null);
-        const errMsg = errJson?.error?.message || `HTTP ${res.status}`;
-        lastErrorMsg = errMsg;
-        // If error indicates auth key invalid, throw immediately
-        if (res.status === 400 && (errMsg.includes('API key') || errMsg.includes('API_KEY_INVALID'))) {
-          throw new Error(`API Key tidak valid: ${errMsg}`);
-        }
-        // Try next candidate model
-        continue;
-      }
-    } catch (err: any) {
-      if (err.message?.includes('API Key tidak valid')) throw err;
-      lastErrorMsg = err.message || 'Gagal terhubung ke layanan komputasi.';
+      const errJson = await res.json();
+      msg = errJson?.error?.message ?? msg;
+    } catch {
+      /* ignore */
     }
+    throw new Error(msg);
   }
 
-  throw new Error(`Gagal memproses layanan konsultasi: ${lastErrorMsg}`);
+  const data = await res.json();
+  const parts: Array<{ text?: string }> = data?.candidates?.[0]?.content?.parts ?? [];
+  const text = parts.map((p) => p.text ?? "").join("\n\n").trim();
+  if (!text) {
+    throw new Error("Model tidak menghasilkan respons teks.");
+  }
+  return text;
 }
 
 // ── Built-in Intelligent Academic Rule-Based Narrator (Offline / Free Mode) ──────
