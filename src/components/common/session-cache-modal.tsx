@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import { createPortal } from 'react-dom';
 import {
   RotateCcw,
   Trash2,
@@ -18,6 +19,7 @@ import { useDatasetStore } from '@/stores/dataset-store';
 
 export function SessionCacheModal() {
   const [open, setOpen] = React.useState(false);
+  const [mounted, setMounted] = React.useState(false);
   const [successMessage, setSuccessMessage] = React.useState<string | null>(null);
 
   const {
@@ -33,6 +35,10 @@ export function SessionCacheModal() {
   } = useAnalysisStore();
 
   const { data, fileName, loadDefaultDataset } = useDatasetStore();
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Count active cached results
   const cachedResultsCount = [
@@ -98,18 +104,18 @@ export function SessionCacheModal() {
         )}
       </Button>
 
-      {/* Modal Dialog Overlay */}
-      {open && (
+      {/* Modal Dialog Portal */}
+      {open && mounted && createPortal(
         <div 
-          className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-xs flex min-h-full items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200"
+          className="fixed inset-0 z-[99999] flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-150"
           onClick={() => setOpen(false)}
         >
           <div
-            className="relative w-full max-w-lg rounded-2xl bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 shadow-2xl overflow-hidden flex flex-col my-auto animate-in zoom-in-95 duration-200"
+            className="relative w-full max-w-lg rounded-2xl bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 shadow-2xl overflow-hidden flex flex-col animate-in zoom-in-95 duration-150"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="flex items-start justify-between p-5 pb-3.5 border-b border-zinc-100 dark:border-zinc-800 shrink-0">
+            <div className="flex items-center justify-between px-5 py-4 border-b border-zinc-100 dark:border-zinc-800 shrink-0">
               <div className="flex items-center gap-2.5">
                 <div className="p-2 rounded-xl bg-teal-50 dark:bg-teal-950/60 text-[#008080] dark:text-[#14a3a3] border border-teal-200 dark:border-teal-900">
                   <HardDrive className="size-4" />
@@ -134,10 +140,10 @@ export function SessionCacheModal() {
               </Button>
             </div>
 
-            {/* Scrollable Content Body */}
-            <div className="p-5 py-3.5 space-y-3 overflow-y-auto max-h-[calc(85vh-7rem)]">
+            {/* Content Body */}
+            <div className="p-5 space-y-3 max-h-[75vh] overflow-y-auto">
               {/* Storage Summary Box */}
-              <div className="p-3.5 rounded-xl bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 space-y-2 text-xs">
+              <div className="p-3 rounded-xl bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 space-y-2 text-xs">
                 <div className="flex items-center justify-between">
                   <span className="text-zinc-500 font-medium flex items-center gap-1.5">
                     <Database className="size-3.5 text-zinc-400" />
@@ -170,7 +176,7 @@ export function SessionCacheModal() {
               {/* Action Options */}
               <div className="space-y-2.5">
                 {/* Action 1: Clear results only */}
-                <div className="flex items-center justify-between p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-900/40 transition-colors">
+                <div className="flex items-center justify-between p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50/80 dark:hover:bg-zinc-900/40 transition-colors">
                   <div className="space-y-0.5 pr-2">
                     <p className="text-xs font-bold text-zinc-900 dark:text-zinc-100 flex items-center gap-1.5">
                       <RotateCcw className="size-3.5 text-blue-500" />
@@ -184,14 +190,14 @@ export function SessionCacheModal() {
                     size="sm"
                     variant="outline"
                     onClick={handleClearAnalysisResults}
-                    className="text-xs h-8 shrink-0 cursor-pointer rounded-lg"
+                    className="text-xs h-8 shrink-0 cursor-pointer rounded-lg font-medium"
                   >
                     Bersihkan
                   </Button>
                 </div>
 
                 {/* Action 2: Clear full session cache (IndexedDB) */}
-                <div className="flex items-center justify-between p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-900/40 transition-colors">
+                <div className="flex items-center justify-between p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50/80 dark:hover:bg-zinc-900/40 transition-colors">
                   <div className="space-y-0.5 pr-2">
                     <p className="text-xs font-bold text-zinc-900 dark:text-zinc-100 flex items-center gap-1.5">
                       <SlidersHorizontal className="size-3.5 text-[#008080] dark:text-[#14a3a3]" />
@@ -234,18 +240,19 @@ export function SessionCacheModal() {
             </div>
 
             {/* Footer */}
-            <div className="p-3.5 px-5 border-t border-zinc-100 dark:border-zinc-800 shrink-0 flex justify-end">
+            <div className="px-5 py-3 border-t border-zinc-100 dark:border-zinc-800 shrink-0 flex justify-end bg-zinc-50/50 dark:bg-zinc-900/30">
               <Button
                 type="button"
                 variant="ghost"
                 onClick={() => setOpen(false)}
-                className="text-xs h-7 px-3 rounded-lg cursor-pointer text-zinc-600 dark:text-zinc-400"
+                className="text-xs h-7 px-3 rounded-lg cursor-pointer text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100"
               >
                 Tutup
               </Button>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );
