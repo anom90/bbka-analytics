@@ -18,14 +18,14 @@ import {
   ArrowRight,
   Info,
   RotateCcw,
-  Zap
+  Zap,
+  Hash
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
-import { Input } from '@/components/ui/input';
-import { VariableSelector } from '@/components/common/variable-selector';
+import { VariableSelector, VariableSlot } from '@/components/common/variable-selector';
 import { DataTableHasil, ColumnDef } from '@/components/common/data-table-hasil';
 import { AiCard } from '@/components/common/ai-card';
 import { RCodeBlock } from '@/components/common/r-code-block';
@@ -44,7 +44,8 @@ interface LatentConstruct {
 
 interface LatentRelation {
   outcomeLatent: string;
-  predictorLatents: string[];
+  /** Can be either another latent construct's name, or a manifest (observed) dataset variable name. */
+  predictors: string[];
 }
 
 export default function SemPage() {
@@ -161,7 +162,7 @@ export default function SemPage() {
     setLatentRelations(prev =>
       prev.map(r => ({
         outcomeLatent: r.outcomeLatent === oldName ? cleanName : r.outcomeLatent,
-        predictorLatents: r.predictorLatents.map(p => p === oldName ? cleanName : p)
+        predictors: r.predictors.map(p => p === oldName ? cleanName : p)
       }))
     );
   };
@@ -175,29 +176,37 @@ export default function SemPage() {
         .filter(r => r.outcomeLatent !== removed.name)
         .map(r => ({
           ...r,
-          predictorLatents: r.predictorLatents.filter(p => p !== removed.name)
+          predictors: r.predictors.filter(p => p !== removed.name)
         }))
     );
   };
 
-  const handleToggleIndicator = (constructId: string, colName: string) => {
-    setLatentConstructs(prev =>
-      prev.map(c => {
-        if (c.id !== constructId) return c;
-        const exists = c.indicators.includes(colName);
-        return {
-          ...c,
-          indicators: exists ? c.indicators.filter(i => i !== colName) : [...c.indicators, colName]
-        };
-      })
-    );
-  };
+  // Slots for the shared VariableSelector — one per latent construct, consistent with
+  // how every other module (Path Analysis, Regression blocks, etc.) picks variables.
+  const latentSlots: VariableSlot[] = React.useMemo(() => {
+    return latentConstructs.map(construct => ({
+      id: construct.id,
+      label: construct.name,
+      description: `Indikator manifes (butir) untuk variabel laten ${construct.name} — minimal 2 indikator disarankan untuk model CFA.`,
+      typeFilter: 'all',
+      multi: true,
+      selected: construct.indicators,
+      onChange: (selected: string[]) => {
+        setLatentConstructs(prev => prev.map(c => c.id === construct.id ? { ...c, indicators: selected } : c));
+      },
+      onRename: (newLabel: string) => handleRenameLatent(construct.id, newLabel),
+      onRemove: latentConstructs.length > 1 ? () => handleRemoveLatent(construct.id) : undefined
+    }));
+  }, [latentConstructs]);
 
   // Compile Latent Model into lavaan syntax safely
   const generateLatentLavaanSyntax = (): string => {
     const activeCols = new Set(columns.map(c => c.name));
     const validConstructs = latentConstructs.filter(c => c.indicators.length > 0);
     const validLatentNames = new Set(validConstructs.map(c => c.name));
+    // A predictor is valid if it's either another declared latent, or an actual manifest
+    // (observed) dataset variable — lavaan's `~` regression accepts both interchangeably.
+    const isValidPredictor = (p: string, outcome: string) => p !== outcome && (validLatentNames.has(p) || activeCols.has(p));
 
     const lines: string[] = ['# 1. Model Pengukuran (Measurement Model / CFA)'];
     validConstructs.forEach(c => {
@@ -208,13 +217,13 @@ export default function SemPage() {
     });
 
     const activeRelations = latentRelations.filter(
-      r => validLatentNames.has(r.outcomeLatent) && r.predictorLatents.some(p => validLatentNames.has(p) && p !== r.outcomeLatent)
+      r => validLatentNames.has(r.outcomeLatent) && r.predictors.some(p => isValidPredictor(p, r.outcomeLatent))
     );
 
     if (activeRelations.length > 0) {
-      lines.push('\n# 2. Model Struktural Antar Laten (Structural Model)');
+      lines.push('\n# 2. Model Struktural (Structural Model: Laten & Kovariat Manifes)');
       activeRelations.forEach(r => {
-        const activePreds = r.predictorLatents.filter(p => validLatentNames.has(p) && p !== r.outcomeLatent);
+        const activePreds = r.predictors.filter(p => isValidPredictor(p, r.outcomeLatent));
         if (activePreds.length > 0) {
           lines.push(`${r.outcomeLatent} ~ ${activePreds.join(' + ')}`);
         }
@@ -570,138 +579,98 @@ Literasi ~ Iklim
                   </Button>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {latentConstructs.map((construct, cIdx) => (
-                    <div
-                      key={construct.id}
-                      className="p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/50 space-y-3"
-                    >
-                      <div className="flex items-center justify-between gap-2">
-                        <div className="flex items-center gap-2 flex-1">
-                          <Badge className="bg-[#008080] text-white text-[10px] px-1.5 py-0 font-mono">
-                            Laten {cIdx + 1}
-                          </Badge>
-                          <Input
-                            value={construct.name}
-                            onChange={(e) => handleRenameLatent(construct.id, e.target.value)}
-                            className="h-8 text-xs font-bold font-mono bg-white dark:bg-zinc-900"
-                            placeholder="Nama Variabel Laten (contoh: NUMERASI)"
-                          />
-                        </div>
-                        {latentConstructs.length > 1 && (
-                          <Button
-                            size="icon"
-                            variant="ghost"
-                            onClick={() => handleRemoveLatent(construct.id)}
-                            className="h-8 w-8 text-zinc-400 hover:text-red-500 cursor-pointer"
-                          >
-                            <Trash2 className="w-3.5 h-3.5" />
-                          </Button>
-                        )}
-                      </div>
-
-                      {/* Selected Indicators in Construct */}
-                      <div className="space-y-1.5">
-                        <span className="text-[10.5px] font-semibold text-zinc-500 block">
-                          Indikator Terpilih ({construct.indicators.length}):
-                        </span>
-                        <div className="min-h-[36px] p-2 rounded-lg bg-white dark:bg-zinc-900 border border-dashed border-zinc-200 dark:border-zinc-800 flex flex-wrap gap-1.5">
-                          {construct.indicators.length === 0 ? (
-                            <span className="text-[11px] text-zinc-400 italic">Pilih indikator di daftar bawah</span>
-                          ) : (
-                            construct.indicators.map(ind => (
-                              <Badge
-                                key={ind}
-                                variant="secondary"
-                                className="text-[10px] px-2 py-0.5 bg-teal-50 text-teal-900 dark:bg-teal-950 dark:text-teal-200 border-teal-200 gap-1 font-mono"
-                              >
-                                {ind}
-                                <button
-                                  type="button"
-                                  onClick={() => handleToggleIndicator(construct.id, ind)}
-                                  className="hover:text-red-500 ml-1 cursor-pointer"
-                                >
-                                  ×
-                                </button>
-                              </Badge>
-                            ))
-                          )}
-                        </div>
-                      </div>
-
-                      {/* Quick Indicator Picker from Dataset */}
-                      <div className="space-y-1">
-                        <span className="text-[10px] text-zinc-400 block">Klik untuk tambah/lepas indikator:</span>
-                        <div className="max-h-28 overflow-y-auto flex flex-wrap gap-1 p-1 bg-white dark:bg-zinc-900/60 rounded-lg border border-zinc-100 dark:border-zinc-800">
-                          {columns.map(col => {
-                            const isSelected = construct.indicators.includes(col.name);
-                            return (
-                              <button
-                                key={col.name}
-                                type="button"
-                                onClick={() => handleToggleIndicator(construct.id, col.name)}
-                                className={`text-[10px] px-1.5 py-0.5 rounded cursor-pointer transition-all border font-mono ${isSelected ? 'bg-[#008080] text-white border-transparent' : 'bg-zinc-50 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border-zinc-200 dark:border-zinc-700 hover:border-[#008080]'}`}
-                              >
-                                {col.name}
-                              </button>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                <VariableSelector columns={columns} slots={latentSlots} />
               </div>
 
-              {/* Structural Relations Between Latents */}
+              {/* Structural Relations Between Latents & Manifest Covariates */}
               <div className="p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/50 space-y-3">
-                <h4 className="text-xs font-bold text-zinc-900 dark:text-zinc-100 flex items-center gap-1.5">
-                  <ArrowRight className="w-4 h-4 text-[#008080] dark:text-[#14a3a3]" />
-                  Langkah 2: Tentukan Pengaruh Struktural Antar Variabel Laten
-                </h4>
+                <div>
+                  <h4 className="text-xs font-bold text-zinc-900 dark:text-zinc-100 flex items-center gap-1.5">
+                    <ArrowRight className="w-4 h-4 text-[#008080] dark:text-[#14a3a3]" />
+                    Langkah 2: Tentukan Pengaruh Struktural Antar Variabel Laten & Kovariat Manifes
+                  </h4>
+                  <p className="text-[11px] text-zinc-500">
+                    Selain variabel laten lain, sebuah variabel manifes/kovariat teramati (misalnya karakteristik siswa) juga dapat memengaruhi variabel laten secara langsung.
+                  </p>
+                </div>
 
-                <div className="space-y-2">
+                <div className="space-y-2.5">
                   {latentConstructs.map(outcome => {
                     const relation = latentRelations.find(r => r.outcomeLatent === outcome.name);
-                    const currentPreds = relation?.predictorLatents || [];
+                    const currentPreds = relation?.predictors || [];
                     const otherLatents = latentConstructs.filter(c => c.name !== outcome.name);
+                    const outcomeIndicatorSet = new Set(outcome.indicators);
+                    const manifestOptions = columns.filter(col => !outcomeIndicatorSet.has(col.name));
+
+                    const togglePredictor = (predName: string) => {
+                      const isChecked = currentPreds.includes(predName);
+                      setLatentRelations(prev => {
+                        const existing = prev.find(r => r.outcomeLatent === outcome.name);
+                        if (existing) {
+                          const nextPreds = isChecked
+                            ? existing.predictors.filter(p => p !== predName)
+                            : [...existing.predictors, predName];
+                          return prev.map(r => r.outcomeLatent === outcome.name ? { ...r, predictors: nextPreds } : r);
+                        }
+                        return [...prev, { outcomeLatent: outcome.name, predictors: [predName] }];
+                      });
+                    };
 
                     return (
-                      <div key={outcome.id} className="flex flex-wrap items-center gap-2 p-2.5 bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 text-xs">
-                        <span className="font-bold text-[#008080] dark:text-[#14a3a3] font-mono shrink-0">
-                          {outcome.name}
-                        </span>
-                        <span className="text-zinc-400 font-bold shrink-0">← dipengaruhi oleh:</span>
-                        <div className="flex flex-wrap gap-1.5 items-center flex-1">
-                          {otherLatents.length === 0 ? (
-                            <span className="text-[11px] text-zinc-400 italic">Tambahkan minimal 2 variabel laten di atas</span>
-                          ) : (
-                            otherLatents.map(pred => {
-                              const isChecked = currentPreds.includes(pred.name);
+                      <div key={outcome.id} className="p-3 bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 space-y-2.5 text-xs">
+                        <div className="flex items-center gap-2">
+                          <span className="font-bold text-[#008080] dark:text-[#14a3a3] font-mono shrink-0">
+                            {outcome.name}
+                          </span>
+                          <span className="text-zinc-400 font-bold shrink-0">← dipengaruhi oleh:</span>
+                        </div>
+
+                        <div className="space-y-1.5">
+                          <span className="text-[10px] font-semibold text-zinc-500 flex items-center gap-1">
+                            <Layers className="w-3 h-3" /> Variabel Laten Lain:
+                          </span>
+                          <div className="flex flex-wrap gap-1.5">
+                            {otherLatents.length === 0 ? (
+                              <span className="text-[11px] text-zinc-400 italic">Tambahkan minimal 2 variabel laten di atas</span>
+                            ) : (
+                              otherLatents.map(pred => {
+                                const isChecked = currentPreds.includes(pred.name);
+                                return (
+                                  <button
+                                    key={pred.id}
+                                    type="button"
+                                    onClick={() => togglePredictor(pred.name)}
+                                    className={`px-2 py-1 rounded-lg text-xs font-semibold cursor-pointer border transition-all font-mono ${isChecked ? 'bg-[#008080] text-white border-transparent' : 'bg-zinc-50 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-700 hover:border-[#008080]'}`}
+                                  >
+                                    {isChecked ? '✓ ' : '+ '} {pred.name}
+                                  </button>
+                                );
+                              })
+                            )}
+                          </div>
+                        </div>
+
+                        <div className="space-y-1.5">
+                          <span className="text-[10px] font-semibold text-zinc-500 flex items-center gap-1">
+                            <Hash className="w-3 h-3" /> Variabel Manifes / Kovariat (opsional):
+                          </span>
+                          <div className="flex flex-wrap gap-1.5 max-h-28 overflow-y-auto p-0.5">
+                            {manifestOptions.map(col => {
+                              const isChecked = currentPreds.includes(col.name);
+                              const cb = getVariableCodebook(col.name, customCodebook);
                               return (
                                 <button
-                                  key={pred.id}
+                                  key={col.name}
                                   type="button"
-                                  onClick={() => {
-                                    setLatentRelations(prev => {
-                                      const existing = prev.find(r => r.outcomeLatent === outcome.name);
-                                      if (existing) {
-                                        const nextPreds = isChecked
-                                          ? existing.predictorLatents.filter(p => p !== pred.name)
-                                          : [...existing.predictorLatents, pred.name];
-                                        return prev.map(r => r.outcomeLatent === outcome.name ? { ...r, predictorLatents: nextPreds } : r);
-                                      } else {
-                                        return [...prev, { outcomeLatent: outcome.name, predictorLatents: [pred.name] }];
-                                      }
-                                    });
-                                  }}
-                                  className={`px-2 py-1 rounded-lg text-xs font-semibold cursor-pointer border transition-all ${isChecked ? 'bg-[#008080] text-white border-transparent' : 'bg-zinc-50 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-700'}`}
+                                  title={cb.label || col.name}
+                                  onClick={() => togglePredictor(col.name)}
+                                  className={`px-2 py-1 rounded-lg text-[11px] font-semibold cursor-pointer border transition-all font-mono ${isChecked ? 'bg-amber-600 text-white border-transparent' : 'bg-zinc-50 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-700 hover:border-amber-400'}`}
                                 >
-                                  {isChecked ? '✓ ' : '+ '} {pred.name}
+                                  {isChecked ? '✓ ' : '+ '} {col.name}
                                 </button>
                               );
-                            })
-                          )}
+                            })}
+                          </div>
                         </div>
                       </div>
                     );
