@@ -13,7 +13,8 @@ node_modules/
 # next.js
 .next/
 */.next/
-**/out/
+/out/
+frontend/out/
 build/
 /coverage
 
