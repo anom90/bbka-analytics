@@ -19,6 +19,10 @@ export default function SettingsPage() {
     setGroqApiKey,
     aiProvider,
     setAiProvider,
+    geminiModel,
+    setGeminiModel,
+    groqModel,
+    setGroqModel,
     referenceText,
     setReferenceText,
     resetReferenceToDefault
@@ -27,6 +31,8 @@ export default function SettingsPage() {
   const [geminiKeyInput, setGeminiKeyInput] = React.useState('');
   const [groqKeyInput, setGroqKeyInput] = React.useState('');
   const [providerInput, setProviderInput] = React.useState<'auto' | 'gemini' | 'groq'>('auto');
+  const [selectedGeminiModel, setSelectedGeminiModel] = React.useState('gemini-3.5-flash');
+  const [selectedGroqModel, setSelectedGroqModel] = React.useState('groq/compound');
   const [refInput, setRefInput] = React.useState(referenceText);
   const [savedSuccess, setSavedSuccess] = React.useState(false);
   
@@ -64,7 +70,21 @@ export default function SettingsPage() {
       const storedProv = (localStorage.getItem('stats_an_ai_provider') as any) || 'auto';
       setProviderInput(storedProv);
     }
-  }, [geminiApiKey, groqApiKey, aiProvider]);
+
+    if (geminiModel) {
+      setSelectedGeminiModel(geminiModel);
+    } else if (typeof window !== 'undefined') {
+      const storedGm = localStorage.getItem('stats_an_gemini_model') || 'gemini-3.5-flash';
+      setSelectedGeminiModel(storedGm);
+    }
+
+    if (groqModel) {
+      setSelectedGroqModel(groqModel);
+    } else if (typeof window !== 'undefined') {
+      const storedGq = localStorage.getItem('stats_an_groq_model') || 'groq/compound';
+      setSelectedGroqModel(storedGq);
+    }
+  }, [geminiApiKey, groqApiKey, aiProvider, geminiModel, groqModel]);
 
   const handleSave = () => {
     const cleanGemini = geminiKeyInput.trim();
@@ -72,6 +92,8 @@ export default function SettingsPage() {
     setGeminiApiKey(cleanGemini);
     setGroqApiKey(cleanGroq);
     setAiProvider(providerInput);
+    setGeminiModel(selectedGeminiModel);
+    setGroqModel(selectedGroqModel);
     setReferenceText(refInput);
 
     if (typeof window !== 'undefined') {
@@ -82,6 +104,8 @@ export default function SettingsPage() {
       else localStorage.removeItem('stats_an_groq_key');
 
       localStorage.setItem('stats_an_ai_provider', providerInput);
+      localStorage.setItem('stats_an_gemini_model', selectedGeminiModel);
+      localStorage.setItem('stats_an_groq_model', selectedGroqModel);
     }
     setSavedSuccess(true);
     setTimeout(() => setSavedSuccess(false), 2500);
@@ -93,8 +117,11 @@ export default function SettingsPage() {
     setGeminiTestLoading(true);
     setGeminiTestResult(null);
     try {
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('stats_an_gemini_model', selectedGeminiModel);
+      }
       const reply = await callGemini(keyToTest, 'Katakan "OK" jika terhubung.');
-      setGeminiTestResult({ status: 'success', message: `Koneksi Google Gemini API Berhasil! (${reply.slice(0, 40)})` });
+      setGeminiTestResult({ status: 'success', message: `Koneksi Google Gemini (${selectedGeminiModel}) Berhasil! (${reply.slice(0, 30)})` });
       setGeminiApiKey(keyToTest);
       if (typeof window !== 'undefined') {
         localStorage.setItem('stats_an_gemini_key', keyToTest);
@@ -112,8 +139,11 @@ export default function SettingsPage() {
     setGroqTestLoading(true);
     setGroqTestResult(null);
     try {
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('stats_an_groq_model', selectedGroqModel);
+      }
       const reply = await callGemini(keyToTest, 'Katakan "OK" jika terhubung.');
-      setGroqTestResult({ status: 'success', message: `Koneksi Groq AI Engine Berhasil! (${reply.slice(0, 40)})` });
+      setGroqTestResult({ status: 'success', message: `Koneksi Groq AI (${selectedGroqModel}) Berhasil! (${reply.slice(0, 30)})` });
       setGroqApiKey(keyToTest);
       if (typeof window !== 'undefined') {
         localStorage.setItem('stats_an_groq_key', keyToTest);
@@ -133,7 +163,7 @@ export default function SettingsPage() {
         title="Pengaturan Aplikasi & Konfigurasi AI Engine"
         badgeIcon={CheckCircle2}
         badgeText="Multi-Provider AI"
-        description="Kelola Google Gemini & Groq AI API Key, status integrasi database Supabase, dan acuan parameter teoritis penulisan laporan."
+        description="Pilih provider AI (Groq atau Google Gemini), model yang digunakan, dan kelola API Key."
       >
         <Button
           onClick={handleSave}
@@ -149,6 +179,76 @@ export default function SettingsPage() {
         </Button>
       </PageHeader>
 
+      {/* Provider Selector Card */}
+      <Card className="border-zinc-200 dark:border-zinc-800">
+        <CardHeader className="pb-3">
+          <CardTitle className="text-sm font-semibold flex items-center gap-2">
+            <Settings className="w-4 h-4 text-[#008080] dark:text-[#14a3a3]" />
+            Mode Eksekusi AI Utama
+          </CardTitle>
+          <CardDescription className="text-xs">
+            Tentukan provider yang diprioritaskan untuk menyusun narasi akademik dan konsultasi metodologi.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <button
+              type="button"
+              onClick={() => setProviderInput('auto')}
+              className={`p-3 rounded-xl border text-left cursor-pointer transition-all ${
+                providerInput === 'auto'
+                  ? 'border-[#008080] bg-teal-50/50 dark:bg-teal-950/30 text-teal-900 dark:text-teal-200 ring-2 ring-[#008080]/30'
+                  : 'border-zinc-200 dark:border-zinc-800 hover:border-zinc-300'
+              }`}
+            >
+              <div className="flex items-center justify-between mb-1">
+                <span className="text-xs font-semibold">🔄 Otomatis (Hybrid)</span>
+                {providerInput === 'auto' && <Check className="w-3.5 h-3.5 text-[#008080]" />}
+              </div>
+              <p className="text-[11px] text-zinc-500 dark:text-zinc-400">
+                Gunakan Groq/Gemini dengan failover otomatis jika terkena limit kuota.
+              </p>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setProviderInput('groq')}
+              className={`p-3 rounded-xl border text-left cursor-pointer transition-all ${
+                providerInput === 'groq'
+                  ? 'border-[#008080] bg-teal-50/50 dark:bg-teal-950/30 text-teal-900 dark:text-teal-200 ring-2 ring-[#008080]/30'
+                  : 'border-zinc-200 dark:border-zinc-800 hover:border-zinc-300'
+              }`}
+            >
+              <div className="flex items-center justify-between mb-1">
+                <span className="text-xs font-semibold">⚡ Groq AI (Ultra Fast)</span>
+                {providerInput === 'groq' && <Check className="w-3.5 h-3.5 text-[#008080]" />}
+              </div>
+              <p className="text-[11px] text-zinc-500 dark:text-zinc-400">
+                LPU instan & kuota besar (Compound, GPT-OSS 120B, Qwen 3.6).
+              </p>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setProviderInput('gemini')}
+              className={`p-3 rounded-xl border text-left cursor-pointer transition-all ${
+                providerInput === 'gemini'
+                  ? 'border-indigo-600 bg-indigo-50/50 dark:bg-indigo-950/30 text-indigo-900 dark:text-indigo-200 ring-2 ring-indigo-600/30'
+                  : 'border-zinc-200 dark:border-zinc-800 hover:border-zinc-300'
+              }`}
+            >
+              <div className="flex items-center justify-between mb-1">
+                <span className="text-xs font-semibold">✨ Google Gemini</span>
+                {providerInput === 'gemini' && <Check className="w-3.5 h-3.5 text-indigo-600" />}
+              </div>
+              <p className="text-[11px] text-zinc-500 dark:text-zinc-400">
+                Model resmi Google AI Studio (Gemini 3.5 Flash, Gemini 3.1).
+              </p>
+            </button>
+          </div>
+        </CardContent>
+      </Card>
+
       {/* Groq Engine Key Section */}
       <Card className="border-teal-500/30 bg-teal-50/20 dark:bg-teal-950/10">
         <CardHeader>
@@ -156,10 +256,10 @@ export default function SettingsPage() {
             <div className="space-y-1">
               <CardTitle className="text-base flex items-center gap-2">
                 <Key className="w-4 h-4 text-[#008080] dark:text-[#14a3a3]" />
-                Groq AI Engine (Ultra Fast & Kuota Besar / Anti-Limit)
+                1. Groq AI Engine (LPU Ultra Cepat & Anti-Limit)
               </CardTitle>
               <CardDescription className="text-xs">
-                Menggunakan LPU ultra cepat (Compound, GPT-OSS 120B, Qwen 3.6). Sangat direkomendasikan jika kuota Google Gemini gratis Anda terkena rate-limit.
+                Sangat direkomendasikan untuk pelatihan karena kuota responsif dan bebas rate-limit 20 req/menit.
               </CardDescription>
             </div>
             <Badge variant={groqApiKey ? 'default' : 'secondary'} className="text-xs">
@@ -167,12 +267,12 @@ export default function SettingsPage() {
             </Badge>
           </div>
         </CardHeader>
-        <CardContent className="space-y-3">
-          <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 block">
-              API Key (Groq Cloud):
-            </label>
-            <div className="flex items-center gap-2">
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="space-y-1.5">
+              <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 block">
+                API Key Groq Cloud:
+              </label>
               <Input
                 type="password"
                 placeholder="gsk_..."
@@ -181,44 +281,67 @@ export default function SettingsPage() {
                   setGroqKeyInput(e.target.value);
                   setGroqApiKey(e.target.value.trim());
                 }}
-                className="text-xs font-mono flex-1"
+                className="text-xs font-mono"
               />
-              <Button
-                type="button"
-                onClick={handleTestGroq}
-                disabled={groqTestLoading || !groqKeyInput.trim()}
-                variant="outline"
-                className="text-xs shrink-0 cursor-pointer h-9 px-3 gap-1.5 font-semibold"
-              >
-                {groqTestLoading ? <RefreshCw className="w-3.5 h-3.5 animate-spin" /> : <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />}
-                {groqTestLoading ? 'Menguji...' : 'Uji Koneksi Groq'}
-              </Button>
             </div>
 
-            {groqTestResult && (
-              <div
-                className={`p-2.5 rounded-xl text-xs flex items-center gap-2 border ${
-                  groqTestResult.status === 'success'
-                    ? 'bg-emerald-50 text-emerald-800 border-emerald-200 dark:bg-emerald-950/50 dark:text-emerald-300 dark:border-emerald-800'
-                    : 'bg-rose-50 text-rose-800 border-rose-200 dark:bg-rose-950/50 dark:text-rose-300 dark:border-rose-800'
-                }`}
+            <div className="space-y-1.5">
+              <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 block">
+                Pilihan Model Groq:
+              </label>
+              <select
+                value={selectedGroqModel}
+                onChange={(e) => {
+                  setSelectedGroqModel(e.target.value);
+                  setGroqModel(e.target.value);
+                }}
+                className="w-full h-9 rounded-md border border-input bg-background px-3 py-1 text-xs shadow-xs focus:outline-none focus:ring-1 focus:ring-ring"
               >
-                {groqTestResult.status === 'success' ? <Check className="w-4 h-4 text-emerald-600 shrink-0" /> : <Settings className="w-4 h-4 text-rose-600 shrink-0" />}
-                <span>{groqTestResult.message}</span>
-              </div>
-            )}
+                <option value="groq/compound">groq/compound (Direkomendasikan - Hybrid Multi-Model)</option>
+                <option value="openai/gpt-oss-120b">openai/gpt-oss-120b (Frontier 120B Reasoning)</option>
+                <option value="qwen/qwen3.6-27b">qwen/qwen3.6-27b (Multibahasa & Riset)</option>
+                <option value="groq/compound-mini">groq/compound-mini (Super Cepat / Ringan)</option>
+                <option value="openai/gpt-oss-20b">openai/gpt-oss-20b (Model 20B)</option>
+              </select>
+            </div>
           </div>
-          <p className="text-[11px] text-zinc-500">
-            Dapatkan API key gratis tanpa batas dari{' '}
-            <a
-              href="https://console.groq.com/keys"
-              target="_blank"
-              rel="noreferrer"
-              className="text-[#008080] dark:text-[#14a3a3] underline font-medium"
+
+          <div className="flex items-center gap-3">
+            <Button
+              type="button"
+              onClick={handleTestGroq}
+              disabled={groqTestLoading || !groqKeyInput.trim()}
+              variant="outline"
+              className="text-xs shrink-0 cursor-pointer h-9 px-4 gap-1.5 font-semibold"
             >
-              Groq Cloud Console
-            </a>.
-          </p>
+              {groqTestLoading ? <RefreshCw className="w-3.5 h-3.5 animate-spin" /> : <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />}
+              {groqTestLoading ? 'Menguji...' : 'Uji Koneksi Groq'}
+            </Button>
+            <p className="text-[11px] text-zinc-500">
+              Dapatkan API key gratis tanpa batas di{' '}
+              <a
+                href="https://console.groq.com/keys"
+                target="_blank"
+                rel="noreferrer"
+                className="text-[#008080] dark:text-[#14a3a3] underline font-medium"
+              >
+                Groq Console
+              </a>.
+            </p>
+          </div>
+
+          {groqTestResult && (
+            <div
+              className={`p-2.5 rounded-xl text-xs flex items-center gap-2 border ${
+                groqTestResult.status === 'success'
+                  ? 'bg-emerald-50 text-emerald-800 border-emerald-200 dark:bg-emerald-950/50 dark:text-emerald-300 dark:border-emerald-800'
+                  : 'bg-rose-50 text-rose-800 border-rose-200 dark:bg-rose-950/50 dark:text-rose-300 dark:border-rose-800'
+              }`}
+            >
+              {groqTestResult.status === 'success' ? <Check className="w-4 h-4 text-emerald-600 shrink-0" /> : <Settings className="w-4 h-4 text-rose-600 shrink-0" />}
+              <span>{groqTestResult.message}</span>
+            </div>
+          )}
         </CardContent>
       </Card>
 
@@ -229,10 +352,10 @@ export default function SettingsPage() {
             <div className="space-y-1">
               <CardTitle className="text-base flex items-center gap-2">
                 <Key className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
-                Google Gemini API (Gemini 3.5 Flash)
+                2. Google Gemini API (Google AI Studio)
               </CardTitle>
               <CardDescription className="text-xs">
-                Model generatif resmi Google AI Studio untuk penalaran akademik berstandar jurnal internasional.
+                Model resmi Google AI Studio untuk penalaran akademik berstandar APA 7th.
               </CardDescription>
             </div>
             <Badge variant={geminiApiKey ? 'default' : 'secondary'} className="text-xs">
@@ -240,12 +363,12 @@ export default function SettingsPage() {
             </Badge>
           </div>
         </CardHeader>
-        <CardContent className="space-y-3">
-          <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 block">
-              API Key (Google AI Studio):
-            </label>
-            <div className="flex items-center gap-2">
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="space-y-1.5">
+              <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 block">
+                API Key (Google AI Studio):
+              </label>
               <Input
                 type="password"
                 placeholder="AIzaSy..."
@@ -254,44 +377,68 @@ export default function SettingsPage() {
                   setGeminiKeyInput(e.target.value);
                   setGeminiApiKey(e.target.value.trim());
                 }}
-                className="text-xs font-mono flex-1"
+                className="text-xs font-mono"
               />
-              <Button
-                type="button"
-                onClick={handleTestGemini}
-                disabled={geminiTestLoading || !geminiKeyInput.trim()}
-                variant="outline"
-                className="text-xs shrink-0 cursor-pointer h-9 px-3 gap-1.5 font-semibold"
-              >
-                {geminiTestLoading ? <RefreshCw className="w-3.5 h-3.5 animate-spin" /> : <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />}
-                {geminiTestLoading ? 'Menguji...' : 'Uji Koneksi Gemini'}
-              </Button>
             </div>
 
-            {geminiTestResult && (
-              <div
-                className={`p-2.5 rounded-xl text-xs flex items-center gap-2 border ${
-                  geminiTestResult.status === 'success'
-                    ? 'bg-emerald-50 text-emerald-800 border-emerald-200 dark:bg-emerald-950/50 dark:text-emerald-300 dark:border-emerald-800'
-                    : 'bg-rose-50 text-rose-800 border-rose-200 dark:bg-rose-950/50 dark:text-rose-300 dark:border-rose-800'
-                }`}
+            <div className="space-y-1.5">
+              <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 block">
+                Pilihan Model Gemini:
+              </label>
+              <select
+                value={selectedGeminiModel}
+                onChange={(e) => {
+                  setSelectedGeminiModel(e.target.value);
+                  setGeminiModel(e.target.value);
+                }}
+                className="w-full h-9 rounded-md border border-input bg-background px-3 py-1 text-xs shadow-xs focus:outline-none focus:ring-1 focus:ring-ring"
               >
-                {geminiTestResult.status === 'success' ? <Check className="w-4 h-4 text-emerald-600 shrink-0" /> : <Settings className="w-4 h-4 text-rose-600 shrink-0" />}
-                <span>{geminiTestResult.message}</span>
-              </div>
-            )}
+                <option value="gemini-3.5-flash">gemini-3.5-flash (Direkomendasikan - Cepat & Mutakhir)</option>
+                <option value="gemini-3.5-flash-lite">gemini-3.5-flash-lite (Ringan & Hemat Kuota)</option>
+                <option value="gemini-3.7-flash">gemini-3.7-flash (Frontier Speed)</option>
+                <option value="gemini-3.5-pro">gemini-3.5-pro (Penalaran Mendalam)</option>
+                <option value="gemini-3.1-flash">gemini-3.1-flash (Model Flash 3.1)</option>
+                <option value="gemini-2.5-flash">gemini-2.5-flash (Model Flash 2.5)</option>
+              </select>
+            </div>
           </div>
-          <p className="text-[11px] text-zinc-500">
-            Dapatkan API key gratis di{' '}
-            <a
-              href="https://aistudio.google.com/app/apikey"
-              target="_blank"
-              rel="noreferrer"
-              className="text-indigo-600 dark:text-indigo-400 underline font-medium"
+
+          <div className="flex items-center gap-3">
+            <Button
+              type="button"
+              onClick={handleTestGemini}
+              disabled={geminiTestLoading || !geminiKeyInput.trim()}
+              variant="outline"
+              className="text-xs shrink-0 cursor-pointer h-9 px-4 gap-1.5 font-semibold"
             >
-              Google AI Studio
-            </a>.
-          </p>
+              {geminiTestLoading ? <RefreshCw className="w-3.5 h-3.5 animate-spin" /> : <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />}
+              {geminiTestLoading ? 'Menguji...' : 'Uji Koneksi Gemini'}
+            </Button>
+            <p className="text-[11px] text-zinc-500">
+              Dapatkan API key gratis di{' '}
+              <a
+                href="https://aistudio.google.com/app/apikey"
+                target="_blank"
+                rel="noreferrer"
+                className="text-indigo-600 dark:text-indigo-400 underline font-medium"
+              >
+                Google AI Studio
+              </a>.
+            </p>
+          </div>
+
+          {geminiTestResult && (
+            <div
+              className={`p-2.5 rounded-xl text-xs flex items-center gap-2 border ${
+                geminiTestResult.status === 'success'
+                  ? 'bg-emerald-50 text-emerald-800 border-emerald-200 dark:bg-emerald-950/50 dark:text-emerald-300 dark:border-emerald-800'
+                  : 'bg-rose-50 text-rose-800 border-rose-200 dark:bg-rose-950/50 dark:text-rose-300 dark:border-rose-800'
+              }`}
+            >
+              {geminiTestResult.status === 'success' ? <Check className="w-4 h-4 text-emerald-600 shrink-0" /> : <Settings className="w-4 h-4 text-rose-600 shrink-0" />}
+              <span>{geminiTestResult.message}</span>
+            </div>
+          )}
         </CardContent>
       </Card>
 

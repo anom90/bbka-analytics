@@ -13,6 +13,7 @@ const GEMINI_CANDIDATE_MODELS = [
   "gemini-3.5-flash-lite",
   "gemini-3.7-flash",
   "gemini-3.5-pro",
+  "gemini-3.1-flash",
   "gemini-2.5-flash"
 ];
 
@@ -23,6 +24,16 @@ const GROQ_CANDIDATE_MODELS = [
   "groq/compound-mini",
   "openai/gpt-oss-20b"
 ];
+
+export function getOrderedGeminiModels(preferred?: string): string[] {
+  const chosen = preferred || (typeof window !== "undefined" ? localStorage.getItem("stats_an_gemini_model") : null) || "gemini-3.5-flash";
+  return [chosen, ...GEMINI_CANDIDATE_MODELS.filter((m) => m !== chosen)];
+}
+
+export function getOrderedGroqModels(preferred?: string): string[] {
+  const chosen = preferred || (typeof window !== "undefined" ? localStorage.getItem("stats_an_groq_model") : null) || "groq/compound";
+  return [chosen, ...GROQ_CANDIDATE_MODELS.filter((m) => m !== chosen)];
+}
 
 type GeminiPart = { role: "user" | "model"; parts: [{ text: string }] };
 
@@ -49,8 +60,9 @@ export async function callGroq(
   ];
 
   let lastErrorMsg = "";
+  const modelsToTry = getOrderedGroqModels();
 
-  for (const model of GROQ_CANDIDATE_MODELS) {
+  for (const model of modelsToTry) {
     try {
       const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
         method: "POST",
@@ -128,8 +140,9 @@ export async function callGemini(
   ];
 
   let lastErrorMsg = "";
+  const modelsToTry = getOrderedGeminiModels();
 
-  for (const model of GEMINI_CANDIDATE_MODELS) {
+  for (const model of modelsToTry) {
     try {
       const url = `https://generativelanguage.googleapis.com/v1/models/${model}:generateContent?key=${key}`;
       const res = await fetch(url, {
