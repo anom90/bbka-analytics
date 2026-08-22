@@ -8,7 +8,7 @@ import {
 import { formatNumber, formatPValue } from '@/lib/utils';
 import { DEFAULT_STATS_REFERENCE } from '@/constants/default-reference';
 
-const CANDIDATE_MODELS = [
+const GEMINI_CANDIDATE_MODELS = [
   "gemini-3.5-flash",
   "gemini-3.5-flash-lite",
   "gemini-3.7-flash",
@@ -16,7 +16,77 @@ const CANDIDATE_MODELS = [
   "gemini-2.5-flash"
 ];
 
+const GROQ_CANDIDATE_MODELS = [
+  "groq/compound",
+  "openai/gpt-oss-120b",
+  "qwen/qwen3.6-27b",
+  "groq/compound-mini",
+  "openai/gpt-oss-20b"
+];
+
 type GeminiPart = { role: "user" | "model"; parts: [{ text: string }] };
+
+export async function callGroq(
+  apiKey: string,
+  prompt: string,
+  history: Array<{ role: "user" | "model" | "assistant"; content: string }> = []
+): Promise<string> {
+  let key = apiKey?.trim();
+  if (!key && typeof window !== "undefined") {
+    key = localStorage.getItem("stats_an_groq_key") || "";
+  }
+
+  if (!key || key.trim() === "") {
+    throw new Error("API Key Groq belum disetel. Silakan isi di menu Pengaturan & API.");
+  }
+
+  const messages = [
+    ...history.map((h) => ({
+      role: h.role === "model" ? ("assistant" as const) : (h.role as "user" | "assistant"),
+      content: h.content,
+    })),
+    { role: "user" as const, content: prompt },
+  ];
+
+  let lastErrorMsg = "";
+
+  for (const model of GROQ_CANDIDATE_MODELS) {
+    try {
+      const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${key}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model,
+          messages,
+          temperature: 0.5,
+          max_tokens: 4096,
+        }),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        const text = data?.choices?.[0]?.message?.content?.trim();
+        if (text) return text;
+      } else {
+        const errJson = await res.json().catch(() => null);
+        const errMsg = errJson?.error?.message || `HTTP ${res.status}`;
+        lastErrorMsg = errMsg;
+        if (res.status === 401 || errMsg.includes("Invalid API Key")) {
+          throw new Error(`API Key Groq tidak valid: ${errMsg}`);
+        }
+        continue;
+      }
+    } catch (err: any) {
+      if (err.message?.includes("API Key Groq tidak valid")) throw err;
+      lastErrorMsg = err.message || "Gagal terhubung ke layanan Groq.";
+    }
+  }
+
+  throw new Error(`Gagal memproses layanan Groq: ${lastErrorMsg}`);
+}
 
 export async function callGemini(
   apiKey: string,
@@ -24,12 +94,32 @@ export async function callGemini(
   history: Array<{ role: "user" | "model"; content: string }> = []
 ): Promise<string> {
   let key = apiKey?.trim();
-  if (!key && typeof window !== "undefined") {
-    key = localStorage.getItem("stats_an_gemini_key") || "";
+  let groqKey = "";
+  let provider = "auto";
+
+  if (typeof window !== "undefined") {
+    if (!key) key = localStorage.getItem("stats_an_gemini_key") || "";
+    groqKey = localStorage.getItem("stats_an_groq_key") || "";
+    provider = localStorage.getItem("stats_an_ai_provider") || "auto";
+  }
+
+  // 1. If key passed is explicitly a Groq key (starts with gsk_)
+  if (key && key.startsWith("gsk_")) {
+    return await callGroq(key, prompt, history);
+  }
+
+  // 2. If provider is set to groq and groqKey is available
+  if (provider === "groq" && groqKey) {
+    return await callGroq(groqKey, prompt, history);
+  }
+
+  // 3. If no Gemini key is set, check if Groq key exists
+  if ((!key || key.trim() === "") && groqKey) {
+    return await callGroq(groqKey, prompt, history);
   }
 
   if (!key || key.trim() === "") {
-    throw new Error("API Key belum disetel. Silakan isi di menu Pengaturan & API.");
+    throw new Error("API Key belum disetel. Silakan isi Google Gemini atau Groq API Key di menu Pengaturan & API.");
   }
 
   const contents: GeminiPart[] = [
@@ -39,7 +129,7 @@ export async function callGemini(
 
   let lastErrorMsg = "";
 
-  for (const model of CANDIDATE_MODELS) {
+  for (const model of GEMINI_CANDIDATE_MODELS) {
     try {
       const url = `https://generativelanguage.googleapis.com/v1/models/${model}:generateContent?key=${key}`;
       const res = await fetch(url, {
@@ -57,6 +147,16 @@ export async function callGemini(
         const errJson = await res.json().catch(() => null);
         const errMsg = errJson?.error?.message || `HTTP ${res.status}`;
         lastErrorMsg = errMsg;
+
+        // Auto fallback to Groq if rate limit / quota exceeded
+        if ((res.status === 429 || errMsg.includes("quota") || errMsg.includes("rate-limit") || errMsg.includes("ResourceExhausted")) && groqKey) {
+          try {
+            return await callGroq(groqKey, prompt, history);
+          } catch {
+            // continue gemini error handling
+          }
+        }
+
         if (res.status === 400 && (errMsg.includes("API key") || errMsg.includes("API_KEY_INVALID"))) {
           throw new Error(`API Key tidak valid: ${errMsg}`);
         }
@@ -65,6 +165,15 @@ export async function callGemini(
     } catch (err: any) {
       if (err.message?.includes("API Key tidak valid")) throw err;
       lastErrorMsg = err.message || "Gagal terhubung ke layanan komputasi.";
+    }
+  }
+
+  // Final fallback to Groq if available before throwing
+  if (groqKey) {
+    try {
+      return await callGroq(groqKey, prompt, history);
+    } catch {
+      // fallback failed
     }
   }
 

@@ -15,59 +15,113 @@ export default function SettingsPage() {
   const {
     geminiApiKey,
     setGeminiApiKey,
+    groqApiKey,
+    setGroqApiKey,
+    aiProvider,
+    setAiProvider,
     referenceText,
     setReferenceText,
     resetReferenceToDefault
   } = useAiStore();
 
-  const [apiKeyInput, setApiKeyInput] = React.useState('');
+  const [geminiKeyInput, setGeminiKeyInput] = React.useState('');
+  const [groqKeyInput, setGroqKeyInput] = React.useState('');
+  const [providerInput, setProviderInput] = React.useState<'auto' | 'gemini' | 'groq'>('auto');
   const [refInput, setRefInput] = React.useState(referenceText);
   const [savedSuccess, setSavedSuccess] = React.useState(false);
-  const [testLoading, setTestLoading] = React.useState(false);
-  const [testResult, setTestResult] = React.useState<{ status: 'success' | 'error'; message: string } | null>(null);
+  
+  const [geminiTestLoading, setGeminiTestLoading] = React.useState(false);
+  const [geminiTestResult, setGeminiTestResult] = React.useState<{ status: 'success' | 'error'; message: string } | null>(null);
 
-  // Sync apiKeyInput from store / localStorage
+  const [groqTestLoading, setGroqTestLoading] = React.useState(false);
+  const [groqTestResult, setGroqTestResult] = React.useState<{ status: 'success' | 'error'; message: string } | null>(null);
+
+  // Sync inputs from store / localStorage
   React.useEffect(() => {
     if (geminiApiKey) {
-      setApiKeyInput(geminiApiKey);
+      setGeminiKeyInput(geminiApiKey);
     } else if (typeof window !== 'undefined') {
       const stored = localStorage.getItem('stats_an_gemini_key');
       if (stored) {
-        setApiKeyInput(stored);
+        setGeminiKeyInput(stored);
         setGeminiApiKey(stored);
       }
     }
-  }, [geminiApiKey]);
+
+    if (groqApiKey) {
+      setGroqKeyInput(groqApiKey);
+    } else if (typeof window !== 'undefined') {
+      const storedGroq = localStorage.getItem('stats_an_groq_key');
+      if (storedGroq) {
+        setGroqKeyInput(storedGroq);
+        setGroqApiKey(storedGroq);
+      }
+    }
+
+    if (aiProvider) {
+      setProviderInput(aiProvider);
+    } else if (typeof window !== 'undefined') {
+      const storedProv = (localStorage.getItem('stats_an_ai_provider') as any) || 'auto';
+      setProviderInput(storedProv);
+    }
+  }, [geminiApiKey, groqApiKey, aiProvider]);
 
   const handleSave = () => {
-    const cleanKey = apiKeyInput.trim();
-    setGeminiApiKey(cleanKey);
+    const cleanGemini = geminiKeyInput.trim();
+    const cleanGroq = groqKeyInput.trim();
+    setGeminiApiKey(cleanGemini);
+    setGroqApiKey(cleanGroq);
+    setAiProvider(providerInput);
     setReferenceText(refInput);
+
     if (typeof window !== 'undefined') {
-      if (cleanKey) localStorage.setItem('stats_an_gemini_key', cleanKey);
+      if (cleanGemini) localStorage.setItem('stats_an_gemini_key', cleanGemini);
       else localStorage.removeItem('stats_an_gemini_key');
+
+      if (cleanGroq) localStorage.setItem('stats_an_groq_key', cleanGroq);
+      else localStorage.removeItem('stats_an_groq_key');
+
+      localStorage.setItem('stats_an_ai_provider', providerInput);
     }
     setSavedSuccess(true);
     setTimeout(() => setSavedSuccess(false), 2500);
   };
 
-  const handleTestKey = async () => {
-    const keyToTest = apiKeyInput.trim();
+  const handleTestGemini = async () => {
+    const keyToTest = geminiKeyInput.trim();
     if (!keyToTest) return;
-    setTestLoading(true);
-    setTestResult(null);
+    setGeminiTestLoading(true);
+    setGeminiTestResult(null);
     try {
       const reply = await callGemini(keyToTest, 'Katakan "OK" jika terhubung.');
-      setTestResult({ status: 'success', message: `Koneksi Google Gemini API Berhasil! (${reply.slice(0, 40)})` });
-      // Auto save if successful
+      setGeminiTestResult({ status: 'success', message: `Koneksi Google Gemini API Berhasil! (${reply.slice(0, 40)})` });
       setGeminiApiKey(keyToTest);
       if (typeof window !== 'undefined') {
         localStorage.setItem('stats_an_gemini_key', keyToTest);
       }
     } catch (err: any) {
-      setTestResult({ status: 'error', message: err.message || 'Koneksi gagal.' });
+      setGeminiTestResult({ status: 'error', message: err.message || 'Koneksi Gemini gagal.' });
     } finally {
-      setTestLoading(false);
+      setGeminiTestLoading(false);
+    }
+  };
+
+  const handleTestGroq = async () => {
+    const keyToTest = groqKeyInput.trim();
+    if (!keyToTest) return;
+    setGroqTestLoading(true);
+    setGroqTestResult(null);
+    try {
+      const reply = await callGemini(keyToTest, 'Katakan "OK" jika terhubung.');
+      setGroqTestResult({ status: 'success', message: `Koneksi Groq AI Engine Berhasil! (${reply.slice(0, 40)})` });
+      setGroqApiKey(keyToTest);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('stats_an_groq_key', keyToTest);
+      }
+    } catch (err: any) {
+      setGroqTestResult({ status: 'error', message: err.message || 'Koneksi Groq gagal.' });
+    } finally {
+      setGroqTestLoading(false);
     }
   };
 
@@ -76,10 +130,10 @@ export default function SettingsPage() {
       {/* Header */}
       <PageHeader
         icon={Settings}
-        title="Pengaturan Aplikasi & Konfigurasi API"
+        title="Pengaturan Aplikasi & Konfigurasi AI Engine"
         badgeIcon={CheckCircle2}
-        badgeText="Konfigurasi Sistem"
-        description="Kelola Google Gemini API Key, status integrasi database Supabase, dan acuan parameter teoritis penulisan laporan."
+        badgeText="Multi-Provider AI"
+        description="Kelola Google Gemini & Groq AI API Key, status integrasi database Supabase, dan acuan parameter teoritis penulisan laporan."
       >
         <Button
           onClick={handleSave}
@@ -95,21 +149,94 @@ export default function SettingsPage() {
         </Button>
       </PageHeader>
 
+      {/* Groq Engine Key Section */}
+      <Card className="border-teal-500/30 bg-teal-50/20 dark:bg-teal-950/10">
+        <CardHeader>
+          <div className="flex items-center justify-between">
+            <div className="space-y-1">
+              <CardTitle className="text-base flex items-center gap-2">
+                <Key className="w-4 h-4 text-[#008080] dark:text-[#14a3a3]" />
+                Groq AI Engine (Ultra Fast & Kuota Besar / Anti-Limit)
+              </CardTitle>
+              <CardDescription className="text-xs">
+                Menggunakan LPU ultra cepat (Compound, GPT-OSS 120B, Qwen 3.6). Sangat direkomendasikan jika kuota Google Gemini gratis Anda terkena rate-limit.
+              </CardDescription>
+            </div>
+            <Badge variant={groqApiKey ? 'default' : 'secondary'} className="text-xs">
+              {groqApiKey ? 'Groq Terpasang' : 'Belum Terpasang'}
+            </Badge>
+          </div>
+        </CardHeader>
+        <CardContent className="space-y-3">
+          <div className="space-y-1.5">
+            <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 block">
+              API Key (Groq Cloud):
+            </label>
+            <div className="flex items-center gap-2">
+              <Input
+                type="password"
+                placeholder="gsk_..."
+                value={groqKeyInput}
+                onChange={(e) => {
+                  setGroqKeyInput(e.target.value);
+                  setGroqApiKey(e.target.value.trim());
+                }}
+                className="text-xs font-mono flex-1"
+              />
+              <Button
+                type="button"
+                onClick={handleTestGroq}
+                disabled={groqTestLoading || !groqKeyInput.trim()}
+                variant="outline"
+                className="text-xs shrink-0 cursor-pointer h-9 px-3 gap-1.5 font-semibold"
+              >
+                {groqTestLoading ? <RefreshCw className="w-3.5 h-3.5 animate-spin" /> : <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />}
+                {groqTestLoading ? 'Menguji...' : 'Uji Koneksi Groq'}
+              </Button>
+            </div>
+
+            {groqTestResult && (
+              <div
+                className={`p-2.5 rounded-xl text-xs flex items-center gap-2 border ${
+                  groqTestResult.status === 'success'
+                    ? 'bg-emerald-50 text-emerald-800 border-emerald-200 dark:bg-emerald-950/50 dark:text-emerald-300 dark:border-emerald-800'
+                    : 'bg-rose-50 text-rose-800 border-rose-200 dark:bg-rose-950/50 dark:text-rose-300 dark:border-rose-800'
+                }`}
+              >
+                {groqTestResult.status === 'success' ? <Check className="w-4 h-4 text-emerald-600 shrink-0" /> : <Settings className="w-4 h-4 text-rose-600 shrink-0" />}
+                <span>{groqTestResult.message}</span>
+              </div>
+            )}
+          </div>
+          <p className="text-[11px] text-zinc-500">
+            Dapatkan API key gratis tanpa batas dari{' '}
+            <a
+              href="https://console.groq.com/keys"
+              target="_blank"
+              rel="noreferrer"
+              className="text-[#008080] dark:text-[#14a3a3] underline font-medium"
+            >
+              Groq Cloud Console
+            </a>.
+          </p>
+        </CardContent>
+      </Card>
+
       {/* Gemini Engine Key Section */}
       <Card>
         <CardHeader>
           <div className="flex items-center justify-between">
             <div className="space-y-1">
               <CardTitle className="text-base flex items-center gap-2">
-                <Key className="w-4 h-4 text-[#008080] dark:text-[#14a3a3]" />
-                Konektivitas Model Bahasa Akademik (Google Gemini API)
+                <Key className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+                Google Gemini API (Gemini 3.5 Flash)
               </CardTitle>
               <CardDescription className="text-xs">
-                Digunakan untuk mendukung perumusan narasi ilmiah APA 7th dan modul konsultasi metodologi interaktif.
+                Model generatif resmi Google AI Studio untuk penalaran akademik berstandar jurnal internasional.
               </CardDescription>
             </div>
             <Badge variant={geminiApiKey ? 'default' : 'secondary'} className="text-xs">
-              {geminiApiKey ? 'API Key Terpasang' : 'Mode Offline / Local Fallback'}
+              {geminiApiKey ? 'Gemini Terpasang' : 'Belum Terpasang'}
             </Badge>
           </div>
         </CardHeader>
@@ -122,40 +249,40 @@ export default function SettingsPage() {
               <Input
                 type="password"
                 placeholder="AIzaSy..."
-                value={apiKeyInput}
+                value={geminiKeyInput}
                 onChange={(e) => {
-                  setApiKeyInput(e.target.value);
+                  setGeminiKeyInput(e.target.value);
                   setGeminiApiKey(e.target.value.trim());
                 }}
                 className="text-xs font-mono flex-1"
               />
               <Button
                 type="button"
-                onClick={handleTestKey}
-                disabled={testLoading || !apiKeyInput.trim()}
+                onClick={handleTestGemini}
+                disabled={geminiTestLoading || !geminiKeyInput.trim()}
                 variant="outline"
                 className="text-xs shrink-0 cursor-pointer h-9 px-3 gap-1.5 font-semibold"
               >
-                {testLoading ? <RefreshCw className="w-3.5 h-3.5 animate-spin" /> : <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />}
-                {testLoading ? 'Menguji...' : 'Uji Koneksi'}
+                {geminiTestLoading ? <RefreshCw className="w-3.5 h-3.5 animate-spin" /> : <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />}
+                {geminiTestLoading ? 'Menguji...' : 'Uji Koneksi Gemini'}
               </Button>
             </div>
 
-            {testResult && (
+            {geminiTestResult && (
               <div
                 className={`p-2.5 rounded-xl text-xs flex items-center gap-2 border ${
-                  testResult.status === 'success'
+                  geminiTestResult.status === 'success'
                     ? 'bg-emerald-50 text-emerald-800 border-emerald-200 dark:bg-emerald-950/50 dark:text-emerald-300 dark:border-emerald-800'
                     : 'bg-rose-50 text-rose-800 border-rose-200 dark:bg-rose-950/50 dark:text-rose-300 dark:border-rose-800'
                 }`}
               >
-                {testResult.status === 'success' ? <Check className="w-4 h-4 text-emerald-600 shrink-0" /> : <Settings className="w-4 h-4 text-rose-600 shrink-0" />}
-                <span>{testResult.message}</span>
+                {geminiTestResult.status === 'success' ? <Check className="w-4 h-4 text-emerald-600 shrink-0" /> : <Settings className="w-4 h-4 text-rose-600 shrink-0" />}
+                <span>{geminiTestResult.message}</span>
               </div>
             )}
           </div>
           <p className="text-[11px] text-zinc-500">
-            Kunci API disimpan secara aman di browser lokal Anda (localStorage) dan tidak pernah dibagikan. Dapatkan API key gratis di{' '}
+            Dapatkan API key gratis di{' '}
             <a
               href="https://aistudio.google.com/app/apikey"
               target="_blank"

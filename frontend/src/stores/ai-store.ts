@@ -11,6 +11,8 @@ export interface ChatMessage {
 
 interface AiState {
   geminiApiKey: string;
+  groqApiKey: string;
+  aiProvider: 'auto' | 'gemini' | 'groq';
   referenceText: string;
   isGenerating: boolean;
   error: string | null;
@@ -19,6 +21,8 @@ interface AiState {
 
   // Actions
   setGeminiApiKey: (key: string) => void;
+  setGroqApiKey: (key: string) => void;
+  setAiProvider: (provider: 'auto' | 'gemini' | 'groq') => void;
   setReferenceText: (text: string) => void;
   setInterpretation: (key: string, text: string) => void;
   setIsGenerating: (status: boolean) => void;
@@ -31,6 +35,8 @@ export const useAiStore = create<AiState>()(
   persist(
     (set) => ({
       geminiApiKey: typeof window !== 'undefined' ? (localStorage.getItem('stats_an_gemini_key') || '') : '',
+      groqApiKey: typeof window !== 'undefined' ? (localStorage.getItem('stats_an_groq_key') || '') : '',
+      aiProvider: typeof window !== 'undefined' ? ((localStorage.getItem('stats_an_ai_provider') as any) || 'auto') : 'auto',
       referenceText: DEFAULT_STATS_REFERENCE,
       isGenerating: false,
       error: null,
@@ -51,6 +57,20 @@ export const useAiStore = create<AiState>()(
           else localStorage.removeItem('stats_an_gemini_key');
         }
         set({ geminiApiKey: clean });
+      },
+      setGroqApiKey: (key: string) => {
+        const clean = key ? key.trim() : '';
+        if (typeof window !== 'undefined') {
+          if (clean) localStorage.setItem('stats_an_groq_key', clean);
+          else localStorage.removeItem('stats_an_groq_key');
+        }
+        set({ groqApiKey: clean });
+      },
+      setAiProvider: (provider: 'auto' | 'gemini' | 'groq') => {
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('stats_an_ai_provider', provider);
+        }
+        set({ aiProvider: provider });
       },
       setReferenceText: (text: string) => set({ referenceText: text }),
       setInterpretation: (key: string, text: string) =>
