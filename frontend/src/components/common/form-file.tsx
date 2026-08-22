@@ -26,7 +26,7 @@ import * as XLSX from 'xlsx';
 import Papa from 'papaparse';
 import { DataRow } from '@/lib/types';
 
-import { getVariableCodebook, VariableCodebookItem } from '@/constants/an-codebook';
+import { getVariableCodebook, VariableCodebookItem, inferCodebookLevelFromSheetName } from '@/constants/an-codebook';
 
 interface SheetPreviewInfo {
   name: string;
@@ -101,7 +101,15 @@ export function FormFile({ className }: { className?: string }) {
               const codeIdx = headerRow.findIndex((h: string) => h.includes('code') || h.includes('kode') || h.includes('variabel') || h.includes('var'));
               const nameIdx = headerRow.findIndex((h: string) => h.includes('nama') || h.includes('label') || h.includes('indikator') || h.includes('keterangan'));
               const conceptIdx = headerRow.findIndex((h: string) => h.includes('konseptual'));
-              const opIdx = headerRow.findIndex((h: string) => h.includes('operasional') || h.includes('definisi') || h.includes('deskripsi'));
+              // "Definisi Operasional Indikator" and "Definisi Konseptual Indikator" both
+              // contain "definisi", so a plain OR-match on that word would stop at whichever
+              // column comes first (usually the conceptual one) instead of the operational
+              // one. Look for "operasional" specifically first, and only fall back to the
+              // generic "definisi"/"deskripsi" terms while explicitly excluding the
+              // conceptual column.
+              const opIdx = headerRow.findIndex((h: string) => h.includes('operasional')) !== -1
+                ? headerRow.findIndex((h: string) => h.includes('operasional'))
+                : headerRow.findIndex((h: string) => (h.includes('definisi') || h.includes('deskripsi')) && !h.includes('konseptual'));
 
               const finalCodeIdx = codeIdx !== -1 ? codeIdx : 0;
               const finalNameIdx = nameIdx !== -1 ? nameIdx : 1;
@@ -117,11 +125,11 @@ export function FormFile({ className }: { className?: string }) {
                 if (codeVal && codeVal !== 'NULL' && codeVal !== 'None' && codeVal !== 'Codebook' && codeVal !== 'Kode') {
                   extractedCodebook[codeVal] = {
                     code: codeVal,
-                    label: nameVal && nameVal !== 'NULL' ? `${nameVal} (${codeVal})` : codeVal,
+                    label: nameVal && nameVal !== 'NULL' ? nameVal : codeVal,
                     domain: `Kamus ${sName}`,
                     operationalDefinition: opVal && opVal !== 'NULL' ? opVal : (nameVal || codeVal),
                     pisaConceptEquivalent: conceptVal && conceptVal !== 'NULL' ? conceptVal : '-',
-                    level: 'Level 2 (Satuan/Pendidik)',
+                    level: inferCodebookLevelFromSheetName(sName, codeVal),
                     dataType: codeVal.startsWith('kd_') ? 'Identitas / ID' : 'Kontinu (Skala)'
                   };
                 }

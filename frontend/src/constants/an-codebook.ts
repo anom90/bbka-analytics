@@ -316,6 +316,38 @@ export function getVariableCodebook(
   };
 }
 
+// Administrative/structural columns (Dapodik-sourced school attributes) that appear as a
+// column in the student-level file too, but are conceptually Level 2 (one value per school,
+// just repeated across every student row) regardless of which respondent-type codebook
+// sheet they were read from.
+const LEVEL2_SCHOOL_STRUCTURAL_CODES = new Set([
+  'kd_sekolah', 'kd_individu', 'pendidikan_sederajat', 'jenis_sek', 'sts_sek', 'kurikulum',
+  'daerah_khusus', 'kd_kokab', 'wilayah_bagian', 'jenis_wilayah', 'status_wilayah',
+  'proporsi_pendidik_min_s1', 'proporsi_pendidik_sertifikasi', 'jumlah_peserta_didik',
+  'jumlah_pendidik', 'rasio_pendidik_peserta_didik', 'jumlah_r_kelas',
+  'ketersediaan_internet', 'ketersediaan_listrik', 'jumlah_komp_milik', 'jumlah_perpus',
+  'jumlah_rombel', 'jumlah_siswa_rombel', 'jumlah_siswa_penerima_PIP',
+  'rasio_siswa_penerima_PIP', 'SES_sekolah', 'IASP'
+]);
+
+/**
+ * Infer the correct analysis level for a variable extracted from an uploaded workbook's
+ * codebook sheet, based on the sheet name it came from (e.g. `codebook_siswa` -> Level 1,
+ * `codebook_guru` -> Level 2). Used instead of a single hardcoded level, since a codebook
+ * sheet parsed wholesale used to tag every single variable "Level 2 (Satuan/Pendidik)" even
+ * when it was read from a student ("codebook_siswa") sheet.
+ */
+export function inferCodebookLevelFromSheetName(sheetName: string, code: string): string {
+  if (code === 'kd_siswa_an') return 'Identitas';
+  if (LEVEL2_SCHOOL_STRUCTURAL_CODES.has(code)) return 'Level 2 (Sekolah)';
+
+  const s = sheetName.toLowerCase();
+  if (s.includes('siswa')) return 'Level 1 (Peserta Didik)';
+  if (s.includes('guru')) return 'Level 2 (Pendidik/Guru)';
+  if (s.includes('kepsek') || s.includes('kepala')) return 'Level 2 (Kepala Satuan Pendidikan)';
+  return 'Level 2 (Satuan/Pendidik)';
+}
+
 export function getVariableLabel(
   varName: string,
   customCodebook?: Record<string, VariableCodebookItem>

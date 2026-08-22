@@ -105,13 +105,13 @@ export function VariableTooltip({
             <Badge
               variant="outline"
               className={cn(
-                'text-[9px] font-mono px-1.5 py-0 shrink-0 font-bold',
+                'text-[9px] font-mono px-1.5 py-0 shrink-0 font-bold whitespace-nowrap',
                 item.level?.toLowerCase().includes('level 2') || item.level?.toLowerCase().includes('guru') || item.level?.toLowerCase().includes('sekolah')
                   ? 'bg-teal-950 text-teal-300 border-teal-700'
                   : 'bg-emerald-950 text-emerald-300 border-emerald-700'
               )}
             >
-              {item.level?.includes('Level 2') ? 'Level 2 (Sekolah/Guru)' : 'Level 1 (Siswa)'}
+              {item.level || 'Level 1 (Siswa)'}
             </Badge>
           </div>
 
