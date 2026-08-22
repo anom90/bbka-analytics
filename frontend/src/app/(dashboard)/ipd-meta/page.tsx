@@ -35,7 +35,7 @@ import { RSyntaxGenerator } from '@/lib/stats/r-syntax';
 import { getVariableDescription } from '@/constants/an-codebook';
 
 export default function IPDMetaPage() {
-  const { data, columns, fileName, loadDefaultDataset } = useDatasetStore();
+  const { data, columns, fileName } = useDatasetStore();
   const {
     ipdMetaConfig,
     setIPDMetaConfig,
@@ -53,9 +53,6 @@ export default function IPDMetaPage() {
 
   React.useEffect(() => {
     useAnalysisStore.setState({ error: null });
-    if (data.length === 0 && !fileName) {
-      loadDefaultDataset();
-    }
   }, []);
 
   const handleResetIPD = () => {

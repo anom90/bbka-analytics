@@ -6,7 +6,14 @@ import { ColumnMeta, DataRow, VariableType } from '@/lib/types';
 import { get, set as idbSet, del } from 'idb-keyval';
 import { getVariableCodebook } from '@/constants/an-codebook';
 
-// IndexedDB storage adapter for safe, unlimited local storage persistence
+// IndexedDB storage adapter for safe, unlimited local storage persistence.
+// Writes are debounced per key: a large dataset (tens of thousands of rows) means every
+// setItem() call re-serializes and commits a multi-MB blob, so several state updates firing
+// in quick succession (e.g. a multi-step import/imputation) would otherwise queue up
+// redundant overlapping writes and visibly stall the UI. Coalescing them into one write of
+// the latest value after a short quiet period keeps that cost to a single commit.
+const pendingWrites = new Map<string, ReturnType<typeof setTimeout>>();
+
 const indexedDBStorage: StateStorage = {
   getItem: async (name: string): Promise<string | null> => {
     if (typeof window === 'undefined') return null;
@@ -17,20 +24,36 @@ const indexedDBStorage: StateStorage = {
       return localStorage.getItem(name);
     }
   },
-  setItem: async (name: string, value: string): Promise<void> => {
-    if (typeof window === 'undefined') return;
-    try {
-      await idbSet(name, value);
-    } catch {
-      try {
-        localStorage.setItem(name, value);
-      } catch (e) {
-        console.warn('Storage quota exceeded', e);
-      }
-    }
+  setItem: (name: string, value: string): Promise<void> => {
+    if (typeof window === 'undefined') return Promise.resolve();
+    return new Promise((resolve) => {
+      const existingTimer = pendingWrites.get(name);
+      if (existingTimer) clearTimeout(existingTimer);
+
+      const timer = setTimeout(async () => {
+        pendingWrites.delete(name);
+        try {
+          await idbSet(name, value);
+        } catch {
+          try {
+            localStorage.setItem(name, value);
+          } catch (e) {
+            console.warn('Storage quota exceeded', e);
+          }
+        }
+        resolve();
+      }, 400);
+
+      pendingWrites.set(name, timer);
+    });
   },
   removeItem: async (name: string): Promise<void> => {
     if (typeof window === 'undefined') return;
+    const existingTimer = pendingWrites.get(name);
+    if (existingTimer) {
+      clearTimeout(existingTimer);
+      pendingWrites.delete(name);
+    }
     try {
       await del(name);
     } catch {
@@ -856,7 +879,29 @@ export const useDatasetStore = create<DatasetState>()(
     }),
     {
       name: 'stats-an-dataset-idb-storage',
-      storage: createJSONStorage(() => indexedDBStorage)
+      storage: createJSONStorage(() => indexedDBStorage),
+      // `originalData` is a full duplicate of `data`, kept only to support "Reset ke Data
+      // Asli". Right after upload (before any filter/drop is applied) they're the exact same
+      // array reference, so persisting both would double the JSON payload — and thus the
+      // serialize + IndexedDB write cost — on every single action. Skip the duplicate in
+      // that common case; `merge` below restores it from `data` on rehydrate if it was
+      // omitted, so the reset button still degrades safely to a no-op instead of erroring.
+      partialize: (state) => ({
+        data: state.data,
+        originalData: state.originalData === state.data ? undefined : state.originalData,
+        columns: state.columns,
+        fileName: state.fileName,
+        filterRules: state.filterRules,
+        selectedSubsetCols: state.selectedSubsetCols,
+        customCodebook: state.customCodebook
+      }),
+      merge: (persisted, current) => {
+        const merged = { ...current, ...(persisted as object) } as DatasetState;
+        if (!merged.originalData || merged.originalData.length === 0) {
+          merged.originalData = merged.data;
+        }
+        return merged;
+      }
     }
   )
 );

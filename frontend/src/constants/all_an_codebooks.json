@@ -12,11 +12,11 @@
   "kd_individu": {
     "code": "kd_individu",
     "label": "kode pendidik",
-    "def": "kode unik",
+    "def": "kode pendidik",
     "conceptualDef": "",
-    "operationalDef": "kode unik",
+    "operationalDef": "kode pendidik",
     "range": "kode unik",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "-"
   },
   "guru_kd_sekolah": {
@@ -32,11 +32,11 @@
   "kd_sekolah": {
     "code": "kd_sekolah",
     "label": "kode sekolah/satuan pendidikan",
-    "def": "kode unik",
+    "def": "kode sekolah/satuan pendidikan",
     "conceptualDef": "",
-    "operationalDef": "kode unik",
+    "operationalDef": "kode sekolah/satuan pendidikan",
     "range": "kode unik",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Sekolah)",
     "source": "-"
   },
   "guru_pendidikan_sederajat": {
@@ -52,11 +52,11 @@
   "pendidikan_sederajat": {
     "code": "pendidikan_sederajat",
     "label": "jenjang pendidikan sederajat suatu sekolah",
-    "def": "PAUD/RA = PAUD/RA/sederajat",
+    "def": "jenjang pendidikan sederajat suatu sekolah",
     "conceptualDef": "",
-    "operationalDef": "PAUD/RA = PAUD/RA/sederajat",
-    "range": "PAUD/RA = PAUD/RA/sederajat",
-    "level": "Level 2 (Pendidik/Guru)",
+    "operationalDef": "jenjang pendidikan sederajat suatu sekolah",
+    "range": "SD/MI = SD/MI sederajat\nSMP/MTs = SMP/MTs sederajat\nSMA/SMK/MA = SMA/SMK/MA sederajat",
+    "level": "Level 2 (Sekolah)",
     "source": "AN"
   },
   "guru_instansi_kewenangan": {
@@ -72,11 +72,11 @@
   "instansi_kewenangan": {
     "code": "instansi_kewenangan",
     "label": "instansi berwenang yang menaungi satuan PAUD",
-    "def": "Kemendikdasmen; Kemenag",
+    "def": "instansi berwenang yang menaungi satuan PAUD",
     "conceptualDef": "",
-    "operationalDef": "Kemendikdasmen; Kemenag",
+    "operationalDef": "instansi berwenang yang menaungi satuan PAUD",
     "range": "Kemendikdasmen; Kemenag",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "Dapodik"
   },
   "guru_sts_sek": {
@@ -92,11 +92,11 @@
   "sts_sek": {
     "code": "sts_sek",
     "label": "status pendidikan sekolah",
-    "def": "N = Negeri\r\nS =  Swasta",
+    "def": "status pendidikan sekolah",
     "conceptualDef": "",
-    "operationalDef": "N = Negeri\r\nS =  Swasta",
-    "range": "N = Negeri\r\nS =  Swasta",
-    "level": "Level 2 (Pendidik/Guru)",
+    "operationalDef": "status pendidikan sekolah",
+    "range": "N = Negeri\nS =  Swasta",
+    "level": "Level 2 (Sekolah)",
     "source": "Dapodik"
   },
   "guru_kd_kokab": {
@@ -112,11 +112,11 @@
   "kd_kokab": {
     "code": "kd_kokab",
     "label": "kode kabupaten/kota",
-    "def": "kode unik",
+    "def": "kode kabupaten/kota",
     "conceptualDef": "",
-    "operationalDef": "kode unik",
+    "operationalDef": "kode kabupaten/kota",
     "range": "kode unik",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Sekolah)",
     "source": "-"
   },
   "guru_wilayah_region": {
@@ -132,11 +132,11 @@
   "wilayah_region": {
     "code": "wilayah_region",
     "label": "wilayah region berdasarkan sebaran wilayah Indoensia",
-    "def": "Sumatera Bagian Utara; Sumatera Bagian Selatan; Jawa Bagian Barat; Jawa Bagian Timur; Kalimantan; Bali dan Nusa Tenggara; Sulawesi; Maluku dan Papua",
+    "def": "wilayah region berdasarkan sebaran wilayah Indoensia",
     "conceptualDef": "",
-    "operationalDef": "Sumatera Bagian Utara; Sumatera Bagian Selatan; Jawa Bagian Barat; Jawa Bagian Timur; Kalimantan; Bali dan Nusa Tenggara; Sulawesi; Maluku dan Papua",
+    "operationalDef": "wilayah region berdasarkan sebaran wilayah Indoensia",
     "range": "Sumatera Bagian Utara; Sumatera Bagian Selatan; Jawa Bagian Barat; Jawa Bagian Timur; Kalimantan; Bali dan Nusa Tenggara; Sulawesi; Maluku dan Papua",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "Lainnya"
   },
   "guru_jenis_wilayah": {
@@ -152,12 +152,12 @@
   "jenis_wilayah": {
     "code": "jenis_wilayah",
     "label": "bentuk suatu wilayah",
-    "def": "Kabupaten atau Kota",
+    "def": "bentuk suatu wilayah",
     "conceptualDef": "",
-    "operationalDef": "Kabupaten atau Kota",
+    "operationalDef": "bentuk suatu wilayah",
     "range": "Kabupaten atau Kota",
-    "level": "Level 2 (Pendidik/Guru)",
-    "source": "AN"
+    "level": "Level 2 (Sekolah)",
+    "source": "Dapodik"
   },
   "guru_GD.1.1": {
     "code": "GD.1.1",
@@ -176,7 +176,7 @@
     "conceptualDef": "Pemahaman satuan PAUD bahwa perencanaan perlu ada di tingkat satuan dan di tingkat kelas. Komponen perencanaan yang ada di tingkat kelas terdiri dari tujuan, kegiatan, dan asesmen.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait pemahaman mengenai komponen perencanaan.",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GD.1.2": {
@@ -196,7 +196,7 @@
     "conceptualDef": "Rencana pembelajaran yang menunjukkan keterkaitan antara kegiatan pembelajaran dengan kemampuan yang ingin dibangun pada peserta didik.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait kualitas perencanaan.",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GD.1.3": {
@@ -216,7 +216,7 @@
     "conceptualDef": "Penataan lingkungan belajar adalah bagian dari perencanaan pembelajaran yang dilakukan dengan tujuan untuk membangun kemampuan fondasi peserta didik melalui kesempatan peserta didik untuk melakukan eksplorasi.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait pengaturan lingkungan belajar.",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GD.2.1": {
@@ -236,7 +236,7 @@
     "conceptualDef": "Dalam konteks PAUD, suasana belajar yang teratur bukanlah ruangan kelas dengan meja teratur atau sunyi dari suara dan peserta duduk diam, melainkan suasana tanpa gangguan yang dapat mengalihkan perhatian peserta didik dari proses pembelajaran.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait keteraturan suasana kelas.",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GD.2.2": {
@@ -256,7 +256,7 @@
     "conceptualDef": "Pengelolaan kelas dengan tetap menghargai hak anak. Pengelolaan kelas dilakukan dengan mengenalkan konsekuensi dari suatu tindakan dan tidak melakukan tindakan yang agresif secara fisik ataupun verbal pada anak.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait penerapan disiplin positif.",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GD.2.3": {
@@ -276,7 +276,7 @@
     "conceptualDef": "Keyakinan pendidik bahwa setiap anak memiliki potensi untuk bertumbuh dan berkembang. Keyakinan diwujudkan dalam pemberian umpan balik konstruktif seperti memberikan penghargaan atas usahanya serta tidak terpaku pada hasil, kepintaran, atau bakat alami anak.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait ekspektasi pendidik.",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GD.2.4": {
@@ -296,7 +296,7 @@
     "conceptualDef": "Pendampingan yang diberikan kepada anak agar dapat mengikuti kegiatan pembelajaran serta memberi perhatian dan dukungan lebih kepada anak yang membutuhkan.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait perhatian dan dukungan pendidik.",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GD.2.5": {
@@ -316,7 +316,7 @@
     "conceptualDef": "Usaha untuk menyesuaikan proses pembelajaran di kelas dalam rangka memenuhi kebutuhan belajar individu setiap peserta didik.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait pembelajaran terdiferensiasi.",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GD.2.6": {
@@ -336,7 +336,7 @@
     "conceptualDef": "Pemberian dukungan belajar secara bertahap untuk menguatkan pemahaman dan keterampilan anak. Strategi ini dapat berbentuk penjelasan yang terstruktur, pemberian contoh-contoh untuk kemudahan anak dalam memahami suatu konsep, ataupun pertanyaan pemantik.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait panduan pendidik.",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GD.2.7": {
@@ -356,7 +356,7 @@
     "conceptualDef": "Pembelajaran yang dirancang untuk membangun kemampuan fondasi anak dengan tetap menjaga agar proses tersebut memberikan pengalaman yang menyenangkan bagi anak usia dini.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait pendekatan bermain-belajar.",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GD.2.8": {
@@ -376,7 +376,7 @@
     "conceptualDef": "Strategi pembelajaran yang memberikan kesempatan pada anak untuk membuat keputusan dalam proses pembelajaran dan mendorong anak melakukan eksplorasi, mengutarakan gagasan dan pertanyaan, serta berinteraksi dengan individu lain.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait berpikir aktif.",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GD.2.9": {
@@ -396,7 +396,7 @@
     "conceptualDef": "Strategi pembelajaran yang mengaitkan antara materi yang diajarkan dengan situasi dunia nyata anak dan mendorong anak membuat hubungan antara pengetahuan yang dimilikinya dengan penerapannya dalam kehidupan.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait pembelajaran kontekstual.",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GD.3.1": {
@@ -416,7 +416,7 @@
     "conceptualDef": "Pembelajaran yang membangun nilai-nilai baik pada anak melalui pengenalan terhadap Tuhan, agama/kepercayaan, serta praktik ibadah yang sesuai. Nilai-nilai baik terwujud dalam perilaku anak yang menyayangi dirinya, sesama manusia, dan alam sebagai ciptaan Tuhan.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait muatan agama dan budi pekerti.",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GD.3.2": {
@@ -436,7 +436,7 @@
     "conceptualDef": "Pembelajaran yang membangun pemahaman peserta didik mengenai identitas dirinya yang terbentuk oleh ragam minat, kebutuhan, dan karakteristik, serta peran yang dapat anak ambil di dalam kegiatannya sehari-hari.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait muatan identitas diri.",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GD.3.3": {
@@ -456,7 +456,7 @@
     "conceptualDef": "Pembelajaran yang membangun kemampuan sosial emosional, perilaku prososial dan kemandirian pada anak. Kemampuan ini tidak hanya dibangun melalui pembelajaran di kelas, tetapi juga melalui iklim satuan PAUD yang turut membangun kemampuan tersebut.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait muatan perilaku mandiri dan prososial.",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GD.3.4": {
@@ -476,7 +476,7 @@
     "conceptualDef": "Pembelajaran yang membangun perilaku hidup bersih dan sehat serta kemampuan motorik kasar dan halus. Kemampuan ini dibangun tidak hanya melalui pembelajaran, namun juga melalui pembiasaan serta iklim lingkungan belajar.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait muatan PHBS dan penguatan motorik kasar dan halus.",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GD.3.5": {
@@ -496,7 +496,7 @@
     "conceptualDef": "Pembelajaran yang bertujuan mengembangkan kemampuan literasi dasar secara utuh, meliputi kemampuan bertutur, pengetahuan latar, pembedaharaan kosakata, kesadaran terhadap simbol dan teks, kesadaran fonemik serta keaksaraan.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait muatan literasi dasar.",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GD.3.6": {
@@ -516,7 +516,7 @@
     "conceptualDef": "Pembelajaran yang membangun kemampuan anak berpikir logis dan simbolis, antara lain meliputi kemampuan memahami hubungan sebab-akibat, kepemilikan konsep numerasi dasar, serta pemahaman sederhana tentang cara dunia bekerja yang dapat ditunjukkan secara lisan, perilaku ataupun hasil karya.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait muatan kognitif.",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GD.4.1": {
@@ -536,7 +536,7 @@
     "conceptualDef": "Upaya memperoleh serangkaian informasi tentang hasil belajar melalui cara yang sesuai dengan kebutuhan belajar anak usia dini, serta menggunakan hasilnya sebagai rujukan dalam peningkatan kualitas pembelajaran selanjutnya.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait penerapan asesmen dalam pembelajaran",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GD.4.2": {
@@ -556,7 +556,7 @@
     "conceptualDef": "Penyampaian hasil penilaian dari pendidik kepada anak yang bermanfaat untuk menguatkan proses anak untuk menjadi lebih baik melalui proses belajar. Umpan balik konstruktif juga merujuk pada kemampuan pendidik menyusun informasi tentang capaian anak yang bermakna untuk diketahui oleh orang tua/wali murid.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait umpan balik konstruktif.",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GE.2.1": {
@@ -576,7 +576,7 @@
     "conceptualDef": "Lingkungan belajar yang mampu memberikan rasa aman bagi anak dan warga lainnya di satuan PAUD dalam berkegiatan.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait keamanan lingkungan satuan",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GE.2.2": {
@@ -596,7 +596,7 @@
     "conceptualDef": "Ketersediaan P3K di satuan sebagai fasilitas untuk menghadapi kondisi darurat.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait ketersediaan P3K",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GE.2.3": {
@@ -616,7 +616,7 @@
     "conceptualDef": "Pengelolaan di tingkat satuan PAUD yang mampu mencegah penerapan hukuman fisik dengan tujuan untuk mendisiplinkan, mengendalikan, atau memperbaiki perilaku anak.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait pemahaman mengenai hukuman fisik",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GE.2.4": {
@@ -636,7 +636,7 @@
     "conceptualDef": "Pengelolaan di tingkat satuan PAUD yang mampu mencegah dan mengatasi kasus perundungan. Perundungan adalah kekerasan yang terjadi secara berulang pada anak dengan maksud mengintimidasi dan membuat anak (korban) merasa lemah.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait pencegahan dan mitigasi perundungan",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GE.2.5": {
@@ -656,7 +656,7 @@
     "conceptualDef": "Pengelolaan di tingkat satuan PAUD yang mampu mencegah adanya tindakan kekerasan seksual pada anak.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait pencegahan kasus kekerasan seksual",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GE.2.6": {
@@ -676,7 +676,7 @@
     "conceptualDef": "Pemahaman dan kemampuan kepala satuan pendidikan dan pendidik mengenai tindakan yang dikategorikan sebagai tindakan kekerasan.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait sikap antikekerasan kepala satdik dan pendidik",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GE.3.1": {
@@ -696,7 +696,7 @@
     "conceptualDef": "Toleransi pendidik dan kepala satuan dalam merespon keberagaman agama dan budaya sebagai upaya dalam membangun lingkungan belajar inklusif.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait sikap terhadap toleransi",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GE.3.2": {
@@ -716,7 +716,7 @@
     "conceptualDef": "Pemahaman pendidik dan kepala satuan tentang wawasan kebangsaan dan nilai-nilai Pancasila, serta upayanya dalam membangun nilai-nilai tersebut melalui lingkungan belajar.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait komitmen kebangsaan",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GE.3.3": {
@@ -736,7 +736,7 @@
     "conceptualDef": "Sikap pendidik dan kepala satuan terhadap keberagaman, serta upayanya dalam membangun nilai-nilai tersebut melalui sikap saling menghargai di lingkungan belajar.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait sikap terhadap keragaman.",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GE.3.4": {
@@ -756,7 +756,7 @@
     "conceptualDef": "Pendidik dan tenaga kependidikan memiliki pengetahuan dan keterampilan untuk memperlakukan anak berkebutuhan khusus sesuai kebutuhannya, serta mendesain program pembelajaran dan fasilitas yang dapat diikuti oleh anak berkebutuhan khusus.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait konsepsi/pengetahuan/sikap pendidik terhadap anak berkebutuhan khusus",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GE.4.1": {
@@ -776,7 +776,7 @@
     "conceptualDef": "Proses belajar yang diperoleh melalui pengalaman dan pengamatan orang lain baik dari rekan sebaya di satuan, di gugus, ataupun wadah belajar lain yang mengarah pada pengembangan kapasitas individu.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait belajar dari dan bersama orang lain",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GE.4.2": {
@@ -796,7 +796,7 @@
     "conceptualDef": "Adanya budaya untuk melakukan evaluasi kinerja melalui ragam upaya identifikasi kekuatan dan kelemahan dalam praktik pembelajaran serta mengakomodasi umpan balik secara konstruktif.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait evaluasi praktik saat ini",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GE.4.3": {
@@ -816,7 +816,7 @@
     "conceptualDef": "Adanya budaya untuk menerapkan inovasi dan mencoba praktik baru yang berbeda dari yang biasa dilakukan dengan tujuan untuk peningkatan kualitas layanan.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait penerapan praktik baru",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GE.5.1": {
@@ -836,7 +836,7 @@
     "conceptualDef": "Kemampuan kepala satuan pendidikan dalam penyampaian dan penerapan visi-misi sekolah yang berpusat pada perbaikan pembelajaran.",
     "operationalDef": "Nilai komposit kepala satuan dan pendidik PAUD terkait penyampaian dan penerapan visi-misi sekolah",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GE.5.2": {
@@ -856,7 +856,7 @@
     "conceptualDef": "Kemampuan kepala satuan pendidikan untuk mengembangkan dan mengelola kurikulum dengan melibatkan warga sekolah yang bertujuan meningkatkan kualitas proses serta hasil belajar peserta didik.",
     "operationalDef": "Nilai komposit kepala satuan dan pendidik PAUD terkait pengelolaan kurikulum",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GE.5.3": {
@@ -876,7 +876,7 @@
     "conceptualDef": "Kemampuan kepala satuan dalam menyusun kebijakan yang mendukung refleksi guru dan perbaikan pembelajaran.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik PAUD terkait dukungan untuk refleksi guru",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GE.6.1": {
@@ -896,7 +896,7 @@
     "conceptualDef": "Kemampuan satuan PAUD untuk menempatkan orang tua/wali sebagai mitra sehingga terbentuk kesinambungan antara stimulasi yang diberikan di satuan PAUD dengan stimulasi yang diberikan di rumah.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait kemitraan dengan orangtua/wali",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GE.8.1": {
@@ -916,7 +916,7 @@
     "conceptualDef": "Kapasitas dalam menyusun perencanaan yang berbasis kebutuhan dan efektif dalam meningkatkan kualitas layanan.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait kapasitas perencanaan",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "guru_GE.9.1": {
@@ -936,7 +936,7 @@
     "conceptualDef": "Kapasitas dalam mengalokasikan sumber daya sesuai dengan kebutuhan serta melaporkan pemanfaatan anggaran secara akuntabel.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait penganggaran yang efektif dan akuntabel",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Pendidik/Guru PAUD)",
     "source": "AN"
   },
   "kepsek_kd_individu": {
@@ -1036,7 +1036,7 @@
     "conceptualDef": "Pemahaman satuan PAUD bahwa perencanaan perlu ada di tingkat satuan dan di tingkat kelas. Komponen perencanaan yang ada di tingkat kelas terdiri dari tujuan, kegiatan, dan asesmen.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait pemahaman mengenai komponen perencanaan.",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KD.1.2": {
@@ -1056,7 +1056,7 @@
     "conceptualDef": "Rencana pembelajaran yang menunjukkan keterkaitan antara kegiatan pembelajaran dengan kemampuan yang ingin dibangun pada peserta didik.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait kualitas perencanaan.",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KD.1.3": {
@@ -1076,7 +1076,7 @@
     "conceptualDef": "Penataan lingkungan belajar adalah bagian dari perencanaan pembelajaran yang dilakukan dengan tujuan untuk membangun kemampuan fondasi peserta didik melalui kesempatan peserta didik untuk melakukan eksplorasi.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait pengaturan lingkungan belajar.",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KD.2.1": {
@@ -1096,7 +1096,7 @@
     "conceptualDef": "Dalam konteks PAUD, suasana belajar yang teratur bukanlah ruangan kelas dengan meja teratur atau sunyi dari suara dan peserta duduk diam, melainkan suasana tanpa gangguan yang dapat mengalihkan perhatian peserta didik dari proses pembelajaran.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait keteraturan suasana kelas.",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KD.2.2": {
@@ -1116,7 +1116,7 @@
     "conceptualDef": "Pengelolaan kelas dengan tetap menghargai hak anak. Pengelolaan kelas dilakukan dengan mengenalkan konsekuensi dari suatu tindakan dan tidak melakukan tindakan yang agresif secara fisik ataupun verbal pada anak.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait penerapan disiplin positif.",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KD.2.3": {
@@ -1136,7 +1136,7 @@
     "conceptualDef": "Keyakinan pendidik bahwa setiap anak memiliki potensi untuk bertumbuh dan berkembang. Keyakinan diwujudkan dalam pemberian umpan balik konstruktif seperti memberikan penghargaan atas usahanya serta tidak terpaku pada hasil, kepintaran, atau bakat alami anak.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait ekspektasi pendidik.",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KD.2.4": {
@@ -1156,7 +1156,7 @@
     "conceptualDef": "Pendampingan yang diberikan kepada anak agar dapat mengikuti kegiatan pembelajaran serta memberi perhatian dan dukungan lebih kepada anak yang membutuhkan.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait perhatian dan dukungan pendidik.",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KD.2.5": {
@@ -1176,7 +1176,7 @@
     "conceptualDef": "Usaha untuk menyesuaikan proses pembelajaran di kelas dalam rangka memenuhi kebutuhan belajar individu setiap peserta didik.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait pembelajaran terdiferensiasi.",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KD.2.6": {
@@ -1196,7 +1196,7 @@
     "conceptualDef": "Pemberian dukungan belajar secara bertahap untuk menguatkan pemahaman dan keterampilan anak. Strategi ini dapat berbentuk penjelasan yang terstruktur, pemberian contoh-contoh untuk kemudahan anak dalam memahami suatu konsep, ataupun pertanyaan pemantik.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait panduan pendidik.",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KD.2.7": {
@@ -1216,7 +1216,7 @@
     "conceptualDef": "Pembelajaran yang dirancang untuk membangun kemampuan fondasi anak dengan tetap menjaga agar proses tersebut memberikan pengalaman yang menyenangkan bagi anak usia dini.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait pendekatan bermain-belajar.",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KD.2.8": {
@@ -1236,7 +1236,7 @@
     "conceptualDef": "Strategi pembelajaran yang memberikan kesempatan pada anak untuk membuat keputusan dalam proses pembelajaran dan mendorong anak melakukan eksplorasi, mengutarakan gagasan dan pertanyaan, serta berinteraksi dengan individu lain.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait berpikir aktif.",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KD.2.9": {
@@ -1256,7 +1256,7 @@
     "conceptualDef": "Strategi pembelajaran yang mengaitkan antara materi yang diajarkan dengan situasi dunia nyata anak dan mendorong anak membuat hubungan antara pengetahuan yang dimilikinya dengan penerapannya dalam kehidupan.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait pembelajaran kontekstual.",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KD.3.1": {
@@ -1276,7 +1276,7 @@
     "conceptualDef": "Pembelajaran yang membangun nilai-nilai baik pada anak melalui pengenalan terhadap Tuhan, agama/kepercayaan, serta praktik ibadah yang sesuai. Nilai-nilai baik terwujud dalam perilaku anak yang menyayangi dirinya, sesama manusia, dan alam sebagai ciptaan Tuhan.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait muatan agama dan budi pekerti.",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KD.3.2": {
@@ -1296,7 +1296,7 @@
     "conceptualDef": "Pembelajaran yang membangun pemahaman peserta didik mengenai identitas dirinya yang terbentuk oleh ragam minat, kebutuhan, dan karakteristik, serta peran yang dapat anak ambil di dalam kegiatannya sehari-hari.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait muatan identitas diri.",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KD.3.3": {
@@ -1316,7 +1316,7 @@
     "conceptualDef": "Pembelajaran yang membangun kemampuan sosial emosional, perilaku prososial dan kemandirian pada anak. Kemampuan ini tidak hanya dibangun melalui pembelajaran di kelas, tetapi juga melalui iklim satuan PAUD yang turut membangun kemampuan tersebut.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait muatan perilaku mandiri dan prososial.",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KD.3.4": {
@@ -1336,7 +1336,7 @@
     "conceptualDef": "Pembelajaran yang membangun perilaku hidup bersih dan sehat serta kemampuan motorik kasar dan halus. Kemampuan ini dibangun tidak hanya melalui pembelajaran, namun juga melalui pembiasaan serta iklim lingkungan belajar.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait muatan PHBS dan penguatan motorik kasar dan halus.",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KD.3.5": {
@@ -1356,7 +1356,7 @@
     "conceptualDef": "Pembelajaran yang bertujuan mengembangkan kemampuan literasi dasar secara utuh, meliputi kemampuan bertutur, pengetahuan latar, pembedaharaan kosakata, kesadaran terhadap simbol dan teks, kesadaran fonemik serta keaksaraan.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait muatan literasi dasar.",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KD.3.6": {
@@ -1376,7 +1376,7 @@
     "conceptualDef": "Pembelajaran yang membangun kemampuan anak berpikir logis dan simbolis, antara lain meliputi kemampuan memahami hubungan sebab-akibat, kepemilikan konsep numerasi dasar, serta pemahaman sederhana tentang cara dunia bekerja yang dapat ditunjukkan secara lisan, perilaku ataupun hasil karya.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait muatan kognitif.",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KD.4.1": {
@@ -1396,7 +1396,7 @@
     "conceptualDef": "Upaya memperoleh serangkaian informasi tentang hasil belajar melalui cara yang sesuai dengan kebutuhan belajar anak usia dini, serta menggunakan hasilnya sebagai rujukan dalam peningkatan kualitas pembelajaran selanjutnya.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait penerapan asesmen dalam pembelajaran",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KD.4.2": {
@@ -1416,7 +1416,7 @@
     "conceptualDef": "Penyampaian hasil penilaian dari pendidik kepada anak yang bermanfaat untuk menguatkan proses anak untuk menjadi lebih baik melalui proses belajar. Umpan balik konstruktif juga merujuk pada kemampuan pendidik menyusun informasi tentang capaian anak yang bermakna untuk diketahui oleh orang tua/wali murid.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait umpan balik konstruktif.",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KE.2.1": {
@@ -1436,7 +1436,7 @@
     "conceptualDef": "Lingkungan belajar yang mampu memberikan rasa aman bagi anak dan warga lainnya di satuan PAUD dalam berkegiatan.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait keamanan lingkungan satuan",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KE.2.2": {
@@ -1456,7 +1456,7 @@
     "conceptualDef": "Ketersediaan P3K di satuan sebagai fasilitas untuk menghadapi kondisi darurat.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait ketersediaan P3K",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KE.2.3": {
@@ -1476,7 +1476,7 @@
     "conceptualDef": "Pengelolaan di tingkat satuan PAUD yang mampu mencegah penerapan hukuman fisik dengan tujuan untuk mendisiplinkan, mengendalikan, atau memperbaiki perilaku anak.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait pemahaman mengenai hukuman fisik",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KE.2.4": {
@@ -1496,7 +1496,7 @@
     "conceptualDef": "Pengelolaan di tingkat satuan PAUD yang mampu mencegah dan mengatasi kasus perundungan. Perundungan adalah kekerasan yang terjadi secara berulang pada anak dengan maksud mengintimidasi dan membuat anak (korban) merasa lemah.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait pencegahan dan mitigasi perundungan",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KE.2.5": {
@@ -1516,7 +1516,7 @@
     "conceptualDef": "Pengelolaan di tingkat satuan PAUD yang mampu mencegah adanya tindakan kekerasan seksual pada anak.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait pencegahan kasus kekerasan seksual",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KE.2.6": {
@@ -1536,7 +1536,7 @@
     "conceptualDef": "Pemahaman dan kemampuan kepala satuan pendidikan dan pendidik mengenai tindakan yang dikategorikan sebagai tindakan kekerasan.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait sikap antikekerasan kepala satdik dan pendidik",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KE.3.1": {
@@ -1556,7 +1556,7 @@
     "conceptualDef": "Toleransi pendidik dan kepala satuan dalam merespon keberagaman agama dan budaya sebagai upaya dalam membangun lingkungan belajar inklusif.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait sikap terhadap toleransi",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KE.3.2": {
@@ -1576,7 +1576,7 @@
     "conceptualDef": "Pemahaman pendidik dan kepala satuan tentang wawasan kebangsaan dan nilai-nilai Pancasila, serta upayanya dalam membangun nilai-nilai tersebut melalui lingkungan belajar.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait komitmen kebangsaan",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KE.3.3": {
@@ -1596,7 +1596,7 @@
     "conceptualDef": "Sikap pendidik dan kepala satuan terhadap keberagaman, serta upayanya dalam membangun nilai-nilai tersebut melalui sikap saling menghargai di lingkungan belajar.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait sikap terhadap keragaman.",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KE.3.4": {
@@ -1616,7 +1616,7 @@
     "conceptualDef": "Pendidik dan tenaga kependidikan memiliki pengetahuan dan keterampilan untuk memperlakukan anak berkebutuhan khusus sesuai kebutuhannya, serta mendesain program pembelajaran dan fasilitas yang dapat diikuti oleh anak berkebutuhan khusus.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait konsepsi/pengetahuan/sikap pendidik terhadap anak berkebutuhan khusus",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KE.4.1": {
@@ -1636,7 +1636,7 @@
     "conceptualDef": "Proses belajar yang diperoleh melalui pengalaman dan pengamatan orang lain baik dari rekan sebaya di satuan, di gugus, ataupun wadah belajar lain yang mengarah pada pengembangan kapasitas individu.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait belajar dari dan bersama orang lain",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KE.4.2": {
@@ -1656,7 +1656,7 @@
     "conceptualDef": "Adanya budaya untuk melakukan evaluasi kinerja melalui ragam upaya identifikasi kekuatan dan kelemahan dalam praktik pembelajaran serta mengakomodasi umpan balik secara konstruktif.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait evaluasi praktik saat ini",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KE.4.3": {
@@ -1676,7 +1676,7 @@
     "conceptualDef": "Adanya budaya untuk menerapkan inovasi dan mencoba praktik baru yang berbeda dari yang biasa dilakukan dengan tujuan untuk peningkatan kualitas layanan.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait penerapan praktik baru",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KE.5.1": {
@@ -1696,7 +1696,7 @@
     "conceptualDef": "Kemampuan kepala satuan pendidikan dalam penyampaian dan penerapan visi-misi sekolah yang berpusat pada perbaikan pembelajaran.",
     "operationalDef": "Nilai komposit kepala satuan dan pendidik PAUD terkait penyampaian dan penerapan visi-misi sekolah",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KE.5.2": {
@@ -1716,7 +1716,7 @@
     "conceptualDef": "Kemampuan kepala satuan pendidikan untuk mengembangkan dan mengelola kurikulum dengan melibatkan warga sekolah yang bertujuan meningkatkan kualitas proses serta hasil belajar peserta didik.",
     "operationalDef": "Nilai komposit kepala satuan dan pendidik PAUD terkait pengelolaan kurikulum",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KE.5.3": {
@@ -1736,7 +1736,7 @@
     "conceptualDef": "Kemampuan kepala satuan dalam menyusun kebijakan yang mendukung refleksi guru dan perbaikan pembelajaran.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik PAUD terkait dukungan untuk refleksi guru",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KE.6.1": {
@@ -1756,7 +1756,7 @@
     "conceptualDef": "Kemampuan satuan PAUD untuk menempatkan orang tua/wali sebagai mitra sehingga terbentuk kesinambungan antara stimulasi yang diberikan di satuan PAUD dengan stimulasi yang diberikan di rumah.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait kemitraan dengan orangtua/wali",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KE.8.1": {
@@ -1776,7 +1776,7 @@
     "conceptualDef": "Kapasitas dalam menyusun perencanaan yang berbasis kebutuhan dan efektif dalam meningkatkan kualitas layanan.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait kapasitas perencanaan",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "kepsek_KE.9.1": {
@@ -1796,7 +1796,7 @@
     "conceptualDef": "Kapasitas dalam mengalokasikan sumber daya sesuai dengan kebutuhan serta melaporkan pemanfaatan anggaran secara akuntabel.",
     "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait penganggaran yang efektif dan akuntabel",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan PAUD)",
     "source": "AN"
   },
   "guru_kd_guru_an": {
@@ -1812,9 +1812,9 @@
   "kd_guru_an": {
     "code": "kd_guru_an",
     "label": "kode guru",
-    "def": "kode unik",
+    "def": "kode guru",
     "conceptualDef": "",
-    "operationalDef": "kode unik",
+    "operationalDef": "kode guru",
     "range": "kode unik",
     "level": "Level 2 (Pendidik/Guru)",
     "source": "-"
@@ -1832,11 +1832,11 @@
   "jenis_sek": {
     "code": "jenis_sek",
     "label": "identitas satuan pendidikan",
-    "def": "SD/MI sederajat = SD, MI, SDTK, Adi WP, Paket A, PPS Ula, SPKSD\r\nSMP/MTs sederajat = SMP, MTs, SMPTK, Madya WP, Paket B, PPS Wustha, \r\nSMA/SMK/MA sedarajat = SMA, SMK, SMAg.K, Paket C,  PPS Ulya, MA, MAK, SMTK, SMAK, Utama WP",
+    "def": "identitas satuan pendidikan",
     "conceptualDef": "",
-    "operationalDef": "SD/MI sederajat = SD, MI, SDTK, Adi WP, Paket A, PPS Ula, SPKSD\r\nSMP/MTs sederajat = SMP, MTs, SMPTK, Madya WP, Paket B, PPS Wustha, \r\nSMA/SMK/MA sedarajat = SMA, SMK, SMAg.K, Paket C,  PPS Ulya, MA, MAK, SMTK, SMAK, Utama WP",
-    "range": "SD/MI sederajat = SD, MI, SDTK, Adi WP, Paket A, PPS Ula, SPKSD\r\nSMP/MTs sederajat = SMP, MTs, SMPTK, Madya WP, Paket B, PPS Wustha, \r\nSMA/SMK/MA sedarajat = SMA, SMK, SMAg.K, Paket C,  PPS Ulya, MA, MAK, SMTK, SMAK, Utama WP",
-    "level": "Level 2 (Pendidik/Guru)",
+    "operationalDef": "identitas satuan pendidikan",
+    "range": "SD/MI sederajat = SD, MI, SDTK, Adi WP, Paket A, PPS Ula, SPKSD\nSMP/MTs sederajat = SMP, MTs, SMPTK, Madya WP, Paket B, PPS Wustha, \nSMA/SMK/MA sedarajat = SMA, SMK, SMAg.K, Paket C,  PPS Ulya, MA, MAK, SMTK, SMAK, Utama WP",
+    "level": "Level 2 (Sekolah)",
     "source": "Dapodik"
   },
   "guru_kurikulum": {
@@ -1852,11 +1852,11 @@
   "kurikulum": {
     "code": "kurikulum",
     "label": "implementasi kurikulum yang diterapkan di satuan pendidikan",
-    "def": "Kurikulum Merdeka\r\nKurikulum 2013",
+    "def": "implementasi kurikulum yang diterapkan di satuan pendidikan",
     "conceptualDef": "",
-    "operationalDef": "Kurikulum Merdeka\r\nKurikulum 2013",
-    "range": "Kurikulum Merdeka\r\nKurikulum 2013",
-    "level": "Level 2 (Pendidik/Guru)",
+    "operationalDef": "implementasi kurikulum yang diterapkan di satuan pendidikan",
+    "range": "Kurikulum Merdeka\nKurikulum 2013",
+    "level": "Level 2 (Sekolah)",
     "source": "Dapodik"
   },
   "guru_daerah_khusus": {
@@ -1872,11 +1872,11 @@
   "daerah_khusus": {
     "code": "daerah_khusus",
     "label": "wilayah satuan pendidikan yang berada pada daerah khusus berdasarkan kondisi geografis sesuai dengan Kepmendikbudristek Nomor 160/P/2021",
-    "def": "Ya = satuan pendidikan berada di daerah khusus\r\nTidak = satuan pendidikan tidak berada di daerah khusus",
+    "def": "wilayah satuan pendidikan yang berada pada daerah khusus berdasarkan kondisi geografis sesuai dengan Kepmendikbudristek Nomor 160/P/2021",
     "conceptualDef": "",
-    "operationalDef": "Ya = satuan pendidikan berada di daerah khusus\r\nTidak = satuan pendidikan tidak berada di daerah khusus",
-    "range": "Ya = satuan pendidikan berada di daerah khusus\r\nTidak = satuan pendidikan tidak berada di daerah khusus",
-    "level": "Level 2 (Pendidik/Guru)",
+    "operationalDef": "wilayah satuan pendidikan yang berada pada daerah khusus berdasarkan kondisi geografis sesuai dengan Kepmendikbudristek Nomor 160/P/2021",
+    "range": "Ya = satuan pendidikan berada di daerah khusus\nTidak = satuan pendidikan tidak berada di daerah khusus",
+    "level": "Level 2 (Sekolah)",
     "source": "Dapodik"
   },
   "guru_wilayah_bagian": {
@@ -1892,11 +1892,11 @@
   "wilayah_bagian": {
     "code": "wilayah_bagian",
     "label": "wilayah bagian berdasarkan pembagaian zona waktu",
-    "def": "Indonesia Barat; Indonesia Tengah; Indonesia Timur",
+    "def": "wilayah bagian berdasarkan pembagaian zona waktu",
     "conceptualDef": "",
-    "operationalDef": "Indonesia Barat; Indonesia Tengah; Indonesia Timur",
+    "operationalDef": "wilayah bagian berdasarkan pembagaian zona waktu",
     "range": "Indonesia Barat; Indonesia Tengah; Indonesia Timur",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Sekolah)",
     "source": "Lainnya"
   },
   "guru_status_wilayah": {
@@ -1912,11 +1912,11 @@
   "status_wilayah": {
     "code": "status_wilayah",
     "label": "kondisi suatu wilayah",
-    "def": "urban atau rural",
+    "def": "kondisi suatu wilayah",
     "conceptualDef": "",
-    "operationalDef": "urban atau rural",
+    "operationalDef": "kondisi suatu wilayah",
     "range": "urban atau rural",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Sekolah)",
     "source": "Dapodik"
   },
   "guru_proporsi_pendidik_min_s1": {
@@ -1932,11 +1932,11 @@
   "proporsi_pendidik_min_s1": {
     "code": "proporsi_pendidik_min_s1",
     "label": "proporsi pendidik minimal S1 dibandingkan dengan total pendidik yang ada di satuan pendidikan",
-    "def": "0%-100%",
+    "def": "proporsi pendidik minimal S1 dibandingkan dengan total pendidik yang ada di satuan pendidikan",
     "conceptualDef": "",
-    "operationalDef": "0%-100%",
+    "operationalDef": "proporsi pendidik minimal S1 dibandingkan dengan total pendidik yang ada di satuan pendidikan",
     "range": "0%-100%",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Sekolah)",
     "source": "Dapodik"
   },
   "guru_proporsi_pendidik_sertifikasi": {
@@ -1952,11 +1952,11 @@
   "proporsi_pendidik_sertifikasi": {
     "code": "proporsi_pendidik_sertifikasi",
     "label": "proporsi pendidik bersertifikasi dibandingkan dengan total pendidik yang ada (baik tersertifikasi maupun belum tersertifikasi) di satuan pendidikan",
-    "def": "0%-100%",
+    "def": "proporsi pendidik bersertifikasi dibandingkan dengan total pendidik yang ada (baik tersertifikasi maupun belum tersertifikasi) di satuan pendidikan",
     "conceptualDef": "",
-    "operationalDef": "0%-100%",
+    "operationalDef": "proporsi pendidik bersertifikasi dibandingkan dengan total pendidik yang ada (baik tersertifikasi maupun belum tersertifikasi) di satuan pendidikan",
     "range": "0%-100%",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Sekolah)",
     "source": "Dapodik"
   },
   "guru_jumlah_peserta_didik": {
@@ -1972,11 +1972,11 @@
   "jumlah_peserta_didik": {
     "code": "jumlah_peserta_didik",
     "label": "total peserta didik di satuan pendidikan",
-    "def": "0-tak terhingga",
+    "def": "total peserta didik di satuan pendidikan",
     "conceptualDef": "",
-    "operationalDef": "0-tak terhingga",
+    "operationalDef": "total peserta didik di satuan pendidikan",
     "range": "0-tak terhingga",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Sekolah)",
     "source": "Dapodik"
   },
   "guru_jumlah_pendidik": {
@@ -1992,11 +1992,11 @@
   "jumlah_pendidik": {
     "code": "jumlah_pendidik",
     "label": "total pendidik di satuan pendidikan",
-    "def": "0-tak terhingga",
+    "def": "total pendidik di satuan pendidikan",
     "conceptualDef": "",
-    "operationalDef": "0-tak terhingga",
+    "operationalDef": "total pendidik di satuan pendidikan",
     "range": "0-tak terhingga",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Sekolah)",
     "source": "Dapodik"
   },
   "guru_rasio_pendidik_peserta_didik": {
@@ -2012,11 +2012,11 @@
   "rasio_pendidik_peserta_didik": {
     "code": "rasio_pendidik_peserta_didik",
     "label": "rasio antara pendidik dengan peserta didik",
-    "def": "0%-100%",
+    "def": "rasio antara pendidik dengan peserta didik",
     "conceptualDef": "",
-    "operationalDef": "0%-100%",
+    "operationalDef": "rasio antara pendidik dengan peserta didik",
     "range": "0%-100%",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Sekolah)",
     "source": "Dapodik"
   },
   "guru_jumlah_r_kelas": {
@@ -2032,11 +2032,11 @@
   "jumlah_r_kelas": {
     "code": "jumlah_r_kelas",
     "label": "jumlah ruang kelas di satuan pendidikan",
-    "def": "0-tak terhingga",
+    "def": "jumlah ruang kelas di satuan pendidikan",
     "conceptualDef": "",
-    "operationalDef": "0-tak terhingga",
+    "operationalDef": "jumlah ruang kelas di satuan pendidikan",
     "range": "0-tak terhingga",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Sekolah)",
     "source": "Dapodik"
   },
   "guru_ketersediaan_internet": {
@@ -2052,11 +2052,11 @@
   "ketersediaan_internet": {
     "code": "ketersediaan_internet",
     "label": "ketersediaan internet di satuan pendidikan",
-    "def": "Ada;\r\nTidak Ada",
+    "def": "ketersediaan internet di satuan pendidikan",
     "conceptualDef": "",
-    "operationalDef": "Ada;\r\nTidak Ada",
-    "range": "Ada;\r\nTidak Ada",
-    "level": "Level 2 (Pendidik/Guru)",
+    "operationalDef": "ketersediaan internet di satuan pendidikan",
+    "range": "Ada;\nTidak Ada",
+    "level": "Level 2 (Sekolah)",
     "source": "Dapodik"
   },
   "guru_ketersediaan_listrik": {
@@ -2072,11 +2072,11 @@
   "ketersediaan_listrik": {
     "code": "ketersediaan_listrik",
     "label": "ketersediaan listrik di satuan pendidikan",
-    "def": "Ada;\r\nTidak Ada",
+    "def": "ketersediaan listrik di satuan pendidikan",
     "conceptualDef": "",
-    "operationalDef": "Ada;\r\nTidak Ada",
-    "range": "Ada;\r\nTidak Ada",
-    "level": "Level 2 (Pendidik/Guru)",
+    "operationalDef": "ketersediaan listrik di satuan pendidikan",
+    "range": "Ada;\nTidak Ada",
+    "level": "Level 2 (Sekolah)",
     "source": "Dapodik"
   },
   "guru_jumlah_komp_milik": {
@@ -2092,11 +2092,11 @@
   "jumlah_komp_milik": {
     "code": "jumlah_komp_milik",
     "label": "jumlah komputer yang dimiliki oleh satuan pendidikan",
-    "def": "0-tak terhingga",
+    "def": "jumlah komputer yang dimiliki oleh satuan pendidikan",
     "conceptualDef": "",
-    "operationalDef": "0-tak terhingga",
+    "operationalDef": "jumlah komputer yang dimiliki oleh satuan pendidikan",
     "range": "0-tak terhingga",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Sekolah)",
     "source": "Dapodik"
   },
   "guru_jumlah_perpus": {
@@ -2112,11 +2112,11 @@
   "jumlah_perpus": {
     "code": "jumlah_perpus",
     "label": "jumlah perpustakaan di satuan pendidikan",
-    "def": "0-tak terhingga",
+    "def": "jumlah perpustakaan di satuan pendidikan",
     "conceptualDef": "",
-    "operationalDef": "0-tak terhingga",
+    "operationalDef": "jumlah perpustakaan di satuan pendidikan",
     "range": "0-tak terhingga",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Sekolah)",
     "source": "Dapodik"
   },
   "guru_jumlah_rombel": {
@@ -2132,11 +2132,11 @@
   "jumlah_rombel": {
     "code": "jumlah_rombel",
     "label": "jumlah rombongan belajar (rombel)/kelas di satuan pendidikan",
-    "def": "0-tak terhingga",
+    "def": "jumlah rombongan belajar (rombel)/kelas di satuan pendidikan",
     "conceptualDef": "",
-    "operationalDef": "0-tak terhingga",
+    "operationalDef": "jumlah rombongan belajar (rombel)/kelas di satuan pendidikan",
     "range": "0-tak terhingga",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Sekolah)",
     "source": "Dapodik"
   },
   "guru_jumlah_siswa_rombel": {
@@ -2152,11 +2152,11 @@
   "jumlah_siswa_rombel": {
     "code": "jumlah_siswa_rombel",
     "label": "jumlah siswa dalam rombongan belajar (rombel)/kelas V atau kelas VIII atau kelas XI",
-    "def": "0-tak terhingga",
+    "def": "jumlah siswa dalam rombongan belajar (rombel)/kelas V atau kelas VIII atau kelas XI",
     "conceptualDef": "",
-    "operationalDef": "0-tak terhingga",
+    "operationalDef": "jumlah siswa dalam rombongan belajar (rombel)/kelas V atau kelas VIII atau kelas XI",
     "range": "0-tak terhingga",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Sekolah)",
     "source": "Dapodik"
   },
   "guru_jumlah_siswa_penerima_PIP": {
@@ -2172,11 +2172,11 @@
   "jumlah_siswa_penerima_PIP": {
     "code": "jumlah_siswa_penerima_PIP",
     "label": "jumlah siswa penerima PIP (Program Indonesia Pintar)",
-    "def": "0-tak terhingga",
+    "def": "jumlah siswa penerima PIP (Program Indonesia Pintar)",
     "conceptualDef": "",
-    "operationalDef": "0-tak terhingga",
+    "operationalDef": "jumlah siswa penerima PIP (Program Indonesia Pintar)",
     "range": "0-tak terhingga",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Sekolah)",
     "source": "Dapodik"
   },
   "guru_rasio_siswa_penerima_PIP": {
@@ -2192,11 +2192,11 @@
   "rasio_siswa_penerima_PIP": {
     "code": "rasio_siswa_penerima_PIP",
     "label": "jumlah siswa penerima PIP (Program Indonesia Pintar) dibandingkan dengan total peserta didik di satuan pendidikan",
-    "def": "0%-100%",
+    "def": "jumlah siswa penerima PIP (Program Indonesia Pintar) dibandingkan dengan total peserta didik di satuan pendidikan",
     "conceptualDef": "",
-    "operationalDef": "0%-100%",
+    "operationalDef": "jumlah siswa penerima PIP (Program Indonesia Pintar) dibandingkan dengan total peserta didik di satuan pendidikan",
     "range": "0%-100%",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Sekolah)",
     "source": "Dapodik"
   },
   "guru_SES_sekolah": {
@@ -2212,11 +2212,11 @@
   "SES_sekolah": {
     "code": "SES_sekolah",
     "label": "Indeks sosial ekonomi status sekolah berdasarkan agregasi IASP dan Asesmen Nasional",
-    "def": "0-100",
+    "def": "Indeks sosial ekonomi status sekolah berdasarkan agregasi IASP dan Asesmen Nasional",
     "conceptualDef": "",
-    "operationalDef": "0-100",
+    "operationalDef": "Indeks sosial ekonomi status sekolah berdasarkan agregasi IASP dan Asesmen Nasional",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 2 (Sekolah)",
     "source": "AN"
   },
   "guru_ACH": {
@@ -2231,12 +2231,12 @@
   },
   "ACH": {
     "code": "ACH",
-    "label": "Ekspektasi akademik menurut guru",
-    "def": "Nilai komposit guru dalam mengkomunikasikan pesan bahwa guru percaya akan kemampuan semua siswa untuk belajar dan berprestasi secara akademik.",
-    "conceptualDef": "Mengkomunikasikan pesan bahwa guru percaya akan kemampuan semua siswa untuk belajar dan berprestasi secara akademik berdasarkan pandangan guru",
-    "operationalDef": "Nilai komposit guru dalam mengkomunikasikan pesan bahwa guru percaya akan kemampuan semua siswa untuk belajar dan berprestasi secara akademik.",
+    "label": "Ekspektasi akademik menurut siswa",
+    "def": "Nilai komposit siswa dalam mengkomunikasikan pesan bahwa guru percaya akan kemampuan semua siswa untuk belajar dan berprestasi secara akademik.",
+    "conceptualDef": "Mengkomunikasikan pesan bahwa guru percaya akan kemampuan semua siswa untuk belajar dan berprestasi secara akademik berdasarkan pandangan siswa",
+    "operationalDef": "Nilai komposit siswa dalam mengkomunikasikan pesan bahwa guru percaya akan kemampuan semua siswa untuk belajar dan berprestasi secara akademik.",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_AIN": {
@@ -2251,12 +2251,12 @@
   },
   "AIN": {
     "code": "AIN",
-    "label": "Instruksi yang adaptif menurut guru",
-    "def": "Nilai komposit guru terhadap praktik adaptasi pengajaran yang dilakukan di sekolah sesuai dengan kebutuhan siswa",
-    "conceptualDef": "Praktik adaptasi pengajaran oleh guru\r\nsebagai respon atas umpan balik dan\r\nrespon siswa terhadap kebutuhan\r\nbelajarnya berdasarkan pandangan guru",
-    "operationalDef": "Nilai komposit guru terhadap praktik adaptasi pengajaran yang dilakukan di sekolah sesuai dengan kebutuhan siswa",
+    "label": "Instruksi yang adaptif menurut siswa",
+    "def": "Nilai komposit siswa terhadap praktik adaptasi pengajaran yang dilakukan di sekolah sesuai dengan kebutuhan siswa",
+    "conceptualDef": "Praktik adaptasi pengajaran oleh guru\nsebagai respon atas umpan balik dan\nrespon siswa terhadap kebutuhan\nbelajarnya berdasarkan pandangan siswa",
+    "operationalDef": "Nilai komposit siswa terhadap praktik adaptasi pengajaran yang dilakukan di sekolah sesuai dengan kebutuhan siswa",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_AKC": {
@@ -2271,12 +2271,12 @@
   },
   "AKC": {
     "code": "AKC",
-    "label": "Panduan guru menurut guru",
-    "def": "Nilai komposit guru terhadap cara guru memandu dan mengajar siswa di kelas untuk membentuk pengetahuan baru",
-    "conceptualDef": "Penjelasan guru yang terstruktur tentang materi pelajaran, serta pemberian contoh tentang cara menerapkannya berdasarkan pandangan guru",
-    "operationalDef": "Nilai komposit guru terhadap cara guru memandu dan mengajar siswa di kelas untuk membentuk pengetahuan baru",
+    "label": "Panduan guru menurut siswa",
+    "def": "Nilai komposit siswa terhadap cara guru memandu dan mengajar siswa di kelas untuk membentuk pengetahuan baru",
+    "conceptualDef": "Penjelasan guru yang terstruktur tentang materi pelajaran, serta pemberian contoh tentang cara menerapkannya, berdasarkan pandangan siswa",
+    "operationalDef": "Nilai komposit siswa terhadap cara guru memandu dan mengajar siswa di kelas untuk membentuk pengetahuan baru",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_APC": {
@@ -2352,11 +2352,11 @@
   "BCP": {
     "code": "BCP",
     "label": "Pemahaman dan sikap terhadap hukuman fisik",
-    "def": "Nilai komposit terhadap pengetahuan guru dan kepala sekolah tentang hukuman fisik yang terjadi di sekolah",
-    "conceptualDef": "Pengetahuan guru dan kepala sekolah tentang hukuman fisik yang terjadi di sekolah",
-    "operationalDef": "Nilai komposit terhadap pengetahuan guru dan kepala sekolah tentang hukuman fisik yang terjadi di sekolah",
+    "def": "Nilai komposit dari kepala satuan pendidikan, pendidik, dan peserta didik terkait pengetahuan dan sikap pendidik untuk menghindari hukuman fisik di satuan pendidikan.",
+    "conceptualDef": "Pengetahuan dan sikap pendidik untuk menghindari hukuman fisik di satuan pendidikan.",
+    "operationalDef": "Nilai komposit dari kepala satuan pendidikan, pendidik, dan peserta didik terkait pengetahuan dan sikap pendidik untuk menghindari hukuman fisik di satuan pendidikan.",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_CAF": {
@@ -2371,12 +2371,12 @@
   },
   "CAF": {
     "code": "CAF",
-    "label": "Umpan balik konstruktif menurut guru",
-    "def": "Nilai komposit guru dalam penyampaian hasil evaluasi guru terhadap pembelajaran sehingga memotivasi siswa untuk terus meningkatkan kemampuannya",
-    "conceptualDef": "Penyampaian hasil evaluasi guru terhadap hasil pekerjaan dan perilaku siswa sehingga memotivasi siswa untuk terus meningkatkan kemampuannya berdasarkan pandangan guru",
-    "operationalDef": "Nilai komposit guru dalam penyampaian hasil evaluasi guru terhadap pembelajaran sehingga memotivasi siswa untuk terus meningkatkan kemampuannya",
+    "label": "Umpan balik konstruktif menurut siswa",
+    "def": "Nilai komposit siswa dalam penyampaian hasil evaluasi guru terhadap pembelajaran sehingga memotivasi siswa untuk terus meningkatkan kemampuannya",
+    "conceptualDef": "Penyampaian hasil evaluasi guru terhadap hasil pekerjaan dan perilaku siswa sehingga memotivasi siswa untuk terus meningkatkan kemampuannya berdasarkan pandangan siswa",
+    "operationalDef": "Nilai komposit siswa dalam penyampaian hasil evaluasi guru terhadap pembelajaran sehingga memotivasi siswa untuk terus meningkatkan kemampuannya",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_COP": {
@@ -2432,11 +2432,11 @@
   "ENP": {
     "code": "ENP",
     "label": "Penerapan praktik inovatif",
-    "def": "Nilai komposit kepala satuan pendidikan dan pendidik terkait praktik pengajaran pendidik yang inovatif untuk meningkatkan kualitas pengajaran",
+    "def": "Nilai komposit kepala satuan pendidikan, pendidik, dan peserta didik terkait praktik pengajaran pendidik yang inovatif untuk meningkatkan kualitas pengajaran",
     "conceptualDef": "Inovasi pembelajaran berdasarkan refleksi yang dilakukan pendidik.",
-    "operationalDef": "Nilai komposit kepala satuan pendidikan dan pendidik terkait praktik pengajaran pendidik yang inovatif untuk meningkatkan kualitas pengajaran",
+    "operationalDef": "Nilai komposit kepala satuan pendidikan, pendidik, dan peserta didik terkait praktik pengajaran pendidik yang inovatif untuk meningkatkan kualitas pengajaran",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_EQC": {
@@ -2452,11 +2452,11 @@
   "EQC": {
     "code": "EQC",
     "label": "Dukungan atas kesetaraan budaya pimpinan sekolah dan guru",
-    "def": "Nilai komposit pimpinan sekolah dan guru terhadap dukungan atas kesetaraan budaya di sekolah di survei lingkungan belajar",
+    "def": "Nilai komposit pimpinan sekolah, guru, dan peserta didik terhadap dukungan atas kesetaraan budaya di sekolah di survei lingkungan belajar",
     "conceptualDef": "Dukungan atas kesetaraan hak-hak sipil antara kelompok mayoritas dan minoritas budaya dari kepala sekolah dan wakil kepala sekolah dan guru",
-    "operationalDef": "Nilai komposit pimpinan sekolah dan guru terhadap dukungan atas kesetaraan budaya di sekolah di survei lingkungan belajar",
+    "operationalDef": "Nilai komposit pimpinan sekolah, guru, dan peserta didik terhadap dukungan atas kesetaraan budaya di sekolah di survei lingkungan belajar",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_EQR": {
@@ -2472,11 +2472,11 @@
   "EQR": {
     "code": "EQR",
     "label": "Dukungan atas kesetaraan agama pimpinan sekolah dan guru",
-    "def": "Nilai komposit pimpinan sekolah dan guru terhadap dukungan atas kesetaraan agama di sekolah di survei lingkungan belajar",
+    "def": "Nilai komposit pimpinan sekolah, guru, dan peserta didik terhadap dukungan atas kesetaraan agama di sekolah di survei lingkungan belajar",
     "conceptualDef": "Dukungan atas kesetaraan hak-hak sipil antara kelompok mayoritas dan minoritas agama dari kepala sekolah dan wakil kepala sekolah. dan guru",
-    "operationalDef": "Nilai komposit pimpinan sekolah dan guru terhadap dukungan atas kesetaraan agama di sekolah di survei lingkungan belajar",
+    "operationalDef": "Nilai komposit pimpinan sekolah, guru, dan peserta didik terhadap dukungan atas kesetaraan agama di sekolah di survei lingkungan belajar",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_HWS": {
@@ -2512,11 +2512,11 @@
   "ITB": {
     "code": "ITB",
     "label": "Sikap non dikskriminasi dalam pembelajaran menurut guru",
-    "def": "Nilai komposit siswa dalam memberikan pandangan terhadap sikap guru pada warga sekolah yang memiliki perbedaan. seperti perbedaan suku, agama, ras, status sosial ekonomi, tingkat kecerdasan.",
-    "conceptualDef": "Pandangan siswa terhadap sikap guru pada warga sekolah yang memiliki perbedaan. seperti perbedaan suku, agama, ras, status sosial ekonomi, tingkat kecerdasan.",
-    "operationalDef": "Nilai komposit siswa dalam memberikan pandangan terhadap sikap guru pada warga sekolah yang memiliki perbedaan. seperti perbedaan suku, agama, ras, status sosial ekonomi, tingkat kecerdasan.",
+    "def": "Rata-rata nilai sikap non diskriminasi guru dalam pembelajaran di sekolah berdasarkan survei lingkungan belajar",
+    "conceptualDef": "Tingkat sikap non diskriminasi guru dalam pembelajaran di sekolah",
+    "operationalDef": "Rata-rata nilai sikap non diskriminasi guru dalam pembelajaran di sekolah berdasarkan survei lingkungan belajar",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_JOT": {
@@ -2551,12 +2551,12 @@
   },
   "KKG": {
     "code": "KKG",
-    "label": "Konsepsi terhadap kesetaraan gender menurut kepala sekolah dan guru",
-    "def": "Nilai komposit kepala sekolah dan guru terhadap pengetahuan dan pemahaman tentang konsep kesetaraan gender",
-    "conceptualDef": "Pendapat/penilaian dan pengetahuan kepala sekolah dan guru tentang konsep kesetaraan gender",
-    "operationalDef": "Nilai komposit kepala sekolah dan guru terhadap pengetahuan dan pemahaman tentang konsep kesetaraan gender",
+    "label": "Konsepsi terhadap kesetaraan gender menurut siswa",
+    "def": "Nilai rerata siswa terhadap pengetahuan dan pemahaman tentang konsep kesetaraan gender di sekolah",
+    "conceptualDef": "Pendapat/penilaian dan pengetahuan siswa tentang konsep kesetaraan gender",
+    "operationalDef": "Nilai rerata siswa terhadap pengetahuan dan pemahaman tentang konsep kesetaraan gender di sekolah",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_KPC": {
@@ -2711,12 +2711,12 @@
   },
   "OCC": {
     "code": "OCC",
-    "label": "Suasana kelas yang mendukung pembelajaran menurut guru (berubah nama)",
-    "def": "Nilai komposit guru terhadap suasana pembelajaran di kelas untuk proses belajar mengajar (tanpa disrupsi yang mengalihkan perhatian dari aktivitas belajar)",
-    "conceptualDef": "Suasana kelas yang kondusif untuk proses belajar mengajar (tanpa disrupsi yang mengalihkan perhatian dari aktivitas belajar) berdasarkan pandangan guru",
-    "operationalDef": "Nilai komposit guru terhadap suasana pembelajaran di kelas untuk proses belajar mengajar (tanpa disrupsi yang mengalihkan perhatian dari aktivitas belajar)",
+    "label": "Suasana kelas yang mendukung pembelajaran menurut siswa (berubah nama)",
+    "def": "Nilai komposit siswa terhadap suasana pembelajaran di kelas untuk proses belajar mengajar (tanpa disrupsi yang mengalihkan perhatian dari aktivitas belajar)",
+    "conceptualDef": "Suasana kelas yang kondusif untuk proses belajar mengajar (tanpa disrupsi yang mengalihkan perhatian dari aktivitas belajar) berdasarkan pandangan siswa",
+    "operationalDef": "Nilai komposit siswa terhadap suasana pembelajaran di kelas untuk proses belajar mengajar (tanpa disrupsi yang mengalihkan perhatian dari aktivitas belajar)",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_OPC": {
@@ -2751,12 +2751,12 @@
   },
   "PBR": {
     "code": "PBR",
-    "label": "Penerapan penghargaan dan sanksi secara proporsional menurut guru (berubah nama)",
-    "def": "Nilai komposit guru terhadap penerapan prinsip disiplin positif (penguatan atau pembentukan perilaku adaptif) dalam menegakkan aturan kelas yang telah disepakati bersama.",
-    "conceptualDef": "Penerapan prinsip disiplin positif (penguatan atau pembentukan perilaku adaptif) dalam menegakkan aturan kelas yang telah disepakati bersama berdasarkan pandangan guru",
-    "operationalDef": "Nilai komposit guru terhadap penerapan prinsip disiplin positif (penguatan atau pembentukan perilaku adaptif) dalam menegakkan aturan kelas yang telah disepakati bersama.",
+    "label": "Penerapan penghargaan dan sanksi secara proporsional menurut siswa (beubah nama)",
+    "def": "Nilai komposit siswa terhadap penerapan prinsip disiplin positif (penguatan atau pembentukan perilaku adaptif) dalam menegakkan aturan kelas yang telah disepakati bersama.",
+    "conceptualDef": "Penerapan prinsip disiplin positif (penguatan atau pembentukan perilaku adaptif) dalam menegakkan aturan kelas yang telah disepakati bersama berdasarkan pandangan siswa",
+    "operationalDef": "Nilai komposit siswa terhadap penerapan prinsip disiplin positif (penguatan atau pembentukan perilaku adaptif) dalam menegakkan aturan kelas yang telah disepakati bersama.",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_PBU": {
@@ -2772,11 +2772,11 @@
   "PBU": {
     "code": "PBU",
     "label": "Program dan kebijakan sekolah tentang perundungan",
-    "def": "Nilai komposit kepala sekolah terkait program dan kebijakan sekolah untuk mencegah dan menangani perundungan di sekolah.",
+    "def": "Nilai komposit siswa terkait program dan kebijakan sekolah untuk mencegah dan menangani perundungan di sekolah.",
     "conceptualDef": "Program dan kebijakan sekolah yang bertujuan mencegah dan menangani perundungan di sekolah.",
-    "operationalDef": "Nilai komposit kepala sekolah terkait program dan kebijakan sekolah untuk mencegah dan menangani perundungan di sekolah.",
+    "operationalDef": "Nilai komposit siswa terkait program dan kebijakan sekolah untuk mencegah dan menangani perundungan di sekolah.",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_PCP": {
@@ -2792,11 +2792,11 @@
   "PCP": {
     "code": "PCP",
     "label": "Program dan kebijakan sekolah tentang hukuman fisik",
-    "def": "Nilai komposit kepala sekolah terkait program dan kebijakan sekolah untuk mencegah dan menangani hukuman fisik di sekolah.",
+    "def": "Nilai komposit siswa terkait program dan kebijakan sekolah untuk mencegah dan menangani hukuman fisik di sekolah.",
     "conceptualDef": "Program dan kebijakan sekolah yang bertujuan mencegah dan menangani hukuman fisik di sekolah.",
-    "operationalDef": "Nilai komposit kepala sekolah terkait program dan kebijakan sekolah untuk mencegah dan menangani hukuman fisik di sekolah.",
+    "operationalDef": "Nilai komposit siswa terkait program dan kebijakan sekolah untuk mencegah dan menangani hukuman fisik di sekolah.",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_PGP": {
@@ -2851,12 +2851,12 @@
   },
   "PKG": {
     "code": "PKG",
-    "label": "Perilaku kepala sekolah dan guru terhadap kesetaraan gender",
-    "def": "Nilai komposit kepala sekolah dan guru dalam berperilaku dan bertindak yang mencerminkan kesetaraan gender",
-    "conceptualDef": "Tindakan-tindakan kepala sekolah dan guru dalam mendukung kesetaraan gender di lingkungan sekolah",
-    "operationalDef": "Nilai komposit kepala sekolah dan guru dalam berperilaku dan bertindak yang mencerminkan kesetaraan gender",
+    "label": "Perilaku siswa terhadap kesetaraan gender",
+    "def": "Nilai rerata siswa dalam berperilaku dan bertindak yang mencerminkan kesetaraan gender di sekolah",
+    "conceptualDef": "Tindakan-tindakan siswa dalam mendukung kesetaraan gender di lingkungan sekolah",
+    "operationalDef": "Nilai rerata siswa dalam berperilaku dan bertindak yang mencerminkan kesetaraan gender di sekolah",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_PMU": {
@@ -2876,7 +2876,7 @@
     "conceptualDef": "Tingkat keterlibatan peserta didik dalam proses perencanaan, pengembangan, dan pelaksanaan aktivitas di satuan pendidikan",
     "operationalDef": "Nilai komposit dari kepala satuan pendidikan, pendidik, dan peserta didik terkait tingkat keterlibatan peserta didik dalam proses perencanaan, pengembangan, dan pelaksanaan aktivitas di satuan pendidikan",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_POT": {
@@ -2896,7 +2896,7 @@
     "conceptualDef": "Tingkat keterlibatan orang tua dalam proses perencanaan, pengembangan, dan pelaksanaan aktivitas di satuan pendidikan",
     "operationalDef": "Nilai komposit dari kepala satuan pendidikan, pendidik, dan peserta didik terkait tingkat keterlibatan orang tua dalam proses perencanaan, pengembangan, dan pelaksanaan aktivitas di satuan pendidikan",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_PPC": {
@@ -2952,11 +2952,11 @@
   "PSA": {
     "code": "PSA",
     "label": "Program dan kebijakan sekolah tentang penyalahgunaan rokok, minuman keras, dan narkoba",
-    "def": "Nilai komposit kepala sekolah terkait program dan kebijakan sekolah untuk mencegah dan menangani aktivitas atau kasus penyalahgunaan rokok, minuman keras, dan narkoba di sekolah.",
+    "def": "Nilai rerata siswa terkait program dan kebijakan sekolah untuk mencegah dan menangani aktivitas atau kasus penyalahgunaan rokok, minuman keras, dan narkoba di sekolah.",
     "conceptualDef": "Program dan kebijakan sekolah yang bertujuan mencegah dan menangani aktivitas atau kasus penyalahgunaan rokok, minuman keras, dan narkoba di sekolah.",
-    "operationalDef": "Nilai komposit kepala sekolah terkait program dan kebijakan sekolah untuk mencegah dan menangani aktivitas atau kasus penyalahgunaan rokok, minuman keras, dan narkoba di sekolah.",
+    "operationalDef": "Nilai rerata siswa terkait program dan kebijakan sekolah untuk mencegah dan menangani aktivitas atau kasus penyalahgunaan rokok, minuman keras, dan narkoba di sekolah.",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_PSV": {
@@ -2972,11 +2972,11 @@
   "PSV": {
     "code": "PSV",
     "label": "Program dan kebijakan sekolah tentang kekerasan seksual",
-    "def": "Nilai komposit kepala sekolah terkait program dan kebijakan sekolah untuk mencegah dan menangani kasus kekerasan seksual di sekolah.",
+    "def": "Nilai rerata siswa terkait program dan kebijakan sekolah untuk mencegah dan menangani kasus kekerasan seksual di sekolah.",
     "conceptualDef": "Program dan kebijakan sekolah yang bertujuan mencegah dan menangani kasus-kasus kekerasan seksual di sekolah.",
-    "operationalDef": "Nilai komposit kepala sekolah terkait program dan kebijakan sekolah untuk mencegah dan menangani kasus kekerasan seksual di sekolah.",
+    "operationalDef": "Nilai rerata siswa terkait program dan kebijakan sekolah untuk mencegah dan menangani kasus kekerasan seksual di sekolah.",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_RC": {
@@ -3016,7 +3016,7 @@
     "conceptualDef": "Program dan kebijakan satuan pendidikan yang bertujuan mencegah dan menangani kasus-kasus intoleransi di satuan pendidikan.",
     "operationalDef": "Nilai komposit dari kepala satuan pendidikan, pendidik, dan peserta didik terkait program dan kebijakan satuan pendidikan yang bertujuan mencegah dan menangani kasus-kasus intoleransi di satuan pendidikan.",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_SBU": {
@@ -3036,7 +3036,7 @@
     "conceptualDef": "Keyakinan akan kemampuan guru dan kepala sekolah dalam menangani kasus perundungan yang terjadi di sekolah",
     "operationalDef": "Nilai komposit terhadap Keyakinan akan kemampuan guru dan kepala sekolah dalam menangani kasus perundungan yang terjadi di sekolah",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_SCO": {
@@ -3071,12 +3071,12 @@
   },
   "SKG": {
     "code": "SKG",
-    "label": "Sikap Kepsek dan Guru terhadap kesetaraan gender",
-    "def": "Nilai komposit kepala sekolah dan guru dalam mendukung kesetaraan gender",
-    "conceptualDef": "Kecenderungan kepala sekolah dan guru untuk mendukung atau tidak mendukung kesetaraan gender",
-    "operationalDef": "Nilai komposit kepala sekolah dan guru dalam mendukung kesetaraan gender",
+    "label": "Sikap Siswa terhadap kesetaraan gender",
+    "def": "Nilai rerata siswa dalam mendukung kesetaraan gender di sekolah",
+    "conceptualDef": "Kecenderungan siswa untuk mendukung atau tidak mendukung kesetaraan gender",
+    "operationalDef": "Nilai rerata siswa dalam mendukung kesetaraan gender di sekolah",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_SSV": {
@@ -3111,12 +3111,12 @@
   },
   "TAS": {
     "code": "TAS",
-    "label": "Perhatian dan kepedulian guru menurut guru",
-    "def": "Nilai komposit guru terhadap pemberian perhatian dan kepedulian guru di sekolah",
-    "conceptualDef": "Tingkat guru dalam memberikan perhatian dan bantuan ekstra berdasarkan pandangan guru",
-    "operationalDef": "Nilai komposit guru terhadap pemberian perhatian dan kepedulian guru di sekolah",
+    "label": "Perhatian dan kepedulian guru menurut siswa",
+    "def": "Nilai komposit siswa terhadap pemberian perhatian dan kepedulian guru di sekolah",
+    "conceptualDef": "Tingkat guru dalam memberikan perhatian dan bantuan ekstra berdasarkan pandangan siswa",
+    "operationalDef": "Nilai komposit siswa terhadap pemberian perhatian dan kepedulian guru di sekolah",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_TOC": {
@@ -3136,7 +3136,7 @@
     "conceptualDef": "Sikap menerima dan menghargai budaya agama di sekolah bagi pimpinan sekolah dan guru",
     "operationalDef": "Nilai komposit pimpinan sekolah dan guru terhadap sikap menerima dan menghargai keragaman budaya di sekolah di survei lingkungan belajar",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_TOR": {
@@ -3156,7 +3156,7 @@
     "conceptualDef": "Sikap menerima dan menghargai keragaman agama di sekolah bagi pimpinan sekolah dan guru",
     "operationalDef": "Nilai komposit pimpinan sekolah dan guru terhadap sikap menerima dan menghargai keragaman agama di sekolah di survei lingkungan belajar",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_TSC": {
@@ -3171,12 +3171,12 @@
   },
   "TSC": {
     "code": "TSC",
-    "label": "Aktivitas interaktif menurut guru",
-    "def": "Nilai komposit guru terhadap kemampuan mengajar yang mendorong kolaborasi dan komunikasi antar siswa dalam konteks memaknai dan memahami materi ajar.",
-    "conceptualDef": "Praktik pengajaran yang mendorong kolaborasi dan komunikasi antar siswa dalam konteks memaknai dan memahami materi ajar berdasarkan pandangan guru",
-    "operationalDef": "Nilai komposit guru terhadap kemampuan mengajar yang mendorong kolaborasi dan komunikasi antar siswa dalam konteks memaknai dan memahami materi ajar.",
+    "label": "Aktivitas interaktif menurut siswa",
+    "def": "Nilai komposit siswa terhadap kemampuan mengajar yang mendorong kolaborasi dan komunikasi antar siswa dalam konteks memaknai dan memahami materi ajar.",
+    "conceptualDef": "Praktik pengajaran yang mendorong kolaborasi dan komunikasi antar siswa dalam konteks memaknai dan memahami materi ajar. berdasarkan pandangan siswa",
+    "operationalDef": "Nilai komposit siswa terhadap kemampuan mengajar yang mendorong kolaborasi dan komunikasi antar siswa dalam konteks memaknai dan memahami materi ajar.",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_SMK_GRMAG": {
@@ -3191,12 +3191,12 @@
   },
   "SMK_GRMAG": {
     "code": "SMK_GRMAG",
-    "label": "Pelaksanaan guru magang",
-    "def": "Nilai komposit dari kepala satuan pendidikan, pendidik, dan peserta didik terkait pelaksanaan guru magang berdasarkan persentase guru kejuruan yang melaksanakan magang dalam satu tahun, durasi magang, kesesuaian tempat magang dengan jurusan yang diampu, klasifikasi usaha tempat magang, serta diseminasi hasil magang di sekolah.",
-    "conceptualDef": "Nilai komposit dari kepala satuan pendidikan, pendidik, dan peserta didik terkait pelaksanaan guru magang berdasarkan persentase guru kejuruan yang melaksanakan magang dalam satu tahun, durasi magang, kesesuaian tempat magang dengan jurusan yang diampu, klasifikasi usaha tempat magang, serta diseminasi hasil magang di sekolah.",
-    "operationalDef": "Nilai komposit dari kepala satuan pendidikan, pendidik, dan peserta didik terkait pelaksanaan guru magang berdasarkan persentase guru kejuruan yang melaksanakan magang dalam satu tahun, durasi magang, kesesuaian tempat magang dengan jurusan yang diampu, klasifikasi usaha tempat magang, serta diseminasi hasil magang di sekolah.",
+    "label": "Guru SMK melakukan magang di dunia kerja dan kualitas proses magang dalam satu tahun terakhir",
+    "def": "Nilai rerata siswa terhadap keterlaksanaan guru magang di DUDI",
+    "conceptualDef": "Jumlah guru SMK melakukan magang di dunia kerja dan kualitas proses magang dalam satu tahun terakhir",
+    "operationalDef": "Nilai rerata siswa terhadap keterlaksanaan guru magang di DUDI",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_SMK_GTINS": {
@@ -3211,12 +3211,12 @@
   },
   "SMK_GTINS": {
     "code": "SMK_GTINS",
-    "label": "Pelaksanaan pembelajaran oleh guru tamu atau instruktur kejuruan dari dunia kerja",
-    "def": "Nilai komposit dari kepala satuan pendidikan, pendidik, dan peserta didik terkait tingkat keterlibatan orang tua dalam proses perencanaan, pengembangan, dan pelaksanaan aktivitas di satuan pendidikan",
-    "conceptualDef": "Nilai komposit dari kepala satuan pendidikan, pendidik, dan peserta didik terkait pelaksanaan pembelajaran oleh guru tamu atau instruktur kejuruan dari dunia kerja berdasarkan durasi, cakupan konsentrasi keahlian yang memiliki guru tamu, spesialisasi dan kualifikasi guru tamu dan keterlibatannya dalam pengembangan materi pembelajaran, serta evaluasi kinerja guru tamu.",
-    "operationalDef": "Nilai komposit dari kepala satuan pendidikan, pendidik, dan peserta didik terkait tingkat keterlibatan orang tua dalam proses perencanaan, pengembangan, dan pelaksanaan aktivitas di satuan pendidikan",
+    "label": "Guru tamu dan instruktur dari dunia kerja yang mengajar di SMK",
+    "def": "Nilai rerata siswa terhadap tingkat keterlaksanaan pembelajaran yang diampu oleh guru/instruktur tamu",
+    "conceptualDef": "Jumlah guru tamu dan instruktur dari dunia kerja yang mengajar di SMK. jumlah jam mengajar. jumlah konsentrasi keahlian yang menghadirkan guru tamu dan instruktur. pengaturan jadwal mengajar guru tamu dan instruktur",
+    "operationalDef": "Nilai rerata siswa terhadap tingkat keterlaksanaan pembelajaran yang diampu oleh guru/instruktur tamu",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_SMK_INDS": {
@@ -3231,12 +3231,12 @@
   },
   "SMK_INDS": {
     "code": "SMK_INDS",
-    "label": "Pelatihan keahlian berbasis industri pada guru SMK menurut kepsek dan guru",
-    "def": "Nilai komposit kepala sekolah dan guru terhadap pelatihan keahlian berbasis industri pada guru SMK",
+    "label": "Pelatihan keahlian berbasis industri pada guru SMK menurut siswa",
+    "def": "Nilai rerata siswa terhadap terhadap pelatihan keahlian berbasis industri pada guru SMK",
     "conceptualDef": "Ketersediaan guru kejuruan dan teknisi yang memiliki pengalaman industri dan sertifikasi kompetensi serta menghadirkan guru tamu sebagai instruktur pembelajaran.",
-    "operationalDef": "Nilai komposit kepala sekolah dan guru terhadap pelatihan keahlian berbasis industri pada guru SMK",
+    "operationalDef": "Nilai rerata siswa terhadap terhadap pelatihan keahlian berbasis industri pada guru SMK",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_SMK_KLAB": {
@@ -3311,12 +3311,12 @@
   },
   "SMK_PBEL": {
     "code": "SMK_PBEL",
-    "label": "Penyelenggaraan pembelajaran di sekolah memiliki standar yang selaras dengan kebutuhan dunia kerja menurut guru dan kepala sekolah",
-    "def": "Nilai komposit kepsek dan guru terhadap proses pembelajaran yang selaras dengan DUDI",
+    "label": "Penyelenggaraan pembelajaran di sekolah memiliki standar yang selaras dengan kebutuhan dunia kerja menurut siswa",
+    "def": "Nilai rerata siswa terhadap proses pembelajaran yang selaras dengan DUDI",
     "conceptualDef": "Pelaksanaan proses pembelajaran di kelas yang diselaraskan dengan standar dunia kerja dan skema SKKNI.",
-    "operationalDef": "Nilai komposit kepsek dan guru terhadap proses pembelajaran yang selaras dengan DUDI",
+    "operationalDef": "Nilai rerata siswa terhadap proses pembelajaran yang selaras dengan DUDI",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_SMK_PIM": {
@@ -3332,11 +3332,11 @@
   "SMK_PIM": {
     "code": "SMK_PIM",
     "label": "Kepemimpinan kepala sekolah SMK (manajerial, kewirausahaan dan supervisi pembelajaran)",
-    "def": "Nilai komposit kepala sekolah dan guru terhadap efektivitas kepemimpinan kepala SMK dalam penguatan kerja sama. inovasi. dan pengelolaan sekolah berbasis dunia kerja.",
-    "conceptualDef": "Efektivitas kepemimpinan kepala SMK (manajerial, kewirausahaan, dan supervisi pembelajaran) dalam penguatan kerja sama. inovasi. dan pengelolaan sekolah berbasis dunia kerja",
-    "operationalDef": "Nilai komposit kepala sekolah dan guru terhadap efektivitas kepemimpinan kepala SMK dalam penguatan kerja sama. inovasi. dan pengelolaan sekolah berbasis dunia kerja.",
+    "def": "Nilai rerata siswa terhadap terhadap efektivitas kepemimpinan kepala SMK dalam penguatan kerja sama. inovasi. dan pengelolaan sekolah berbasis dunia kerja.",
+    "conceptualDef": "Efektivitas kepemimpinan kepala SMK (manajerial. kewirausahaan dan supervisi pembelajaran) dalam penguatan kerja sama. inovasi. dan pengelolaan sekolah berbasis dunia kerja",
+    "operationalDef": "Nilai rerata siswa terhadap terhadap efektivitas kepemimpinan kepala SMK dalam penguatan kerja sama. inovasi. dan pengelolaan sekolah berbasis dunia kerja.",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_SMK_PKL": {
@@ -3412,11 +3412,11 @@
   "SMK_TEFA": {
     "code": "SMK_TEFA",
     "label": "Penyelenggaraan Teaching Factory",
-    "def": "Nilai komposit kepsek dan guru terhadap penyelenggaraan teaching factory",
+    "def": "Nilai rerata siswa terhadap penyelenggaraan teaching factory",
     "conceptualDef": "Pembelajaran berbasis industri yang menghasilkan produk (barang dan jasa) yang bernilai ekonomis dan diterima pasar.",
-    "operationalDef": "Nilai komposit kepsek dan guru terhadap penyelenggaraan teaching factory",
+    "operationalDef": "Nilai rerata siswa terhadap penyelenggaraan teaching factory",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_SPAB_1": {
@@ -3436,7 +3436,7 @@
     "conceptualDef": "Tingkat pengetahuan, kesadaran, dan tindakan komunitas satuan pendidikan (kepala satuan pendidikan, guru, murid) terhadap potensi ancaman bencana, kerentanan, dan kapasitas yang dimiliki dalam menghadapi bencana, serta kecenderungan perilaku yang mendukung upaya keselamatan, mitigasi, dan kesiapsiagaan bencana",
     "operationalDef": "Nilai komposit Kepala Sekolah, Guru, dan Murid terkait tingkat pengetahuan, kesadaran, dan tindakan komunitas satuan pendidikan (kepala satuan pendidikan, guru, murid) terhadap potensi ancaman bencana, kerentanan, dan kapasitas yang dimiliki dalam menghadapi bencana, serta kecenderungan perilaku yang mendukung upaya keselamatan, mitigasi, dan kesiapsiagaan bencana",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_SPAB_2": {
@@ -3456,7 +3456,7 @@
     "conceptualDef": "Kebijakan, mekanisme koordinasi, dan sumber daya yang dimiliki satuan pendidikan untuk mengelola risiko bencana secara terencana, terintegrasi, dan berkelanjutan, termasuk memastikan layanan pendidikan tetap berlangsung dengan aman sebelum, saat, dan sesudah bencana",
     "operationalDef": "Nilai komposit Kepala Sekolah, Guru, dan Murid terkait kebijakan, mekanisme koordinasi, dan sumber daya yang dimiliki satuan pendidikan untuk mengelola risiko bencana secara terencana, terintegrasi, dan berkelanjutan, termasuk memastikan layanan pendidikan tetap berlangsung dengan aman sebelum, saat, dan sesudah bencana",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_SPAB_3": {
@@ -3476,7 +3476,7 @@
     "conceptualDef": "Ketersediaan prasarana dan sarana pendukung penyelamatan dan evakuasi saat keadaan darurat di satuan pendidikan sehingga mendukung keamanan dan keselamatan warga satuan pendidikan",
     "operationalDef": "Nilai komposit siswa, guru dan KS terkait ketersediaan prasarana dan sarana pendukung penyelamatan dan evakuasi saat keadaan darurat di satuan pendidikan sehingga mendukung keamanan dan keselamatan warga satuan pendidikan",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_SPAB_4": {
@@ -3496,7 +3496,7 @@
     "conceptualDef": "Pemahaman dan sikap terhadap isu perubahan iklim yang dimiliki oleh warga satuan pendidikan",
     "operationalDef": "Nilai komposit Kepala Sekolah, Guru dan Murid terkait pemahaman dan sikap terhadap isu perubahan iklim yang dimiliki oleh warga satuan pendidikan",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "guru_SPAB_5": {
@@ -3536,7 +3536,7 @@
     "conceptualDef": "Praktik pembelajaran yang bertujuan untuk membimbing dan mendukung peserta didik dalam membangun pengetahuan dan pemahaman tentang kelestarian lingkungan hidup dan perubahan iklim",
     "operationalDef": "Nilai rerata Guru praktik pembelajaran yang bertujuan untuk membimbing dan mendukung Murid dalam membangun pengetahuan dan pemahaman tentang kelestarian lingkungan hidup dan perubahan iklim",
     "range": "0-100",
-    "level": "Level 2 (Pendidik/Guru)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "kepsek_kd_kepsek_an": {
@@ -3552,11 +3552,11 @@
   "kd_kepsek_an": {
     "code": "kd_kepsek_an",
     "label": "kode kepala satuan pendidikan",
-    "def": "kode unik",
+    "def": "kode kepala satuan pendidikan",
     "conceptualDef": "",
-    "operationalDef": "kode unik",
+    "operationalDef": "kode kepala satuan pendidikan",
     "range": "kode unik",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan Pendidikan)",
     "source": "-"
   },
   "kepsek_jenis_sek": {
@@ -3916,7 +3916,7 @@
     "conceptualDef": "Pengetahuan guru dan kepala sekolah tentng kekerasan seksual yang terjadi di sekolah",
     "operationalDef": "Nilai komposit terhadap Pengetahuan guru dan kepala sekolah tentang kekerasan seksual yang terjadi di sekolah",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan Pendidikan)",
     "source": "AN"
   },
   "kepsek_LCS": {
@@ -4106,7 +4106,7 @@
     "conceptualDef": "Ketersediaan kebijakan yang mendukung kesetaraan antara laki-laki dan perempuan.",
     "operationalDef": "Nilai komposit terhadap ketersediaan kebijakan yang mendukung kesetaraan antara laki-laki dan perempuan.",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
   "kepsek_RPI": {
@@ -4136,7 +4136,7 @@
     "conceptualDef": "Ketersediaan dan penerapan program serta kebijakan dalam pemberian layanan yang sesuai untuk anak dengan disabilitas di sekolah",
     "operationalDef": "Nilai komposit guru dan kepala sekolah terhadap ketersediaan dan penerapan program serta kebijakan dalam pemberian layanan yang sesuai untuk anak dengan disabilitas di sekolah",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan Pendidikan)",
     "source": "AN"
   },
   "kepsek_SBU": {
@@ -4196,7 +4196,7 @@
     "conceptualDef": "Nilai komposit dari kepala satuan pendidikan, pendidik, dan peserta didik terkait pelaksanaan pembelajaran oleh guru tamu atau instruktur kejuruan dari dunia kerja berdasarkan durasi, cakupan konsentrasi keahlian yang memiliki guru tamu, spesialisasi dan kualifikasi guru tamu dan keterlibatannya dalam pengembangan materi pembelajaran, serta evaluasi kinerja guru tamu.",
     "operationalDef": "Nilai komposit dari kepala satuan pendidikan, pendidik, dan peserta didik terkait tingkat keterlibatan orang tua dalam proses perencanaan, pengembangan, dan pelaksanaan aktivitas di satuan pendidikan",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan Pendidikan)",
     "source": "AN"
   },
   "kepsek_SMK_INDS": {
@@ -4296,7 +4296,7 @@
     "conceptualDef": "Ketersediaan dan pemanfaatan sarana dan prasarana yang sesuai dengan spesifikasi dunia kerja",
     "operationalDef": "Nilai komposit kepala sekolah dan guru penggunaan sarana dan prasarana yang selaras dengan DUDI",
     "range": "0-100",
-    "level": "Level 2 (Kepala Sekolah)",
+    "level": "Level 2 (Kepala Satuan Pendidikan)",
     "source": "AN"
   },
   "kepsek_SMK_TEFA": {
@@ -4642,12 +4642,12 @@
   "kd_siswa_an": {
     "code": "kd_siswa_an",
     "label": "kode siswa",
-    "def": "kode unik",
+    "def": "kode siswa",
     "conceptualDef": "",
-    "operationalDef": "kode unik",
+    "operationalDef": "kode siswa",
     "range": "kode unik",
-    "level": "Level 1 (Peserta Didik)",
-    "source": "rapor-publik-asesmen-nasional-2025-peserta-didik-2025-sd-mi-sederajat.xlsx"
+    "level": "Identitas",
+    "source": "NA"
   },
   "siswa_bg1": {
     "code": "bg1",
@@ -4662,10 +4662,10 @@
   "bg1": {
     "code": "bg1",
     "label": "Apakah kamu perempuan atau laki-laki?",
-    "def": "A1/P = Perempuan\r\nB1/L = Laki-laki",
+    "def": "Apakah kamu perempuan atau laki-laki?",
     "conceptualDef": "",
-    "operationalDef": "A1/P = Perempuan\r\nB1/L = Laki-laki",
-    "range": "A1/P = Perempuan\r\nB1/L = Laki-laki",
+    "operationalDef": "Apakah kamu perempuan atau laki-laki?",
+    "range": "A1/P = Perempuan\nB1/L = Laki-laki",
     "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
@@ -4682,10 +4682,10 @@
   "bg2": {
     "code": "bg2",
     "label": "Ada berapa keluarga yang tinggal bersama di rumahmu?",
-    "def": "A1 = Hanya keluarga intiku sendiri (orang tua dan saudara kandungku saja)\r\nB1 = Keluargaku bersama satu keluarga lain\r\nC1 = Keluargaku bersama dua keluarga lain\r\nD1 = Keluargaku bersama tiga atau lebih keluarga lain",
+    "def": "Ada berapa keluarga yang tinggal bersama di rumahmu?",
     "conceptualDef": "",
-    "operationalDef": "A1 = Hanya keluarga intiku sendiri (orang tua dan saudara kandungku saja)\r\nB1 = Keluargaku bersama satu keluarga lain\r\nC1 = Keluargaku bersama dua keluarga lain\r\nD1 = Keluargaku bersama tiga atau lebih keluarga lain",
-    "range": "A1 = Hanya keluarga intiku sendiri (orang tua dan saudara kandungku saja)\r\nB1 = Keluargaku bersama satu keluarga lain\r\nC1 = Keluargaku bersama dua keluarga lain\r\nD1 = Keluargaku bersama tiga atau lebih keluarga lain",
+    "operationalDef": "Ada berapa keluarga yang tinggal bersama di rumahmu?",
+    "range": "A1 = Hanya keluarga intiku sendiri (orang tua dan saudara kandungku saja)\nB1 = Keluargaku bersama satu keluarga lain\nC1 = Keluargaku bersama dua keluarga lain\nD1 = Keluargaku bersama tiga atau lebih keluarga lain",
     "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
@@ -4702,10 +4702,10 @@
   "bg3": {
     "code": "bg3",
     "label": "Apa jenjang sekolah tertinggi yang diselesaikan ayahmu?",
-    "def": "A1 = SD\r\nB1 = SMP\r\nC1 = SMA/SMK\r\nD1 = Diploma (D1, D2, atau D3)\r\nE1 = Sarjana (S1)\r\nF1 = Master (S2)\r\nG1 = Doktor (S3)\r\nH1 = Tidak Tahu",
+    "def": "Apa jenjang sekolah tertinggi yang diselesaikan ayahmu?",
     "conceptualDef": "",
-    "operationalDef": "A1 = SD\r\nB1 = SMP\r\nC1 = SMA/SMK\r\nD1 = Diploma (D1, D2, atau D3)\r\nE1 = Sarjana (S1)\r\nF1 = Master (S2)\r\nG1 = Doktor (S3)\r\nH1 = Tidak Tahu",
-    "range": "A1 = SD\r\nB1 = SMP\r\nC1 = SMA/SMK\r\nD1 = Diploma (D1, D2, atau D3)\r\nE1 = Sarjana (S1)\r\nF1 = Master (S2)\r\nG1 = Doktor (S3)\r\nH1 = Tidak Tahu",
+    "operationalDef": "Apa jenjang sekolah tertinggi yang diselesaikan ayahmu?",
+    "range": "A1 = SD\nB1 = SMP\nC1 = SMA/SMK\nD1 = Diploma (D1, D2, atau D3)\nE1 = Sarjana (S1)\nF1 = Master (S2)\nG1 = Doktor (S3)\nH1 = Tidak Tahu",
     "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
@@ -4722,10 +4722,10 @@
   "bg4": {
     "code": "bg4",
     "label": "Apa jenjang sekolah tertinggi yang diselesaikan ibumu?",
-    "def": "A1 = SD\r\nB1 = SMP\r\nC1 = SMA/SMK\r\nD1 = Diploma (D1, D2, atau D3)\r\nE1 = Sarjana (S1)\r\nF1 = Master (S2)\r\nG1 = Doktor (S3)\r\nH1 = Tidak Tahu",
+    "def": "Apa jenjang sekolah tertinggi yang diselesaikan ibumu?",
     "conceptualDef": "",
-    "operationalDef": "A1 = SD\r\nB1 = SMP\r\nC1 = SMA/SMK\r\nD1 = Diploma (D1, D2, atau D3)\r\nE1 = Sarjana (S1)\r\nF1 = Master (S2)\r\nG1 = Doktor (S3)\r\nH1 = Tidak Tahu",
-    "range": "A1 = SD\r\nB1 = SMP\r\nC1 = SMA/SMK\r\nD1 = Diploma (D1, D2, atau D3)\r\nE1 = Sarjana (S1)\r\nF1 = Master (S2)\r\nG1 = Doktor (S3)\r\nH1 = Tidak Tahu",
+    "operationalDef": "Apa jenjang sekolah tertinggi yang diselesaikan ibumu?",
+    "range": "A1 = SD\nB1 = SMP\nC1 = SMA/SMK\nD1 = Diploma (D1, D2, atau D3)\nE1 = Sarjana (S1)\nF1 = Master (S2)\nG1 = Doktor (S3)\nH1 = Tidak Tahu",
     "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
@@ -4742,10 +4742,10 @@
   "bg5": {
     "code": "bg5",
     "label": "Apa pekerjaan ayahmu?",
-    "def": "A1 = Tidak bekerja (termasuk jika sudah meninggal), mengurus rumah tangga (termasuk ibu rumah tangga), atau kerja serabutan (tidak jelas)\r\nB1 = Pensiunan dari karyawan pemerintah, perusahaan swasta, militer, atau polisi\r\nC1 = Anggota militer (TNI/tentara) atau polisi (Polri)\r\nD1 = Perwira militer (TNI/tentara) atau polisi (Polri)\r\nE1 = Buruh pabrik/tani/tambang, asisten/pembantu rumah tangga, pengemudi/sopir (termasuk taksi online), petugas keamanan, petugas kebersihan, dan karyawan usaha kecil (pelayan toko, mini market, dll)\r\nF1 = Bekerja mandiri dengan keterampilan khusus (seperti montir bengkel, penjahit, tukang kayu, bertani di ladang sendiri, nelayan dengan kapal sendiri, dll.)\r\nG1 = Tenaga pemasaran (seperti sales, marketing)\r\nH1 = Pekerja administratif (seperti sekretaris, tata usaha, receptionist, front office, costumer service) di kantor pemerintah (termasuk PNS), di perusahaan BUMN, dan di perusahaan swasta.\r\nI1 = Manajer atau pemimpin/kepala/pejabat di kantor pemerintah, perusahaan BUMN, atau perusahaan swasta.\r\nJ1 = Profesional (seperti dosen, guru, dokter, bidan, pengacara, jaksa, insinyur/engineer, musisi, nakoda kapal, pilot, dll.)\t\r\nK1 = Anggota legislatif (DPR atau DPRD) atau pemimpin pemerintah (seperti gubernur, walikota, bupati)\r\nL1 = Pemilik usaha kecil (seperti pemilik toko kecil, bengkel, warung, pemilik rental mobil, dll.)\r\nM1 = Pemilik perusahaan besar (seperti pabrik besar, restoran besar, toko dengan banyak cabang, dll.\r\nN1 = Tidak tahu.",
+    "def": "Apa pekerjaan ayahmu?",
     "conceptualDef": "",
-    "operationalDef": "A1 = Tidak bekerja (termasuk jika sudah meninggal), mengurus rumah tangga (termasuk ibu rumah tangga), atau kerja serabutan (tidak jelas)\r\nB1 = Pensiunan dari karyawan pemerintah, perusahaan swasta, militer, atau polisi\r\nC1 = Anggota militer (TNI/tentara) atau polisi (Polri)\r\nD1 = Perwira militer (TNI/tentara) atau polisi (Polri)\r\nE1 = Buruh pabrik/tani/tambang, asisten/pembantu rumah tangga, pengemudi/sopir (termasuk taksi online), petugas keamanan, petugas kebersihan, dan karyawan usaha kecil (pelayan toko, mini market, dll)\r\nF1 = Bekerja mandiri dengan keterampilan khusus (seperti montir bengkel, penjahit, tukang kayu, bertani di ladang sendiri, nelayan dengan kapal sendiri, dll.)\r\nG1 = Tenaga pemasaran (seperti sales, marketing)\r\nH1 = Pekerja administratif (seperti sekretaris, tata usaha, receptionist, front office, costumer service) di kantor pemerintah (termasuk PNS), di perusahaan BUMN, dan di perusahaan swasta.\r\nI1 = Manajer atau pemimpin/kepala/pejabat di kantor pemerintah, perusahaan BUMN, atau perusahaan swasta.\r\nJ1 = Profesional (seperti dosen, guru, dokter, bidan, pengacara, jaksa, insinyur/engineer, musisi, nakoda kapal, pilot, dll.)\t\r\nK1 = Anggota legislatif (DPR atau DPRD) atau pemimpin pemerintah (seperti gubernur, walikota, bupati)\r\nL1 = Pemilik usaha kecil (seperti pemilik toko kecil, bengkel, warung, pemilik rental mobil, dll.)\r\nM1 = Pemilik perusahaan besar (seperti pabrik besar, restoran besar, toko dengan banyak cabang, dll.\r\nN1 = Tidak tahu.",
-    "range": "A1 = Tidak bekerja (termasuk jika sudah meninggal), mengurus rumah tangga (termasuk ibu rumah tangga), atau kerja serabutan (tidak jelas)\r\nB1 = Pensiunan dari karyawan pemerintah, perusahaan swasta, militer, atau polisi\r\nC1 = Anggota militer (TNI/tentara) atau polisi (Polri)\r\nD1 = Perwira militer (TNI/tentara) atau polisi (Polri)\r\nE1 = Buruh pabrik/tani/tambang, asisten/pembantu rumah tangga, pengemudi/sopir (termasuk taksi online), petugas keamanan, petugas kebersihan, dan karyawan usaha kecil (pelayan toko, mini market, dll)\r\nF1 = Bekerja mandiri dengan keterampilan khusus (seperti montir bengkel, penjahit, tukang kayu, bertani di ladang sendiri, nelayan dengan kapal sendiri, dll.)\r\nG1 = Tenaga pemasaran (seperti sales, marketing)\r\nH1 = Pekerja administratif (seperti sekretaris, tata usaha, receptionist, front office, costumer service) di kantor pemerintah (termasuk PNS), di perusahaan BUMN, dan di perusahaan swasta.\r\nI1 = Manajer atau pemimpin/kepala/pejabat di kantor pemerintah, perusahaan BUMN, atau perusahaan swasta.\r\nJ1 = Profesional (seperti dosen, guru, dokter, bidan, pengacara, jaksa, insinyur/engineer, musisi, nakoda kapal, pilot, dll.)\t\r\nK1 = Anggota legislatif (DPR atau DPRD) atau pemimpin pemerintah (seperti gubernur, walikota, bupati)\r\nL1 = Pemilik usaha kecil (seperti pemilik toko kecil, bengkel, warung, pemilik rental mobil, dll.)\r\nM1 = Pemilik perusahaan besar (seperti pabrik besar, restoran besar, toko dengan banyak cabang, dll.\r\nN1 = Tidak tahu.",
+    "operationalDef": "Apa pekerjaan ayahmu?",
+    "range": "A1 = Tidak bekerja (termasuk jika sudah meninggal), mengurus rumah tangga (termasuk ibu rumah tangga), atau kerja serabutan (tidak jelas)\nB1 = Pensiunan dari karyawan pemerintah, perusahaan swasta, militer, atau polisi\nC1 = Anggota militer (TNI/tentara) atau polisi (Polri)\nD1 = Perwira militer (TNI/tentara) atau polisi (Polri)\nE1 = Buruh pabrik/tani/tambang, asisten/pembantu rumah tangga, pengemudi/sopir (termasuk taksi online), petugas keamanan, petugas kebersihan, dan karyawan usaha kecil (pelayan toko, mini market, dll)\nF1 = Bekerja mandiri dengan keterampilan khusus (seperti montir bengkel, penjahit, tukang kayu, bertani di ladang sendiri, nelayan dengan kapal sendiri, dll.)\nG1 = Tenaga pemasaran (seperti sales, marketing)\nH1 = Pekerja administratif (seperti sekretaris, tata usaha, receptionist, front office, costumer service) di kantor pemerintah (termasuk PNS), di perusahaan BUMN, dan di perusahaan swasta.\nI1 = Manajer atau pemimpin/kepala/pejabat di kantor pemerintah, perusahaan BUMN, atau perusahaan swasta.\nJ1 = Profesional (seperti dosen, guru, dokter, bidan, pengacara, jaksa, insinyur/engineer, musisi, nakoda kapal, pilot, dll.)\t\nK1 = Anggota legislatif (DPR atau DPRD) atau pemimpin pemerintah (seperti gubernur, walikota, bupati)\nL1 = Pemilik usaha kecil (seperti pemilik toko kecil, bengkel, warung, pemilik rental mobil, dll.)\nM1 = Pemilik perusahaan besar (seperti pabrik besar, restoran besar, toko dengan banyak cabang, dll.\nN1 = Tidak tahu.",
     "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
@@ -4762,10 +4762,10 @@
   "bg6": {
     "code": "bg6",
     "label": "Apa pekerjaan ibumu?",
-    "def": "A1 = Tidak bekerja (termasuk jika sudah meninggal), mengurus rumah tangga (termasuk ibu rumah tangga), atau kerja serabutan (tidak jelas)\r\nB1 = Pensiunan dari karyawan pemerintah, perusahaan swasta, militer, atau polisi\r\nC1 = Anggota militer (TNI/tentara) atau polisi (Polri)\r\nD1 = Perwira militer (TNI/tentara) atau polisi (Polri)\r\nE1 = Buruh pabrik/tani/tambang, asisten/pembantu rumah tangga, pengemudi/sopir (termasuk taksi online), petugas keamanan, petugas kebersihan, dan karyawan usaha kecil (pelayan toko, mini market, dll)\r\nF1 = Bekerja mandiri dengan keterampilan khusus (seperti montir bengkel, penjahit, tukang kayu, bertani di ladang sendiri, nelayan dengan kapal sendiri, dll.)\r\nG1 = Tenaga pemasaran (seperti sales, marketing)\r\nH1 = Pekerja administratif (seperti sekretaris, tata usaha, receptionist, front office, costumer service) di kantor pemerintah (termasuk PNS), di perusahaan BUMN, dan di perusahaan swasta.\r\nI1 = Manajer atau pemimpin/kepala/pejabat di kantor pemerintah, perusahaan BUMN, atau perusahaan swasta.\r\nJ1 = Profesional (seperti dosen, guru, dokter, bidan, pengacara, jaksa, insinyur/engineer, musisi, nakoda kapal, pilot, dll.)\t\r\nK1 = Anggota legislatif (DPR atau DPRD) atau pemimpin pemerintah (seperti gubernur, walikota, bupati)\r\nL1 = Pemilik usaha kecil (seperti pemilik toko kecil, bengkel, warung, pemilik rental mobil, dll.)\r\nM1 = Pemilik perusahaan besar (seperti pabrik besar, restoran besar, toko dengan banyak cabang, dll.\r\nN1 = Tidak tahu.",
+    "def": "Apa pekerjaan ibumu?",
     "conceptualDef": "",
-    "operationalDef": "A1 = Tidak bekerja (termasuk jika sudah meninggal), mengurus rumah tangga (termasuk ibu rumah tangga), atau kerja serabutan (tidak jelas)\r\nB1 = Pensiunan dari karyawan pemerintah, perusahaan swasta, militer, atau polisi\r\nC1 = Anggota militer (TNI/tentara) atau polisi (Polri)\r\nD1 = Perwira militer (TNI/tentara) atau polisi (Polri)\r\nE1 = Buruh pabrik/tani/tambang, asisten/pembantu rumah tangga, pengemudi/sopir (termasuk taksi online), petugas keamanan, petugas kebersihan, dan karyawan usaha kecil (pelayan toko, mini market, dll)\r\nF1 = Bekerja mandiri dengan keterampilan khusus (seperti montir bengkel, penjahit, tukang kayu, bertani di ladang sendiri, nelayan dengan kapal sendiri, dll.)\r\nG1 = Tenaga pemasaran (seperti sales, marketing)\r\nH1 = Pekerja administratif (seperti sekretaris, tata usaha, receptionist, front office, costumer service) di kantor pemerintah (termasuk PNS), di perusahaan BUMN, dan di perusahaan swasta.\r\nI1 = Manajer atau pemimpin/kepala/pejabat di kantor pemerintah, perusahaan BUMN, atau perusahaan swasta.\r\nJ1 = Profesional (seperti dosen, guru, dokter, bidan, pengacara, jaksa, insinyur/engineer, musisi, nakoda kapal, pilot, dll.)\t\r\nK1 = Anggota legislatif (DPR atau DPRD) atau pemimpin pemerintah (seperti gubernur, walikota, bupati)\r\nL1 = Pemilik usaha kecil (seperti pemilik toko kecil, bengkel, warung, pemilik rental mobil, dll.)\r\nM1 = Pemilik perusahaan besar (seperti pabrik besar, restoran besar, toko dengan banyak cabang, dll.\r\nN1 = Tidak tahu.",
-    "range": "A1 = Tidak bekerja (termasuk jika sudah meninggal), mengurus rumah tangga (termasuk ibu rumah tangga), atau kerja serabutan (tidak jelas)\r\nB1 = Pensiunan dari karyawan pemerintah, perusahaan swasta, militer, atau polisi\r\nC1 = Anggota militer (TNI/tentara) atau polisi (Polri)\r\nD1 = Perwira militer (TNI/tentara) atau polisi (Polri)\r\nE1 = Buruh pabrik/tani/tambang, asisten/pembantu rumah tangga, pengemudi/sopir (termasuk taksi online), petugas keamanan, petugas kebersihan, dan karyawan usaha kecil (pelayan toko, mini market, dll)\r\nF1 = Bekerja mandiri dengan keterampilan khusus (seperti montir bengkel, penjahit, tukang kayu, bertani di ladang sendiri, nelayan dengan kapal sendiri, dll.)\r\nG1 = Tenaga pemasaran (seperti sales, marketing)\r\nH1 = Pekerja administratif (seperti sekretaris, tata usaha, receptionist, front office, costumer service) di kantor pemerintah (termasuk PNS), di perusahaan BUMN, dan di perusahaan swasta.\r\nI1 = Manajer atau pemimpin/kepala/pejabat di kantor pemerintah, perusahaan BUMN, atau perusahaan swasta.\r\nJ1 = Profesional (seperti dosen, guru, dokter, bidan, pengacara, jaksa, insinyur/engineer, musisi, nakoda kapal, pilot, dll.)\t\r\nK1 = Anggota legislatif (DPR atau DPRD) atau pemimpin pemerintah (seperti gubernur, walikota, bupati)\r\nL1 = Pemilik usaha kecil (seperti pemilik toko kecil, bengkel, warung, pemilik rental mobil, dll.)\r\nM1 = Pemilik perusahaan besar (seperti pabrik besar, restoran besar, toko dengan banyak cabang, dll.\r\nN1 = Tidak tahu.",
+    "operationalDef": "Apa pekerjaan ibumu?",
+    "range": "A1 = Tidak bekerja (termasuk jika sudah meninggal), mengurus rumah tangga (termasuk ibu rumah tangga), atau kerja serabutan (tidak jelas)\nB1 = Pensiunan dari karyawan pemerintah, perusahaan swasta, militer, atau polisi\nC1 = Anggota militer (TNI/tentara) atau polisi (Polri)\nD1 = Perwira militer (TNI/tentara) atau polisi (Polri)\nE1 = Buruh pabrik/tani/tambang, asisten/pembantu rumah tangga, pengemudi/sopir (termasuk taksi online), petugas keamanan, petugas kebersihan, dan karyawan usaha kecil (pelayan toko, mini market, dll)\nF1 = Bekerja mandiri dengan keterampilan khusus (seperti montir bengkel, penjahit, tukang kayu, bertani di ladang sendiri, nelayan dengan kapal sendiri, dll.)\nG1 = Tenaga pemasaran (seperti sales, marketing)\nH1 = Pekerja administratif (seperti sekretaris, tata usaha, receptionist, front office, costumer service) di kantor pemerintah (termasuk PNS), di perusahaan BUMN, dan di perusahaan swasta.\nI1 = Manajer atau pemimpin/kepala/pejabat di kantor pemerintah, perusahaan BUMN, atau perusahaan swasta.\nJ1 = Profesional (seperti dosen, guru, dokter, bidan, pengacara, jaksa, insinyur/engineer, musisi, nakoda kapal, pilot, dll.)\t\nK1 = Anggota legislatif (DPR atau DPRD) atau pemimpin pemerintah (seperti gubernur, walikota, bupati)\nL1 = Pemilik usaha kecil (seperti pemilik toko kecil, bengkel, warung, pemilik rental mobil, dll.)\nM1 = Pemilik perusahaan besar (seperti pabrik besar, restoran besar, toko dengan banyak cabang, dll.\nN1 = Tidak tahu.",
     "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
@@ -4782,10 +4782,10 @@
   "bg7": {
     "code": "bg7",
     "label": "Kepemilikan Meja belajar di rumah",
-    "def": "A1 = Tidak ada\r\nB1 = Ada",
+    "def": "Kepemilikan Meja belajar di rumah",
     "conceptualDef": "",
-    "operationalDef": "A1 = Tidak ada\r\nB1 = Ada",
-    "range": "A1 = Tidak ada\r\nB1 = Ada",
+    "operationalDef": "Kepemilikan Meja belajar di rumah",
+    "range": "A1 = Tidak ada\nB1 = Ada",
     "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
@@ -4802,10 +4802,10 @@
   "bg8": {
     "code": "bg8",
     "label": "Kamar tidur untuk dirimu sendiri (tidak berbagi dengan saudara atau orang lain)",
-    "def": "A2 = Tidak ada\r\nB2 = Ada",
+    "def": "Kamar tidur untuk dirimu sendiri (tidak berbagi dengan saudara atau orang lain)",
     "conceptualDef": "",
-    "operationalDef": "A2 = Tidak ada\r\nB2 = Ada",
-    "range": "A2 = Tidak ada\r\nB2 = Ada",
+    "operationalDef": "Kamar tidur untuk dirimu sendiri (tidak berbagi dengan saudara atau orang lain)",
+    "range": "A2 = Tidak ada\nB2 = Ada",
     "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
@@ -4822,10 +4822,10 @@
   "bg9": {
     "code": "bg9",
     "label": "Tempat belajar yang tenang di rumah",
-    "def": "A3 = Tidak ada\r\nB3 = Ada",
+    "def": "Tempat belajar yang tenang di rumah",
     "conceptualDef": "",
-    "operationalDef": "A3 = Tidak ada\r\nB3 = Ada",
-    "range": "A3 = Tidak ada\r\nB3 = Ada",
+    "operationalDef": "Tempat belajar yang tenang di rumah",
+    "range": "A3 = Tidak ada\nB3 = Ada",
     "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
@@ -4842,10 +4842,10 @@
   "bg10": {
     "code": "bg10",
     "label": "Listrik dan lampu untuk belajar di rumah pada malam hari",
-    "def": "A4 = Tidak ada\r\nB4 = Ada",
+    "def": "Listrik dan lampu untuk belajar di rumah pada malam hari",
     "conceptualDef": "",
-    "operationalDef": "A4 = Tidak ada\r\nB4 = Ada",
-    "range": "A4 = Tidak ada\r\nB4 = Ada",
+    "operationalDef": "Listrik dan lampu untuk belajar di rumah pada malam hari",
+    "range": "A4 = Tidak ada\nB4 = Ada",
     "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
@@ -4862,10 +4862,10 @@
   "bg11": {
     "code": "bg11",
     "label": "Komputer, laptop, atau tablet yang bisa kamu pakai untuk keperluan belajar atau tugas sekolah",
-    "def": "A5 = Tidak ada\r\nB5 = Ada",
+    "def": "Komputer, laptop, atau tablet yang bisa kamu pakai untuk keperluan belajar atau tugas sekolah",
     "conceptualDef": "",
-    "operationalDef": "A5 = Tidak ada\r\nB5 = Ada",
-    "range": "A5 = Tidak ada\r\nB5 = Ada",
+    "operationalDef": "Komputer, laptop, atau tablet yang bisa kamu pakai untuk keperluan belajar atau tugas sekolah",
+    "range": "A5 = Tidak ada\nB5 = Ada",
     "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
@@ -4882,10 +4882,10 @@
   "bg12": {
     "code": "bg12",
     "label": "Kepemilikan perangkat lunak (software atau program komputer) pendidikan",
-    "def": "A6 = Tidak ada\r\nB6 = Ada",
+    "def": "Kepemilikan perangkat lunak (software atau program komputer) pendidikan",
     "conceptualDef": "",
-    "operationalDef": "A6 = Tidak ada\r\nB6 = Ada",
-    "range": "A6 = Tidak ada\r\nB6 = Ada",
+    "operationalDef": "Kepemilikan perangkat lunak (software atau program komputer) pendidikan",
+    "range": "A6 = Tidak ada\nB6 = Ada",
     "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
@@ -4902,10 +4902,10 @@
   "bg13": {
     "code": "bg13",
     "label": "Sambungan ke internet di rumah",
-    "def": "A7 = Tidak ada\r\nB7 = Ada",
+    "def": "Sambungan ke internet di rumah",
     "conceptualDef": "",
-    "operationalDef": "A7 = Tidak ada\r\nB7 = Ada",
-    "range": "A7 = Tidak ada\r\nB7 = Ada",
+    "operationalDef": "Sambungan ke internet di rumah",
+    "range": "A7 = Tidak ada\nB7 = Ada",
     "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
@@ -4922,10 +4922,10 @@
   "bg14": {
     "code": "bg14",
     "label": "Kepemilikan alat baca buku digital (seperti Kindle, Kobo, dll)",
-    "def": "A8 = Tidak ada\r\nB8 = Ada",
+    "def": "Kepemilikan alat baca buku digital (seperti Kindle, Kobo, dll)",
     "conceptualDef": "",
-    "operationalDef": "A8 = Tidak ada\r\nB8 = Ada",
-    "range": "A8 = Tidak ada\r\nB8 = Ada",
+    "operationalDef": "Kepemilikan alat baca buku digital (seperti Kindle, Kobo, dll)",
+    "range": "A8 = Tidak ada\nB8 = Ada",
     "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
@@ -4942,10 +4942,10 @@
   "bg15": {
     "code": "bg15",
     "label": "Kepemilikan buku-buku fiksi/sastra seperti novel, kumpulan cerpen, atau kumpulan puisi",
-    "def": "A1 = Tidak ada\r\nB1 = Kira-kira 1-10 buku\t\r\nC1 = Kira-kira 11-25 buku\r\nD1 = Kira-kira 26-100 buku\r\nE1 = Kira-kira lebih dari 100 buku",
+    "def": "Kepemilikan buku-buku fiksi/sastra seperti novel, kumpulan cerpen, atau kumpulan puisi",
     "conceptualDef": "",
-    "operationalDef": "A1 = Tidak ada\r\nB1 = Kira-kira 1-10 buku\t\r\nC1 = Kira-kira 11-25 buku\r\nD1 = Kira-kira 26-100 buku\r\nE1 = Kira-kira lebih dari 100 buku",
-    "range": "A1 = Tidak ada\r\nB1 = Kira-kira 1-10 buku\t\r\nC1 = Kira-kira 11-25 buku\r\nD1 = Kira-kira 26-100 buku\r\nE1 = Kira-kira lebih dari 100 buku",
+    "operationalDef": "Kepemilikan buku-buku fiksi/sastra seperti novel, kumpulan cerpen, atau kumpulan puisi",
+    "range": "A1 = Tidak ada\nB1 = Kira-kira 1-10 buku\t\nC1 = Kira-kira 11-25 buku\nD1 = Kira-kira 26-100 buku\nE1 = Kira-kira lebih dari 100 buku",
     "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
@@ -4962,10 +4962,10 @@
   "bg16": {
     "code": "bg16",
     "label": "Kepemilikan buku-buku tentang sains atau teknologi",
-    "def": "A2 = Tidak ada\r\nB2 = Kira-kira 1-10 buku \r\nC2 = Kira-kira 11-25 buku\r\nD2 = Kira-kira 26-100 buku\r\nE2 = Kira-kira lebih dari 100 buku",
+    "def": "Kepemilikan buku-buku tentang sains atau teknologi",
     "conceptualDef": "",
-    "operationalDef": "A2 = Tidak ada\r\nB2 = Kira-kira 1-10 buku \r\nC2 = Kira-kira 11-25 buku\r\nD2 = Kira-kira 26-100 buku\r\nE2 = Kira-kira lebih dari 100 buku",
-    "range": "A2 = Tidak ada\r\nB2 = Kira-kira 1-10 buku \r\nC2 = Kira-kira 11-25 buku\r\nD2 = Kira-kira 26-100 buku\r\nE2 = Kira-kira lebih dari 100 buku",
+    "operationalDef": "Kepemilikan buku-buku tentang sains atau teknologi",
+    "range": "A2 = Tidak ada\nB2 = Kira-kira 1-10 buku \nC2 = Kira-kira 11-25 buku\nD2 = Kira-kira 26-100 buku\nE2 = Kira-kira lebih dari 100 buku",
     "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
@@ -4982,10 +4982,10 @@
   "bg17": {
     "code": "bg17",
     "label": "Kepemilikan buku-buku tentang seni, musik, atau desain",
-    "def": "A3 = Tidak ada\r\nB3 = Kira-kira 1-10 buku \r\nC3 = Kira-kira 11-25 buku\r\nD3 = Kira-kira 26-100 buku\r\nE3 = Kira-kira lebih dari 100 buku",
+    "def": "Kepemilikan buku-buku tentang seni, musik, atau desain",
     "conceptualDef": "",
-    "operationalDef": "A3 = Tidak ada\r\nB3 = Kira-kira 1-10 buku \r\nC3 = Kira-kira 11-25 buku\r\nD3 = Kira-kira 26-100 buku\r\nE3 = Kira-kira lebih dari 100 buku",
-    "range": "A3 = Tidak ada\r\nB3 = Kira-kira 1-10 buku \r\nC3 = Kira-kira 11-25 buku\r\nD3 = Kira-kira 26-100 buku\r\nE3 = Kira-kira lebih dari 100 buku",
+    "operationalDef": "Kepemilikan buku-buku tentang seni, musik, atau desain",
+    "range": "A3 = Tidak ada\nB3 = Kira-kira 1-10 buku \nC3 = Kira-kira 11-25 buku\nD3 = Kira-kira 26-100 buku\nE3 = Kira-kira lebih dari 100 buku",
     "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
@@ -5002,10 +5002,10 @@
   "bg18": {
     "code": "bg18",
     "label": "Kepemilikan buku-buku tentang bahasa, termasuk kamus",
-    "def": "A4 = Tidak ada\r\nB4 = Kira-kira 1-10 buku \r\nC4 = Kira-kira 11-25 buku\r\nD4 = Kira-kira 26-100 buku\r\nE4 = Kira-kira lebih dari 100 buku",
+    "def": "Kepemilikan buku-buku tentang bahasa, termasuk kamus",
     "conceptualDef": "",
-    "operationalDef": "A4 = Tidak ada\r\nB4 = Kira-kira 1-10 buku \r\nC4 = Kira-kira 11-25 buku\r\nD4 = Kira-kira 26-100 buku\r\nE4 = Kira-kira lebih dari 100 buku",
-    "range": "A4 = Tidak ada\r\nB4 = Kira-kira 1-10 buku \r\nC4 = Kira-kira 11-25 buku\r\nD4 = Kira-kira 26-100 buku\r\nE4 = Kira-kira lebih dari 100 buku",
+    "operationalDef": "Kepemilikan buku-buku tentang bahasa, termasuk kamus",
+    "range": "A4 = Tidak ada\nB4 = Kira-kira 1-10 buku \nC4 = Kira-kira 11-25 buku\nD4 = Kira-kira 26-100 buku\nE4 = Kira-kira lebih dari 100 buku",
     "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
@@ -5022,10 +5022,10 @@
   "bg19": {
     "code": "bg19",
     "label": "Kepemilikan buku-buku yang bisa membantumu mengerjakan tugas-tugas sekolah",
-    "def": "A5 = Tidak ada\r\nB5 = Kira-kira 1-10 buku \r\nC5 = Kira-kira 11-25 buku\r\nD5 = Kira-kira 26-100 buku\r\nE5 = Kira-kira lebih dari 100 buku",
+    "def": "Kepemilikan buku-buku yang bisa membantumu mengerjakan tugas-tugas sekolah",
     "conceptualDef": "",
-    "operationalDef": "A5 = Tidak ada\r\nB5 = Kira-kira 1-10 buku \r\nC5 = Kira-kira 11-25 buku\r\nD5 = Kira-kira 26-100 buku\r\nE5 = Kira-kira lebih dari 100 buku",
-    "range": "A5 = Tidak ada\r\nB5 = Kira-kira 1-10 buku \r\nC5 = Kira-kira 11-25 buku\r\nD5 = Kira-kira 26-100 buku\r\nE5 = Kira-kira lebih dari 100 buku",
+    "operationalDef": "Kepemilikan buku-buku yang bisa membantumu mengerjakan tugas-tugas sekolah",
+    "range": "A5 = Tidak ada\nB5 = Kira-kira 1-10 buku \nC5 = Kira-kira 11-25 buku\nD5 = Kira-kira 26-100 buku\nE5 = Kira-kira lebih dari 100 buku",
     "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
@@ -5042,10 +5042,10 @@
   "bg20": {
     "code": "bg20",
     "label": "Kepemilikan televisi layar datar",
-    "def": "A1 = Tidak ada\r\nB1 = Satu\r\nC1 = Dua\r\nD1 = Tiga atau lebih",
+    "def": "Kepemilikan televisi layar datar",
     "conceptualDef": "",
-    "operationalDef": "A1 = Tidak ada\r\nB1 = Satu\r\nC1 = Dua\r\nD1 = Tiga atau lebih",
-    "range": "A1 = Tidak ada\r\nB1 = Satu\r\nC1 = Dua\r\nD1 = Tiga atau lebih",
+    "operationalDef": "Kepemilikan televisi layar datar",
+    "range": "A1 = Tidak ada\nB1 = Satu\nC1 = Dua\nD1 = Tiga atau lebih",
     "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
@@ -5062,10 +5062,10 @@
   "bg21": {
     "code": "bg21",
     "label": "Kepemilikan mobil",
-    "def": "A2 = Tidak ada\r\nB2 = Satu\r\nC2 = Dua\r\nD2 = Tiga atau lebih",
+    "def": "Kepemilikan mobil",
     "conceptualDef": "",
-    "operationalDef": "A2 = Tidak ada\r\nB2 = Satu\r\nC2 = Dua\r\nD2 = Tiga atau lebih",
-    "range": "A2 = Tidak ada\r\nB2 = Satu\r\nC2 = Dua\r\nD2 = Tiga atau lebih",
+    "operationalDef": "Kepemilikan mobil",
+    "range": "A2 = Tidak ada\nB2 = Satu\nC2 = Dua\nD2 = Tiga atau lebih",
     "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
@@ -5082,10 +5082,10 @@
   "bg22": {
     "code": "bg22",
     "label": "Kepemilikan Pendingin Ruangan (AC)",
-    "def": "A3 = Tidak ada\r\nB3 = Satu\r\nC3 = Dua\r\nD3 = Tiga atau lebih",
+    "def": "Kepemilikan Pendingin Ruangan (AC)",
     "conceptualDef": "",
-    "operationalDef": "A3 = Tidak ada\r\nB3 = Satu\r\nC3 = Dua\r\nD3 = Tiga atau lebih",
-    "range": "A3 = Tidak ada\r\nB3 = Satu\r\nC3 = Dua\r\nD3 = Tiga atau lebih",
+    "operationalDef": "Kepemilikan Pendingin Ruangan (AC)",
+    "range": "A3 = Tidak ada\nB3 = Satu\nC3 = Dua\nD3 = Tiga atau lebih",
     "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
@@ -5102,10 +5102,10 @@
   "bg23": {
     "code": "bg23",
     "label": "Kepemilikan telepon seluler (handphone) dengan akses internet (misal, smartphone)",
-    "def": "A4 = Tidak ada\r\nB4 = Satu\r\nC4 = Dua\r\nD4 = Tiga atau lebih",
+    "def": "Kepemilikan telepon seluler (handphone) dengan akses internet (misal, smartphone)",
     "conceptualDef": "",
-    "operationalDef": "A4 = Tidak ada\r\nB4 = Satu\r\nC4 = Dua\r\nD4 = Tiga atau lebih",
-    "range": "A4 = Tidak ada\r\nB4 = Satu\r\nC4 = Dua\r\nD4 = Tiga atau lebih",
+    "operationalDef": "Kepemilikan telepon seluler (handphone) dengan akses internet (misal, smartphone)",
+    "range": "A4 = Tidak ada\nB4 = Satu\nC4 = Dua\nD4 = Tiga atau lebih",
     "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
@@ -5122,10 +5122,10 @@
   "bg24": {
     "code": "bg24",
     "label": "Kepemilikan komputer tablet (Tab/iPad)",
-    "def": "A5 = Tidak ada\r\nB5 = Satu\r\nC5 = Dua\r\nD5 = Tiga atau lebih",
+    "def": "Kepemilikan komputer tablet (Tab/iPad)",
     "conceptualDef": "",
-    "operationalDef": "A5 = Tidak ada\r\nB5 = Satu\r\nC5 = Dua\r\nD5 = Tiga atau lebih",
-    "range": "A5 = Tidak ada\r\nB5 = Satu\r\nC5 = Dua\r\nD5 = Tiga atau lebih",
+    "operationalDef": "Kepemilikan komputer tablet (Tab/iPad)",
+    "range": "A5 = Tidak ada\nB5 = Satu\nC5 = Dua\nD5 = Tiga atau lebih",
     "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
@@ -5142,10 +5142,10 @@
   "bg25": {
     "code": "bg25",
     "label": "Kpemilikan karya-karya seni (misal: lukisan/patung seni)",
-    "def": "A6 = Tidak ada\r\nB6 = Satu\r\nC6 = Dua\r\nD6 = Tiga atau lebih",
+    "def": "Kpemilikan karya-karya seni (misal: lukisan/patung seni)",
     "conceptualDef": "",
-    "operationalDef": "A6 = Tidak ada\r\nB6 = Satu\r\nC6 = Dua\r\nD6 = Tiga atau lebih",
-    "range": "A6 = Tidak ada\r\nB6 = Satu\r\nC6 = Dua\r\nD6 = Tiga atau lebih",
+    "operationalDef": "Kpemilikan karya-karya seni (misal: lukisan/patung seni)",
+    "range": "A6 = Tidak ada\nB6 = Satu\nC6 = Dua\nD6 = Tiga atau lebih",
     "level": "Level 1 (Peserta Didik)",
     "source": "AN"
   },
@@ -5162,9 +5162,9 @@
   "SES_siswa": {
     "code": "SES_siswa",
     "label": "Indeks sosial ekonomi status siswa berdasarkan Asesmen Nasional",
-    "def": "0-100",
+    "def": "Indeks sosial ekonomi status siswa berdasarkan Asesmen Nasional",
     "conceptualDef": "",
-    "operationalDef": "0-100",
+    "operationalDef": "Indeks sosial ekonomi status siswa berdasarkan Asesmen Nasional",
     "range": "0-100",
     "level": "Level 1 (Peserta Didik)",
     "source": "Dapodik"
@@ -6161,7 +6161,7 @@
   },
   "ABKR": {
     "code": "ABKR",
-    "label": "Kontribusi pada penyelesaian isu-isu komunitas\r\nsekolah",
+    "label": "Kontribusi pada penyelesaian isu-isu komunitas\nsekolah",
     "def": "Rata-rata nilai karakter siswa dalam menyelesaikan permasalahan terkait demokrasi, keadilan, dan kesejahteraan sosial dalam konteks sekolah",
     "conceptualDef": "Melibatkan diri dalam aktivitas sosial untuk menyelesaikan permasalahan terkait demokrasi, keadilan, dan kesejahteraan sosial dalam konteks sekolah",
     "operationalDef": "Rata-rata nilai karakter siswa dalam menyelesaikan permasalahan terkait demokrasi, keadilan, dan kesejahteraan sosial dalam konteks sekolah",
@@ -6572,11 +6572,11 @@
   "IASP": {
     "code": "IASP",
     "label": "Indeks Akses Satuan Pendidikan berdasarkan hasil SUSENAS",
-    "def": "0-100",
+    "def": "Indeks Akses Satuan Pendidikan berdasarkan hasil SUSENAS",
     "conceptualDef": "",
-    "operationalDef": "0-100",
+    "operationalDef": "Indeks Akses Satuan Pendidikan berdasarkan hasil SUSENAS",
     "range": "0-100",
-    "level": "Level 1 (Peserta Didik)",
+    "level": "Level 2 (Sekolah)",
     "source": "Dapodik"
   }
 }

@@ -21,7 +21,7 @@ import { generateLocalMultilevelNarrative } from '@/lib/gemini';
 import { RSyntaxGenerator } from '@/lib/stats/r-syntax';
 
 export default function MultilevelPage() {
-  const { data, columns, fileName, loadDefaultDataset } = useDatasetStore();
+  const { data, columns, fileName } = useDatasetStore();
   const {
     multilevelConfig,
     setMultilevelConfig,
@@ -39,9 +39,6 @@ export default function MultilevelPage() {
 
   React.useEffect(() => {
     useAnalysisStore.setState({ error: null });
-    if (data.length === 0 && !fileName) {
-      loadDefaultDataset();
-    }
   }, []);
 
   const handleResetMultilevel = () => {

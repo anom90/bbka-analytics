@@ -19,7 +19,7 @@ import { formatNumber, formatPValue, ensureArray, cn } from '@/lib/utils';
 import { RSyntaxGenerator } from '@/lib/stats/r-syntax';
 
 export default function ManovaPage() {
-  const { data, columns, fileName, loadDefaultDataset } = useDatasetStore();
+  const { data, columns, fileName } = useDatasetStore();
   const {
     manovaConfig,
     setManovaConfig,
@@ -37,9 +37,6 @@ export default function ManovaPage() {
 
   React.useEffect(() => {
     useAnalysisStore.setState({ error: null });
-    if (data.length === 0 && !fileName) {
-      loadDefaultDataset();
-    }
   }, []);
 
   const handleResetManova = () => {

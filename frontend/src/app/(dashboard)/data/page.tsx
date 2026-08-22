@@ -29,6 +29,7 @@ import {
   BrainCircuit,
   UploadCloud,
   FileUp,
+  FileDown,
   X
 } from 'lucide-react';
 import { FormFile } from '@/components/common/form-file';
@@ -44,6 +45,8 @@ import { useDatasetStore, DataFilterRule, calculateMissingDiagnostics, Imputatio
 import { RSyntaxGenerator } from '@/lib/stats/r-syntax';
 import Link from 'next/link';
 import * as XLSX from 'xlsx';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
 import { DataRow } from '@/lib/types';
 
 import { getVariableCodebook } from '@/constants/an-codebook';
@@ -114,13 +117,6 @@ export default function DataPage() {
   // Secondary file reading progress
   const [isReadingSecondary, setIsReadingSecondary] = React.useState(false);
   const [secondaryReadProgress, setSecondaryReadProgress] = React.useState(0);
-
-  // Auto-load default dataset only if empty and no filename
-  React.useEffect(() => {
-    if (data.length === 0 && !fileName) {
-      loadDefaultDataset();
-    }
-  }, []);
 
   React.useEffect(() => {
     if (columns.length > 0 && selectedColsForSubset.length === 0) {
@@ -291,6 +287,76 @@ export default function DataPage() {
     missingDiag.columnStats.forEach(cs => map.set(cs.name, cs.missingPct));
     return map;
   }, [missingDiag]);
+
+  // Export the full missing-value diagnostic report (all variables, not just the current
+  // on-screen filter/search) as a PDF, so it can be attached alongside the dataset when
+  // requesting an analysis recommendation from Beaver / Zotero.
+  const handleDownloadMissingReportPdf = () => {
+    const doc = new jsPDF({ orientation: 'landscape' });
+    const generatedAt = new Date().toLocaleString('id-ID');
+    const activeFileName = fileName || 'Dataset Bawaan';
+
+    doc.setFontSize(14);
+    doc.text('Laporan Diagnosis Missing Data', 14, 16);
+    doc.setFontSize(9);
+    doc.setTextColor(90);
+    doc.text(`Dataset: ${activeFileName}  |  N Observasi: ${missingDiag.totalRows.toLocaleString()}  |  Total Variabel: ${missingDiag.totalCols}`, 14, 22);
+    doc.text(`Dibuat: ${generatedAt}  |  Total Sel Missing: ${missingDiag.totalMissingCells.toLocaleString()} (${missingDiag.overallMissingPct.toFixed(2)}% dari seluruh sel)`, 14, 27);
+    doc.text(`Baris Lengkap (Tanpa NA): ${missingDiag.completeRowsCount.toLocaleString()} (${missingDiag.completeRowsPct.toFixed(2)}%)  |  Baris Tidak Lengkap: ${missingDiag.incompleteRowsCount.toLocaleString()} (${missingDiag.incompleteRowsPct.toFixed(2)}%)`, 14, 32);
+    doc.setTextColor(0);
+
+    const sortedCols = [...missingDiag.columnStats].sort((a, b) => b.missingPct - a.missingPct);
+
+    autoTable(doc, {
+      startY: 38,
+      head: [['Variabel', 'Label', 'Tipe', 'Valid (N)', 'Missing (NA)', '% Missing']],
+      body: sortedCols.map(c => {
+        const cb = getVariableCodebook(c.name);
+        return [
+          c.name,
+          cb?.label && cb.label !== c.name ? cb.label : '-',
+          c.type === 'numeric' ? 'Skala' : 'Nominal',
+          c.validCount.toLocaleString(),
+          c.missingCount.toLocaleString(),
+          `${c.missingPct.toFixed(2)}%`
+        ];
+      }),
+      styles: { fontSize: 7.5, cellPadding: 1.5 },
+      headStyles: { fillColor: [0, 128, 128] },
+      columnStyles: { 3: { halign: 'right' }, 4: { halign: 'right' }, 5: { halign: 'right' } },
+      didParseCell: (hookData) => {
+        if (hookData.section === 'body' && hookData.column.index === 5) {
+          const pct = parseFloat(String(hookData.cell.raw).replace('%', ''));
+          if (pct >= 50) hookData.cell.styles.textColor = [190, 30, 45];
+          else if (pct >= 20) hookData.cell.styles.textColor = [180, 120, 0];
+        }
+      }
+    });
+
+    if (missingDiag.patterns.length > 0) {
+      const afterTableY = (doc as any).lastAutoTable?.finalY || 38;
+      doc.setFontSize(11);
+      doc.text('Pola Kombinasi Missing Data (MICE Pattern)', 14, afterTableY + 10);
+
+      autoTable(doc, {
+        startY: afterTableY + 14,
+        head: [['Pola', 'Jumlah Baris', '% Baris', 'Status', 'Variabel Kosong']],
+        body: missingDiag.patterns.slice(0, 20).map(p => [
+          p.patternId,
+          p.count.toLocaleString(),
+          `${p.pct.toFixed(2)}%`,
+          p.isComplete ? 'Lengkap' : 'Tidak Lengkap',
+          p.isComplete ? '-' : p.missingVars.join(', ')
+        ]),
+        styles: { fontSize: 7.5, cellPadding: 1.5 },
+        headStyles: { fillColor: [0, 128, 128] },
+        columnStyles: { 1: { halign: 'right' }, 2: { halign: 'right' } }
+      });
+    }
+
+    const baseName = activeFileName.replace(/\.[^/.]+$/, '').replace(/[^a-z0-9]+/gi, '_').toLowerCase();
+    doc.save(`laporan_missing_data_${baseName}_${new Date().toISOString().slice(0, 10)}.pdf`);
+  };
 
   const handleImpute = async (method: ImputationMethod) => {
     const methodLabels: Record<ImputationMethod, string> = {
@@ -974,17 +1040,31 @@ export default function DataPage() {
                       </Badge>
                     </CardTitle>
 
-                    {/* Mass Selection Delete Action Button */}
-                    {selectedMissingColsToDrop.length > 0 && (
+                    <div className="flex items-center gap-2">
                       <Button
                         size="sm"
-                        onClick={handleDropSelectedMissingCols}
-                        className="h-7 text-xs bg-rose-600 hover:bg-rose-700 text-white font-bold cursor-pointer gap-1.5 shadow-xs animate-in fade-in"
+                        variant="outline"
+                        onClick={handleDownloadMissingReportPdf}
+                        disabled={missingDiag.totalCols === 0}
+                        className="h-7 text-xs gap-1.5 cursor-pointer font-semibold border-[#008080]/30 text-[#008080] dark:text-[#14a3a3] hover:bg-[#e6f2f2] dark:hover:bg-[#14312f]"
+                        title="Unduh laporan diagnosis missing data (semua variabel) sebagai PDF"
                       >
-                        <Trash2 className="w-3.5 h-3.5" />
-                        Hapus {selectedMissingColsToDrop.length} Variabel Terpilih
+                        <FileDown className="w-3.5 h-3.5" />
+                        Unduh PDF
                       </Button>
-                    )}
+
+                      {/* Mass Selection Delete Action Button */}
+                      {selectedMissingColsToDrop.length > 0 && (
+                        <Button
+                          size="sm"
+                          onClick={handleDropSelectedMissingCols}
+                          className="h-7 text-xs bg-rose-600 hover:bg-rose-700 text-white font-bold cursor-pointer gap-1.5 shadow-xs animate-in fade-in"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                          Hapus {selectedMissingColsToDrop.length} Variabel Terpilih
+                        </Button>
+                      )}
+                    </div>
                   </div>
 
                   {/* Filter Tier Tabs & Search Bar */}

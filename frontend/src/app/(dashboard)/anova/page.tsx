@@ -22,7 +22,7 @@ import { generateLocalAnovaNarrative } from '@/lib/gemini';
 import { RSyntaxGenerator } from '@/lib/stats/r-syntax';
 
 export default function AnovaPage() {
-  const { data, columns, fileName, loadDefaultDataset } = useDatasetStore();
+  const { data, columns, fileName } = useDatasetStore();
   const {
     anovaConfig,
     setAnovaConfig,
@@ -40,9 +40,6 @@ export default function AnovaPage() {
 
   React.useEffect(() => {
     useAnalysisStore.setState({ error: null });
-    if (data.length === 0 && !fileName) {
-      loadDefaultDataset();
-    }
   }, []);
 
   const handleResetAnova = () => {

@@ -430,13 +430,28 @@ export interface IPDMetaResult {
 }
 
 // ==================== SEM / PATH ANALYSIS TYPES ====================
+export interface SEMLatentConstruct {
+  id: string;
+  name: string;
+  indicators: string[];
+}
+
+export interface SEMLatentRelation {
+  outcomeLatent: string;
+  /** Can be either another latent construct's name, or a manifest (observed) dataset variable name. */
+  predictors: string[];
+}
+
 export interface SEMConfig {
-  mode: 'visual' | 'syntax';
+  mode: 'visual' | 'latent' | 'syntax';
   dv?: string;
   exogenous?: string[];
   mediators?: string[];
   endogenous?: string[];
   customSyntax?: string;
+  /** Persisted state for the "Visual SEM (Variabel Laten)" builder, so it survives navigation and project export/import. */
+  latentConstructs?: SEMLatentConstruct[];
+  latentRelations?: SEMLatentRelation[];
 }
 
 export interface SEMFitIndices {

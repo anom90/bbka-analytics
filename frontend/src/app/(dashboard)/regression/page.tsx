@@ -41,7 +41,7 @@ import { getVariableDescription, AN_CODEBOOK_DICTIONARY } from '@/constants/an-c
 import { VariableSelector, VariableSlot } from '@/components/common/variable-selector';
 
 export default function RegressionPage() {
-  const { data, columns, fileName, loadDefaultDataset } = useDatasetStore();
+  const { data, columns, fileName } = useDatasetStore();
   const {
     regressionConfig,
     setRegressionConfig,
@@ -61,9 +61,6 @@ export default function RegressionPage() {
 
   React.useEffect(() => {
     useAnalysisStore.setState({ error: null });
-    if (data.length === 0 && !fileName) {
-      loadDefaultDataset();
-    }
   }, []);
 
   const handleResetRegression = () => {

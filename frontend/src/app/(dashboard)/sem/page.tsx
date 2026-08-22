@@ -35,21 +35,15 @@ import { useDatasetStore } from '@/stores/dataset-store';
 import { useAnalysisStore } from '@/stores/analysis-store';
 import { formatNumber, formatPValue, cn } from '@/lib/utils';
 import { getVariableCodebook } from '@/constants/an-codebook';
+import { SEMLatentConstruct as LatentConstruct, SEMLatentRelation as LatentRelation } from '@/lib/types';
 
-interface LatentConstruct {
-  id: string;
-  name: string;
-  indicators: string[];
-}
-
-interface LatentRelation {
-  outcomeLatent: string;
-  /** Can be either another latent construct's name, or a manifest (observed) dataset variable name. */
-  predictors: string[];
-}
+const DEFAULT_LATENT_CONSTRUCTS: LatentConstruct[] = [
+  { id: '1', name: 'Laten_1', indicators: [] },
+  { id: '2', name: 'Laten_2', indicators: [] }
+];
 
 export default function SemPage() {
-  const { data, columns, fileName, loadDefaultDataset, customCodebook } = useDatasetStore();
+  const { data, columns, fileName, customCodebook } = useDatasetStore();
   const {
     semConfig,
     setSEMConfig,
@@ -72,11 +66,6 @@ export default function SemPage() {
 
   const handleResetSEM = () => {
     clearSpecificAnalysis('sem');
-    setLatentConstructs([
-      { id: '1', name: 'Laten_1', indicators: [] },
-      { id: '2', name: 'Laten_2', indicators: [] }
-    ]);
-    setLatentRelations([]);
     setSyntaxInput('');
     setValidationError(null);
     setResetSuccessMessage('✓ Model dan hasil analisis berhasil dibersihkan.');
@@ -84,20 +73,29 @@ export default function SemPage() {
   };
 
   // -------------------------------------------------------------
-  // VISUAL LATENT CONSTRUCT BUILDER STATE
+  // VISUAL LATENT CONSTRUCT BUILDER STATE — persisted in semConfig (not local useState)
+  // so it survives page navigation and is included in Export/Import Project.
   // -------------------------------------------------------------
-  const [latentConstructs, setLatentConstructs] = React.useState<LatentConstruct[]>([
-    { id: '1', name: 'Laten_1', indicators: [] },
-    { id: '2', name: 'Laten_2', indicators: [] }
-  ]);
-  const [latentRelations, setLatentRelations] = React.useState<LatentRelation[]>([]);
+  const latentConstructs = semConfig.latentConstructs || DEFAULT_LATENT_CONSTRUCTS;
+  const setLatentConstructs = (
+    updater: LatentConstruct[] | ((prev: LatentConstruct[]) => LatentConstruct[])
+  ) => {
+    const next = typeof updater === 'function' ? (updater as (prev: LatentConstruct[]) => LatentConstruct[])(latentConstructs) : updater;
+    setSEMConfig({ latentConstructs: next });
+  };
+
+  const latentRelations = semConfig.latentRelations || [];
+  const setLatentRelations = (
+    updater: LatentRelation[] | ((prev: LatentRelation[]) => LatentRelation[])
+  ) => {
+    const next = typeof updater === 'function' ? (updater as (prev: LatentRelation[]) => LatentRelation[])(latentRelations) : updater;
+    setSEMConfig({ latentRelations: next });
+  };
+
   const [validationError, setValidationError] = React.useState<string | null>(null);
 
   React.useEffect(() => {
     useAnalysisStore.setState({ error: null });
-    if (data.length === 0 && !fileName) {
-      loadDefaultDataset();
-    }
   }, []);
 
   // Reactive Debounce Auto-Run (JASP Mode for SEM / Path Analysis)

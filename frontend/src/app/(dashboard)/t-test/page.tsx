@@ -23,7 +23,7 @@ import { RSyntaxGenerator } from '@/lib/stats/r-syntax';
 import { TTestType } from '@/lib/types';
 
 export default function TTestPage() {
-  const { data, columns, fileName, loadDefaultDataset } = useDatasetStore();
+  const { data, columns, fileName } = useDatasetStore();
   const {
     tTestConfig,
     setTTestConfig,
@@ -41,9 +41,6 @@ export default function TTestPage() {
 
   React.useEffect(() => {
     useAnalysisStore.setState({ error: null });
-    if (data.length === 0 && !fileName) {
-      loadDefaultDataset();
-    }
   }, []);
 
   const handleResetTTest = () => {

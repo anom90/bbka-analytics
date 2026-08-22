@@ -13,6 +13,8 @@
     "clsx": "^2.1.1",
     "framer-motion": "^13.1.0",
     "idb-keyval": "^6.3.0",
+    "jspdf": "^4.2.1",
+    "jspdf-autotable": "^5.0.8",
     "jstat": "^1.9.6",
     "katex": "^0.18.4",
     "lucide-react": "^1.32.0",

@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { GraduationCap, PanelLeft } from 'lucide-react';
 import { useUiStore } from '@/stores/ui-store';
+import { useDatasetStore } from '@/stores/dataset-store';
 import { cn } from '@/lib/utils';
 
 import { SessionCacheModal } from '@/components/common/session-cache-modal';
@@ -26,6 +27,30 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [toggleSidebar]);
+
+  // Load the bundled default dataset only once we're SURE the IndexedDB-persisted store
+  // has finished rehydrating and is still genuinely empty. Every individual analysis page
+  // used to run this same "if empty, load default" check on its own mount — but since
+  // persist rehydration from IndexedDB is asynchronous, `data` reads as `[]` for a brief
+  // window on every hard reload even when a large uploaded/imputed dataset is saved. If that
+  // page-level check fired inside that window (and the default dataset's tiny bundled CSV
+  // fetch resolved before the slower IndexedDB read), it would silently overwrite the real
+  // dataset with the default one. Doing this once at the layout level, gated on
+  // `persist.hasHydrated()`, removes that race entirely.
+  React.useEffect(() => {
+    const loadDefaultIfStillEmpty = () => {
+      const { data, fileName, loadDefaultDataset } = useDatasetStore.getState();
+      if (data.length === 0 && !fileName) {
+        loadDefaultDataset();
+      }
+    };
+
+    if (useDatasetStore.persist.hasHydrated()) {
+      loadDefaultIfStillEmpty();
+      return;
+    }
+    return useDatasetStore.persist.onFinishHydration(loadDefaultIfStillEmpty);
+  }, []);
 
   return (
     <div className="flex min-h-screen bg-[#ffffff] dark:bg-[#0b1414] text-[#0e1a1a] dark:text-[#e8f0f0] transition-colors">

@@ -24,6 +24,11 @@ import { runRegression } from '@/lib/stats/regression';
 import { runIPDMetaAnalysis } from '@/lib/stats/ipd-meta';
 import { get, set as idbSet, del } from 'idb-keyval';
 
+// Writes are debounced per key so bursts of state updates (e.g. auto-run re-computing
+// several analyses in quick succession) coalesce into a single IndexedDB commit instead of
+// each one re-serializing and writing the full analysis-results payload.
+const pendingWrites = new Map<string, ReturnType<typeof setTimeout>>();
+
 const indexedDBStorage: StateStorage = {
   getItem: async (name: string): Promise<string | null> => {
     if (typeof window === 'undefined') return null;
@@ -34,20 +39,36 @@ const indexedDBStorage: StateStorage = {
       return localStorage.getItem(name);
     }
   },
-  setItem: async (name: string, value: string): Promise<void> => {
-    if (typeof window === 'undefined') return;
-    try {
-      await idbSet(name, value);
-    } catch {
-      try {
-        localStorage.setItem(name, value);
-      } catch (e) {
-        console.warn('Storage quota exceeded', e);
-      }
-    }
+  setItem: (name: string, value: string): Promise<void> => {
+    if (typeof window === 'undefined') return Promise.resolve();
+    return new Promise((resolve) => {
+      const existingTimer = pendingWrites.get(name);
+      if (existingTimer) clearTimeout(existingTimer);
+
+      const timer = setTimeout(async () => {
+        pendingWrites.delete(name);
+        try {
+          await idbSet(name, value);
+        } catch {
+          try {
+            localStorage.setItem(name, value);
+          } catch (e) {
+            console.warn('Storage quota exceeded', e);
+          }
+        }
+        resolve();
+      }, 400);
+
+      pendingWrites.set(name, timer);
+    });
   },
   removeItem: async (name: string): Promise<void> => {
     if (typeof window === 'undefined') return;
+    const existingTimer = pendingWrites.get(name);
+    if (existingTimer) {
+      clearTimeout(existingTimer);
+      pendingWrites.delete(name);
+    }
     try {
       await del(name);
     } catch {
@@ -198,7 +219,12 @@ export const useAnalysisStore = create<AnalysisState>()(
         exogenous: ['ses_siswa'],
         mediators: ['guru_iklim_kelas'],
         endogenous: ['nilai_numerasi'],
-        customSyntax: ''
+        customSyntax: '',
+        latentConstructs: [
+          { id: '1', name: 'Laten_1', indicators: [] },
+          { id: '2', name: 'Laten_2', indicators: [] }
+        ],
+        latentRelations: []
       },
       ipdMetaConfig: {
         dv: 'nilai_literasi',
@@ -595,7 +621,18 @@ export const useAnalysisStore = create<AnalysisState>()(
         if (key === 'sem') {
           set({
             semResult: null,
-            semConfig: { mode: 'visual', exogenous: [], mediators: [], endogenous: [], customSyntax: '' },
+            semConfig: {
+              mode: 'visual',
+              exogenous: [],
+              mediators: [],
+              endogenous: [],
+              customSyntax: '',
+              latentConstructs: [
+                { id: '1', name: 'Laten_1', indicators: [] },
+                { id: '2', name: 'Laten_2', indicators: [] }
+              ],
+              latentRelations: []
+            },
             error: null
           });
         } else if (key === 'ttest') {
@@ -634,7 +671,18 @@ export const useAnalysisStore = create<AnalysisState>()(
           semResult: null,
           ipdMetaResult: null,
           error: null,
-          semConfig: { mode: 'visual', exogenous: [], mediators: [], endogenous: [], customSyntax: '' },
+          semConfig: {
+            mode: 'visual',
+            exogenous: [],
+            mediators: [],
+            endogenous: [],
+            customSyntax: '',
+            latentConstructs: [
+              { id: '1', name: 'Laten_1', indicators: [] },
+              { id: '2', name: 'Laten_2', indicators: [] }
+            ],
+            latentRelations: []
+          },
           draftReport: {
             narrativeContent: '',
             selectedModules: {
