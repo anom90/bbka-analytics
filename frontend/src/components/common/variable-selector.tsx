@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { Hash, Type, Plus, X, AlertCircle, Check, Info, BookOpen, Search, Filter } from 'lucide-react';
+import { Hash, Type, Plus, X, AlertCircle, Check, Info, BookOpen, Search, Filter, Pencil, Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ColumnMeta, VariableType } from '@/lib/types';
@@ -18,6 +18,10 @@ export interface VariableSlot {
   multi?: boolean;
   selected: string[];
   onChange: (selected: string[]) => void;
+  /** When provided, shows a pencil icon letting the user rename this slot's label (e.g. regression blocks). */
+  onRename?: (newLabel: string) => void;
+  /** When provided, shows a trash icon letting the user remove this slot entirely (e.g. regression blocks). */
+  onRemove?: () => void;
 }
 
 interface VariableSelectorProps {
@@ -31,6 +35,21 @@ export function VariableSelector({ columns, slots, className }: VariableSelector
   const [activeVar, setActiveVar] = React.useState<string | null>(null);
   const [searchTerm, setSearchTerm] = React.useState('');
   const [typeFilter, setTypeFilter] = React.useState<'all' | 'numeric' | 'nominal'>('all');
+  const [editingSlotId, setEditingSlotId] = React.useState<string | null>(null);
+  const [editingLabelDraft, setEditingLabelDraft] = React.useState('');
+
+  const startRenamingSlot = (slot: VariableSlot) => {
+    setEditingSlotId(slot.id);
+    setEditingLabelDraft(slot.label);
+  };
+
+  const commitRenamingSlot = (slot: VariableSlot) => {
+    const trimmed = editingLabelDraft.trim();
+    if (trimmed && trimmed !== slot.label) {
+      slot.onRename?.(trimmed);
+    }
+    setEditingSlotId(null);
+  };
 
   // Auto select first variable if none selected
   React.useEffect(() => {
@@ -178,7 +197,6 @@ export function VariableSelector({ columns, slots, className }: VariableSelector
                 return (
                   <VariableTooltip key={col.name} item={cb} side="right" className="w-full">
                     <div
-                      onMouseEnter={() => setActiveVar(col.name)}
                       onClick={() => setActiveVar(col.name)}
                       className={cn(
                         'flex items-center justify-between p-2 rounded-xl text-xs transition-all cursor-pointer border w-full text-left',
@@ -258,7 +276,7 @@ export function VariableSelector({ columns, slots, className }: VariableSelector
           </div>
         ) : (
           <div className="p-3 text-center text-[11px] text-zinc-400 border border-dashed rounded-2xl">
-            Arahkan kursor atau klik variabel untuk melihat definisi lengkap.
+            Klik variabel untuk melihat definisi lengkap, atau arahkan kursor untuk pratinjau singkat.
           </div>
         )}
       </div>
@@ -283,11 +301,55 @@ export function VariableSelector({ columns, slots, className }: VariableSelector
               )}
             >
               <div className="flex items-start justify-between gap-2">
-                <div className="space-y-0.5">
+                <div className="space-y-0.5 min-w-0 flex-1">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <h5 className="text-xs font-bold text-zinc-900 dark:text-zinc-100 flex items-center gap-1.5">
-                      {slot.label}
-                    </h5>
+                    {editingSlotId === slot.id ? (
+                      <div className="flex items-center gap-1">
+                        <input
+                          autoFocus
+                          type="text"
+                          value={editingLabelDraft}
+                          onChange={(e) => setEditingLabelDraft(e.target.value)}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter') commitRenamingSlot(slot);
+                            if (e.key === 'Escape') setEditingSlotId(null);
+                          }}
+                          onBlur={() => commitRenamingSlot(slot)}
+                          className="text-xs font-bold text-zinc-900 dark:text-zinc-100 bg-zinc-50 dark:bg-zinc-800 border border-[#008080]/50 rounded-lg px-2 py-1 focus:outline-none focus:ring-1 focus:ring-[#008080] min-w-40"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => commitRenamingSlot(slot)}
+                          className="text-emerald-600 hover:text-emerald-700 cursor-pointer p-1"
+                        >
+                          <Check className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    ) : (
+                      <h5 className="text-xs font-bold text-zinc-900 dark:text-zinc-100 flex items-center gap-1.5 group">
+                        {slot.label}
+                        {slot.onRename && (
+                          <button
+                            type="button"
+                            onClick={() => startRenamingSlot(slot)}
+                            className="text-zinc-400 hover:text-[#008080] dark:hover:text-[#14a3a3] cursor-pointer p-0.5 rounded"
+                            title="Ubah nama blok"
+                          >
+                            <Pencil className="w-3 h-3" />
+                          </button>
+                        )}
+                        {slot.onRemove && (
+                          <button
+                            type="button"
+                            onClick={() => slot.onRemove?.()}
+                            className="text-zinc-400 hover:text-rose-600 cursor-pointer p-0.5 rounded"
+                            title="Hapus blok"
+                          >
+                            <Trash2 className="w-3 h-3" />
+                          </button>
+                        )}
+                      </h5>
+                    )}
 
                     {/* Required Type Badge */}
                     {isSlotNumericOnly && (

@@ -68,27 +68,30 @@ export default function DraftReportPage() {
     multilevelResult,
     regressionResult,
     semResult,
-    ipdMetaResult
+    ipdMetaResult,
+    draftReport,
+    setDraftReport
   } = useAnalysisStore();
 
   const { fileName, data, columns, customCodebook } = useDatasetStore();
   const { geminiApiKey } = useAiStore();
 
-  // Multi-Select included analysis modules
-  const [selectedModules, setSelectedModules] = React.useState<Record<AnalysisModuleKey, boolean>>({
-    regression: true,
-    sem: true,
-    multilevel: false,
-    ipd_meta: false,
-    ancova: false,
-    anova: false,
-    ttest: false,
-    manova: false,
-  });
+  // Multi-Select included analysis modules — persisted so switching menus & coming back
+  // doesn't discard the generated narrative or force an expensive AI re-generation.
+  const selectedModules = draftReport.selectedModules as Record<AnalysisModuleKey, boolean>;
+  const setSelectedModules = (
+    updater: Record<AnalysisModuleKey, boolean> | ((prev: Record<AnalysisModuleKey, boolean>) => Record<AnalysisModuleKey, boolean>)
+  ) => {
+    const next = typeof updater === 'function' ? (updater as any)(selectedModules) : updater;
+    setDraftReport({ selectedModules: next });
+  };
 
-  const [activeStrategyPreset, setActiveStrategyPreset] = React.useState<string>('reg_mediation');
+  const activeStrategyPreset = draftReport.activeStrategyPreset;
+  const setActiveStrategyPreset = (preset: string) => setDraftReport({ activeStrategyPreset: preset });
+
   const [activeTab, setActiveTab] = React.useState<string>('draft');
-  const [narrativeContent, setNarrativeContent] = React.useState('');
+  const narrativeContent = draftReport.narrativeContent;
+  const setNarrativeContent = (content: string) => setDraftReport({ narrativeContent: content });
   const [isGenerating, setIsGenerating] = React.useState(false);
   const [copiedReport, setCopiedReport] = React.useState(false);
   const [copiedZoteroResult, setCopiedZoteroResult] = React.useState(false);
@@ -105,8 +108,15 @@ export default function DraftReportPage() {
     manova: !!manovaResult,
   }), [regressionResult, semResult, multilevelResult, ipdMetaResult, ancovaResult, anovaResult, tTestResult, manovaResult]);
 
-  // Set initial selected modules based on active results
+  // Set initial selected modules based on active results — runs only once on the very first
+  // visit (before any narrative has been generated). On later revisits the persisted
+  // `draftReport` state is kept as-is so the user's module choices aren't clobbered.
+  const autoConfigDone = React.useRef(false);
   React.useEffect(() => {
+    if (autoConfigDone.current) return;
+    autoConfigDone.current = true;
+    if (narrativeContent) return;
+
     const hasReg = !!regressionResult;
     const hasSem = !!semResult;
     const hasHlm = !!multilevelResult;
@@ -137,7 +147,7 @@ export default function DraftReportPage() {
         manova: false
       });
     }
-  }, [regressionResult, semResult, multilevelResult, ipdMetaResult]);
+  }, []);
 
   const toggleModule = (key: AnalysisModuleKey) => {
     setSelectedModules(prev => ({ ...prev, [key]: !prev[key] }));

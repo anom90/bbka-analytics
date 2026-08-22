@@ -332,6 +332,17 @@ ${(ancovaResult.adjustedMeans || []).map(m => `   - Kelompok *${m.group}*: Raw M
      : `Setelah disesuaikan dengan ${safeCovariates.join(', ')}, perbedaan antar kelompok ${ancovaResult.factor} menjadi **tidak signifikan**, menunjukkan bahwa variasi skor sebelumnya sebagian besar didorong oleh disparitas kovariat tersebut.`
    }
                 `.trim()}
+                promptBuilder={() => `
+Tolong buatkan narasi laporan penelitian akademik berstandar APA 7th dalam Bahasa Indonesia untuk hasil ANCOVA (Analysis of Covariance) berikut:
+- Variabel Terikat: ${ancovaResult.dv}
+- Faktor: ${ancovaResult.factor}
+- Kovariat: ${safeCovariates.join(', ')}
+- Hasil Tabel ANCOVA:
+${(ancovaResult.table || []).map(r => `  * ${r.source}: F(${r.df}) = ${formatNumber(r.f)}, p = ${formatPValue(r.pValue)}, partial eta2 = ${formatNumber(r.partialEtaSquared)}`).join('\n')}
+- Rata-rata Terkoreksi (Adjusted Means):
+${(ancovaResult.adjustedMeans || []).map(m => `  * ${m.group}: Raw Mean = ${formatNumber(m.unadjustedMean)}, Adjusted Mean = ${formatNumber(m.adjustedMean)} (SE = ${formatNumber(m.se)})`).join('\n')}
+${ancovaResult.homogeneityOfSlopes ? `- Uji Homogenitas Gradien Regresi: F(Interaksi) = ${formatNumber(ancovaResult.homogeneityOfSlopes.interactionF)}, p = ${formatPValue(ancovaResult.homogeneityOfSlopes.interactionP)}` : ''}
+                `.trim()}
               />
             </div>
           ) : (

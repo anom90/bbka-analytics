@@ -115,6 +115,14 @@ interface AnalysisState {
   error: string | null;
   activeEngine: 'R (Exact R Session)' | 'Client-TS Fallback';
 
+  // Persisted Draft Report workspace state (avoids re-generating AI narrative on every page revisit)
+  draftReport: {
+    narrativeContent: string;
+    selectedModules: Record<string, boolean>;
+    activeStrategyPreset: string;
+  };
+  setDraftReport: (partial: Partial<AnalysisState['draftReport']>) => void;
+
   // Actions
   setTTestConfig: (config: Partial<AnalysisState['tTestConfig']>) => void;
   setAnovaConfig: (config: Partial<AnalysisState['anovaConfig']>) => void;
@@ -555,6 +563,22 @@ export const useAnalysisStore = create<AnalysisState>()(
         }
       },
 
+      draftReport: {
+        narrativeContent: '',
+        selectedModules: {
+          regression: true,
+          sem: true,
+          multilevel: false,
+          ipd_meta: false,
+          ancova: false,
+          anova: false,
+          ttest: false,
+          manova: false
+        },
+        activeStrategyPreset: 'reg_mediation'
+      },
+      setDraftReport: (partial) => set((s) => ({ draftReport: { ...s.draftReport, ...partial } })),
+
       clearAllResults: () => set({
         tTestResult: null,
         anovaResult: null,
@@ -610,7 +634,21 @@ export const useAnalysisStore = create<AnalysisState>()(
           semResult: null,
           ipdMetaResult: null,
           error: null,
-          semConfig: { mode: 'visual', exogenous: [], mediators: [], endogenous: [], customSyntax: '' }
+          semConfig: { mode: 'visual', exogenous: [], mediators: [], endogenous: [], customSyntax: '' },
+          draftReport: {
+            narrativeContent: '',
+            selectedModules: {
+              regression: true,
+              sem: true,
+              multilevel: false,
+              ipd_meta: false,
+              ancova: false,
+              anova: false,
+              ttest: false,
+              manova: false
+            },
+            activeStrategyPreset: 'reg_mediation'
+          }
         });
       }
     }),

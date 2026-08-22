@@ -36,7 +36,10 @@ export function AiCard({
   const activeContent = interpretations[analysisKey] || defaultNarrative || '';
 
   const handleGenerate = async () => {
-    if (!promptBuilder) return;
+    if (!promptBuilder) {
+      setError('Narasi ini belum dikonfigurasi untuk regenerasi otomatis. Silakan laporkan ke pengembang.');
+      return;
+    }
     setLoading(true);
     setError(null);
 

@@ -878,9 +878,18 @@ Literasi ~ Iklim
               )}
 
               <AiCard
-                analysisKey="sem"
+                analysisKey={`sem_${semResult.nObservations}_${(semResult.directEffects || []).length}paths`}
                 title="Narasi Laporan Hasil Analisis Jalur / SEM (Format APA 7th)"
                 defaultNarrative={generateApaNarrative()}
+                promptBuilder={() => `
+Tolong buatkan narasi laporan penelitian akademik berstandar APA 7th dalam Bahasa Indonesia untuk hasil Analisis Jalur / Structural Equation Modeling (SEM) menggunakan engine R (lavaan) berikut:
+- N Observasi: ${(semResult.nObservations || 0).toLocaleString()}
+${semResult.fitIndices ? `- Model Fit Indices: Chi-Square(${semResult.fitIndices.df || 0}) = ${formatNumber(semResult.fitIndices.chisq, 2)}, p = ${formatPValue(semResult.fitIndices.pvalue)}, CFI = ${formatNumber(semResult.fitIndices.cfi, 3)}, TLI = ${formatNumber(semResult.fitIndices.tli, 3)}, RMSEA = ${formatNumber(semResult.fitIndices.rmsea, 3)}, SRMR = ${formatNumber(semResult.fitIndices.srmr, 3)}` : ''}
+- Pengaruh Langsung (Direct Effects):
+${(semResult.directEffects || []).map(d => `  * ${d.lhs} <- ${d.rhs}: Est = ${formatNumber(d.est, 3)}, Std.Est = ${formatNumber(d.stdEst, 3)}, z = ${formatNumber(d.zValue, 2)}, p = ${formatPValue(d.pValue)}`).join('\n')}
+${semResult.indirectEffects && semResult.indirectEffects.length > 0 ? `- Pengaruh Tidak Langsung / Mediasi (Indirect Effects):
+${semResult.indirectEffects.map(ind => `  * ${ind.lhs}: Est = ${formatNumber(ind.est, 3)}, Std.Est = ${formatNumber(ind.stdEst, 3)}, SE = ${formatNumber(ind.se, 3)}, z = ${formatNumber(ind.zValue, 2)}, p = ${formatPValue(ind.pValue)}` ).join('\n')}` : ''}
+                `.trim()}
               />
             </div>
           ) : (

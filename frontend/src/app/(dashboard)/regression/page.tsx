@@ -13,9 +13,6 @@ import {
   Table,
   Zap,
   Plus,
-  Trash2,
-  Edit2,
-  Check,
   BarChart3,
   HelpCircle,
   FolderPlus,
@@ -59,8 +56,6 @@ export default function RegressionPage() {
   const [autoRun, setAutoRun] = React.useState(true);
   const [isDebouncing, setIsDebouncing] = React.useState(false);
   const isInitialMount = React.useRef(true);
-  const [editingBlockIndex, setEditingBlockIndex] = React.useState<number | null>(null);
-  const [tempBlockName, setTempBlockName] = React.useState('');
 
   const regressionMode = regressionConfig.mode || (regressionConfig.blocks && regressionConfig.blocks.length > 1 ? 'hierarchical' : 'standard');
 
@@ -290,7 +285,8 @@ export default function RegressionPage() {
         })
       });
     } else {
-      (regressionConfig.blocks || []).forEach((block, idx) => {
+      const currentBlocks = regressionConfig.blocks || [];
+      currentBlocks.forEach((block, idx) => {
         s.push({
           id: `block_${block.blockNumber || idx + 1}`,
           label: `${block.blockName || `Blok ${idx + 1}`}`,
@@ -305,7 +301,13 @@ export default function RegressionPage() {
               variables: selected
             };
             setRegressionConfig({ blocks: updated });
-          }
+          },
+          onRename: (newLabel) => {
+            const updated = [...(regressionConfig.blocks || [])];
+            updated[idx] = { ...updated[idx], blockName: newLabel };
+            setRegressionConfig({ blocks: updated });
+          },
+          onRemove: currentBlocks.length > 1 ? () => handleRemoveBlock(idx) : undefined
         });
       });
     }
@@ -507,9 +509,18 @@ export default function RegressionPage() {
               />
 
               <AiCard
-                analysisKey="regression"
+                analysisKey={`regression_${regressionResult.dv}_${regressionResult.models.length}models`}
                 title="Narasi Laporan Hasil Regresi (Format APA 7th)"
                 defaultNarrative={generateApaNarrative()}
+                promptBuilder={() => `
+Tolong buatkan narasi laporan penelitian akademik berstandar APA 7th dalam Bahasa Indonesia untuk hasil ${regressionResult.models.length > 1 ? 'Regresi Linier Berganda Berjenjang (Hierarchical Multiple Regression)' : 'Regresi Linier Berganda (Standard Multiple Regression)'} berikut:
+- Variabel Terikat (Outcome): ${regressionResult.dv}
+- N Observasi: ${(regressionResult.nObservations || 0).toLocaleString()}
+- Ringkasan Model:
+${regressionResult.models.map(m => `  * ${m.modelName} (${m.predictors.join(', ')}): R = ${formatNumber(m.r, 3)}, R2 = ${formatNumber(m.r2, 3)}, Adj R2 = ${formatNumber(m.adjR2, 3)}, deltaR2 = ${formatNumber(m.r2Change, 3)}, F-Change(${m.df1}, ${m.df2}) = ${formatNumber(m.fChange, 2)}, p = ${formatPValue(m.pChange)}`).join('\n')}
+- Koefisien Model Final:
+${(finalModel?.coefficients || []).map(c => `  * ${c.term}: B = ${formatNumber(c.b, 3)}, SE = ${formatNumber(c.se, 3)}, Beta = ${formatNumber(c.beta, 3)}, t = ${formatNumber(c.tValue, 2)}, p = ${formatPValue(c.pValue)}, VIF = ${!isNaN(c.vif || NaN) ? formatNumber(c.vif, 2) : '-'}`).join('\n')}
+                `.trim()}
               />
             </div>
           ) : (

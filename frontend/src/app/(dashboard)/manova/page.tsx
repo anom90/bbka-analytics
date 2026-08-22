@@ -307,6 +307,15 @@ Analisis **Multivariate Analysis of Variance (MANOVA)** satu jalur diterapkan un
 3. **Uji Univariat Lanjutan (Follow-up ANOVAs)**:
    Pengujian univariat terpisah menunjukkan bahwa kelompok berbeda secara signifikan baik pada masing-masing dimensi capaian asesmen.
                 `.trim()}
+                promptBuilder={() => `
+Tolong buatkan narasi laporan penelitian akademik berstandar APA 7th dalam Bahasa Indonesia untuk hasil MANOVA (Multivariate Analysis of Variance) berikut:
+- Variabel Terikat (DVs): ${safeDvs.join(' & ')}
+- Faktor: ${safeFactors.join(' & ')}
+- Hasil Uji Multivariat:
+${multiData.map(r => `  * ${r.source} (${r.testName}): Value = ${r.statValue}, F = ${r.approxF}, df = (${r.numDf}, ${r.denDf}), p = ${r.pValue}, partial eta2 = ${r.partialEtaSq}`).join('\n')}
+${manovaResult.univariateAnovas ? `- Uji Lanjut Univariate ANOVA (Follow-up per DV):
+${Object.entries(manovaResult.univariateAnovas).map(([dvName, anovaRes]: [string, any]) => ensureArray(anovaRes?.table).map((r: any) => `  * [${dvName}] ${r.source}: F(${r.df}) = ${formatNumber(r.f)}, p = ${formatPValue(r.pValue)}, partial eta2 = ${formatNumber(r.partialEtaSquared)}`).join('\n')).join('\n')}` : ''}
+                `.trim()}
               />
             </div>
           ) : (

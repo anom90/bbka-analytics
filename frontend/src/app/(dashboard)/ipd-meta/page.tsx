@@ -403,9 +403,20 @@ export default function IPDMetaPage() {
 
               {/* APA Narrative AI Card */}
               <AiCard
-                analysisKey="multilevel"
+                analysisKey={`ipd_meta_${ipdMetaResult.dv}_${ipdMetaResult.focalPredictor}_${ipdMetaResult.clusterVar}`}
                 title="Narasi Laporan Meta-Analisis IPD (Format APA 7th)"
                 defaultNarrative={generateApaNarrative()}
+                promptBuilder={() => `
+Tolong buatkan narasi laporan penelitian akademik berstandar APA 7th dalam Bahasa Indonesia untuk hasil Two-Stage Individual Participant Data (IPD) Meta-Analysis berikut:
+- Outcome: ${ipdMetaResult.dv}
+- Prediktor Fokus: ${ipdMetaResult.focalPredictor}
+- Kovariat: ${(ipdMetaResult.covariates || []).join(', ') || '-'}
+- Klaster/Wilayah: ${ipdMetaResult.clusterVar} (${ipdMetaResult.nClusters} klaster, N Total = ${ipdMetaResult.nTotalObservations.toLocaleString()})
+- Pooled Effect (Random-Effects REML): beta = ${formatNumber(ipdMetaResult.pooledBeta, 3)}, SE = ${formatNumber(ipdMetaResult.pooledSE, 3)}, 95% CI [${formatNumber(ipdMetaResult.ciLower, 3)}, ${formatNumber(ipdMetaResult.ciUpper, 3)}], z = ${formatNumber(ipdMetaResult.zValue, 2)}, p = ${formatPValue(ipdMetaResult.pValue)}
+- Heterogenitas: I² = ${formatNumber(ipdMetaResult.i2, 1)}%, tau² = ${formatNumber(ipdMetaResult.tau2, 4)}, Q(${ipdMetaResult.dfQ}) = ${formatNumber(ipdMetaResult.qStatistic, 2)}, p = ${formatPValue(ipdMetaResult.qPValue)}
+- Rincian per Klaster:
+${clusterData.map((c: any) => `  * ${c.clusterId}: n = ${c.n}, beta = ${c.beta}, SE = ${c.se}, 95% CI ${c.ci}, z = ${c.zValue}, p = ${c.pValue}, bobot = ${c.weightPct}`).join('\n')}
+                `.trim()}
               />
             </div>
           ) : (
